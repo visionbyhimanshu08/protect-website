@@ -34,7 +34,7 @@
   border-radius: 8px;
   border: 2px solid transparent;
   font-family: var(--font-body);
-  font-size: 17px;
+  font-size: 18px;
   font-weight: 500;
   line-height: 25.2px;
   letter-spacing: -0.4px;
@@ -190,7 +190,7 @@ textarea.field { height: 128px; padding: 22px 24px; resize: vertical; line-heigh
   border-radius: 6px;
   background: var(--grey-100);
   color: var(--navy);
-  font-size: 15px;
+  font-size: 16px;
 }
 
 .s-contact__list {

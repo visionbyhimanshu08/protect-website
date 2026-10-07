@@ -13,8 +13,8 @@
 .rs-eyebrow--lg { font-size: 14px; line-height: 22px; letter-spacing: 1.2px; }
 .rs-eyebrow--md { font-size: 12px; line-height: 20px; letter-spacing: 1.4px; }
 .rs-eyebrow--sm,
-.rs-eyebrow--xs { font-size: 11px; line-height: 18px; letter-spacing: 1.4px; }
-.rs-eyebrow--gold { font-size: 13px; line-height: 22px; letter-spacing: 1.4px; color: var(--gold); }
+.rs-eyebrow--xs { font-size: 12px; line-height: 18px; letter-spacing: 1.4px; }
+.rs-eyebrow--gold { font-size: 14px; line-height: 22px; letter-spacing: 1.4px; color: var(--gold); }
 
 /* text link with gold underline + arrow (Figma "Link" 3:3930) */
 .rs-link {
@@ -24,7 +24,7 @@
   padding-bottom: 3px;
   border-bottom: 1px solid var(--gold);
   font-family: var(--font-body);
-  font-size: 15px;
+  font-size: 16px;
   font-weight: 600;
   line-height: 22px;
   letter-spacing: -0.2px;
@@ -58,7 +58,7 @@
 .rs-head__text {
   flex: 0 0 505px;
   margin-right: 63px;
-  font-size: 17px;
+  font-size: 18px;
   line-height: 29px;
   letter-spacing: -0.4px;
   color: var(--grey-600);
@@ -144,7 +144,7 @@
 .rs-hero__lead {
   max-width: 590px;
   margin-top: 21px;
-  font-size: 19px;
+  font-size: 20px;
   line-height: 32px;
   letter-spacing: -0.4px;
   color: var(--grey-600);
@@ -188,7 +188,7 @@
   gap: 12px;
   padding: 11px 0;
   border-top: 1px solid var(--grey-200);
-  font-size: 15px;
+  font-size: 16px;
   line-height: 22px;
   letter-spacing: -0.2px;
   color: var(--navy);
@@ -231,7 +231,7 @@
   border-radius: 999px;
   background: var(--navy);
   box-shadow: 0 16px 40px rgba(2, 34, 79, .25);
-  font-size: 15px;
+  font-size: 16px;
   font-weight: 600;
   line-height: 22px;
   letter-spacing: -0.2px;
@@ -311,7 +311,7 @@
 }
 .rs-tab__count {
   flex: 0 0 36px;
-  font-size: 13px;
+  font-size: 14px;
   line-height: 18px;
   letter-spacing: -0.1px;
   text-align: right;
@@ -579,7 +579,7 @@
 }
 .rs-term__num {
   font-family: var(--font-head);
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 600;
   line-height: 25.2px;
   letter-spacing: 0.7px;
@@ -589,7 +589,7 @@
 .rs-term__title {
   padding-top: 14px;
   font-family: var(--font-head);
-  font-size: 25px;
+  font-size: 26px;
   font-weight: 600;
   line-height: 32px;
   letter-spacing: -0.4px;
@@ -614,7 +614,7 @@
 }
 .rs-term__def {
   padding-top: 10px;
-  font-size: 15px;
+  font-size: 16px;
   line-height: 23px;
   letter-spacing: -0.3px;
   color: rgba(255, 255, 255, .86);
@@ -714,12 +714,12 @@
   .rs-terms { padding-top: 72px; padding-bottom: 40px; }
   .rs-hero__title { font-size: 56px; line-height: 60px; letter-spacing: -2px; padding-top: 16px; }
   .rs-hero__title > span + span { margin-top: 0; }
-  .rs-hero__lead { font-size: 17px; line-height: 28px; margin-top: 16px; }
+  .rs-hero__lead { font-size: 18px; line-height: 28px; margin-top: 16px; }
   .rs-hero__ctas { padding-top: 32px; }
   .rs-hero__art { padding: 8px 6px 56px; }
   .rs-demo { padding: 24px 20px 22px; }
   .rs-demo__list li { font-size: 14px; }
-  .rs-demo__pill { left: -4px; top: auto; bottom: 18px; font-size: 13px; padding: 10px 14px; }
+  .rs-demo__pill { left: -4px; top: auto; bottom: 18px; font-size: 14px; padding: 10px 14px; }
 
   .rs-head__title { font-size: 34px; line-height: 42px; letter-spacing: -0.6px; }
   .rs-head__text { font-size: 16px; line-height: 27px; }
@@ -727,11 +727,11 @@
   .rs-pane { padding: 28px 20px 22px; border-radius: 16px; }
   .rs-pane__head { gap: 16px; padding-bottom: 20px; }
   .rs-pane__title { font-size: 26px; line-height: 32px; }
-  .rs-pane__lead { font-size: 15px; line-height: 25px; }
+  .rs-pane__lead { font-size: 16px; line-height: 25px; }
   .rs-ring, .rs-ring svg { width: 52px; height: 52px; flex-basis: 52px; }
-  .rs-ring__val { font-size: 13px; }
+  .rs-ring__val { font-size: 14px; }
   .rs-list .rs-check { gap: 14px; margin: 0 -8px; padding: 14px 8px; }
-  .rs-check__text { font-size: 15px; line-height: 24px; }
+  .rs-check__text { font-size: 16px; line-height: 24px; }
   .rs-pane__foot { flex-direction: column; align-items: flex-start; }
   .rs-pane__actions { width: 100%; justify-content: space-between; gap: 16px; }
   .rs-clear { padding-left: 0; }

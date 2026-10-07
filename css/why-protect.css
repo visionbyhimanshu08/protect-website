@@ -67,7 +67,7 @@
 }
 .wp-pill__text {
   flex: 1;
-  font-size: 15px;
+  font-size: 16px;
   line-height: 22px;
   letter-spacing: -0.2px;
   color: var(--grey-600);
@@ -141,7 +141,7 @@
 }
 .wp-tab__num {
   flex: none;
-  font-size: 13px;
+  font-size: 14px;
   line-height: 28px;
   letter-spacing: 0.9px;
   color: var(--gold);
@@ -211,7 +211,7 @@
   left: 0;
   top: 14px;
   font-family: var(--font-head);
-  font-size: 13px;
+  font-size: 14px;
   line-height: 26px;
   font-weight: 600;
   letter-spacing: 0.9px;
@@ -317,7 +317,7 @@
   margin: 14px 0 0;
   padding-top: 14px;
   border-top: 1px solid var(--grey-200);
-  font-size: 15px;
+  font-size: 16px;
   line-height: 24px;
   letter-spacing: -0.2px;
   color: var(--grey-600);
@@ -457,7 +457,7 @@
   .wp-eyebrow { font-size: 12px; line-height: 20px; letter-spacing: 1px; }
   .wp-hero__title { padding-top: 20px; font-size: 44px; line-height: 50px; letter-spacing: -1.6px; }
   .wp-hero__foot { margin-top: 40px; padding-top: 24px; gap: 24px; }
-  .wp-hero__lead { font-size: 21px; line-height: 31px; }
+  .wp-hero__lead { font-size: 22px; line-height: 31px; }
   .wp-pill { width: 100%; max-width: 380px; padding: 12px 12px 12px 20px; }
 
   .wp-where, .wp-bring { padding-top: 64px; padding-bottom: 64px; }

@@ -182,7 +182,12 @@
   font-family: var(--font-head);
   /* 84px filled the full measure and shouted. At 72 the four words still own
      the page but the line has air around it. */
-  font-size: clamp(34px, 4.9vw, 72px);
+  /* fixed even sizes per screen (set in the media queries below), so the
+     heading never lands on a fractional size like 70.56px */
+  --hero-fs: 72px;
+  --hero-joint: 30px;
+  --hero-num: 12px;
+  font-size: var(--hero-fs);
   font-weight: 600;
   line-height: 1.06;
   letter-spacing: -.0326em;   /* Figma: -2.3px at 70.56px */
@@ -198,7 +203,7 @@
    nouns before hunting for the joins. .43em keeps the hierarchy obvious at
    ~2.3:1 while the line still reads as one sentence. */
 .s-hero__joint {
-  font-size: .43em;
+  font-size: var(--hero-joint);
   font-weight: 400;
   letter-spacing: -.005em;
   color: var(--grey-500);
@@ -222,7 +227,7 @@
    is what made the first pass look broken under "Protecting". */
 .s-hero__key-num {
   font-family: var(--font-body);
-  font-size: .175em;
+  font-size: var(--hero-num);
   font-weight: 600;
   line-height: 1;
   letter-spacing: .1em;
@@ -267,7 +272,7 @@
   max-width: 507px;
   margin: 57px 0 0;
   font-family: var(--font-body);
-  font-size: 17px;
+  font-size: 18px;
   font-weight: 500;
   line-height: 26.4px;
   letter-spacing: -.4px;
@@ -375,7 +380,7 @@
 .s-hero__col-label {
   margin: 12px 0 7px;
   font-family: var(--font-head);
-  font-size: clamp(15px, 1.25vw, 18px);
+  font-size: 18px;
   font-weight: 600;
   line-height: 22.5px;
   letter-spacing: -.6px;
@@ -407,7 +412,7 @@
   margin-top: auto;
   padding-top: 16px;
   font-family: var(--font-body);
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 600;
   letter-spacing: .1em;
   text-transform: uppercase;
@@ -474,7 +479,7 @@
 
 @media (max-width: 1199px) {
   .s-hero__col { padding-left: 18px; padding-right: 18px; }
-  .s-hero__col-desc { font-size: 13px; }
+  .s-hero__col-desc { font-size: 14px; }
   .s-hero__cta { padding-left: 24px; }
 }
 
@@ -518,7 +523,10 @@
      words. 1.3 clears the descender properly and lets each word read as its own
      line, which is the whole point of the stack down here. */
   .s-hero__title {
-    font-size: clamp(31px, 7.8vw, 48px);
+    --hero-fs: 36px;
+    --hero-joint: 16px;
+    --hero-num: 8px;
+    font-size: var(--hero-fs);
     letter-spacing: -.028em;
     line-height: 1.3;
   }
@@ -534,7 +542,7 @@
   }
   .s-hero__col + .s-hero__col { box-shadow: none; margin-top: 0; }
   .s-hero__col:last-of-type { border-bottom: 1px solid var(--grey-300); }
-  .s-hero__col-label { margin: 8px 0 5px; font-size: 17px; }
+  .s-hero__col-label { margin: 8px 0 5px; font-size: 18px; }
   .s-hero__col-go { opacity: 1; transform: none; margin-top: 0; padding-top: 10px; }
   .s-hero__col-rule { display: none; }
   .s-hero__col::after { display: none; }
@@ -610,6 +618,7 @@
      runs edge to edge behind the full-bleed belt. With it on the wrapper the
      outer cards ran off the panel and landed on bare white. */
   background: #F1F4FA;   /* Figma 3:962 — flat tint, no texture */
+  overflow-x: clip;      /* 100vw belt includes the scrollbar width */
 }
 
 .s-what-we-offer__wrap { padding-top: 0; padding-bottom: 0; }
@@ -837,7 +846,7 @@
 
 .wwo-card__index {
   font-family: var(--font-head);
-  font-size: 13px;
+  font-size: 14px;
   line-height: 1;
   font-weight: 600;
   letter-spacing: 1.7px;
@@ -861,7 +870,7 @@
 .wwo-card__title {
   padding-right: 74px;       /* clears the + button */
   font-family: var(--font-head);
-  font-size: 31px;
+  font-size: 32px;
   line-height: 37px;
   font-weight: 600;
   letter-spacing: .4px;
@@ -914,7 +923,7 @@
   margin-top: 16px;
   max-width: 32ch;
   font-family: var(--font-body);
-  font-size: 11px;
+  font-size: 12px;
   line-height: 17px;
   font-weight: 600;
   letter-spacing: .9px;
@@ -925,7 +934,7 @@
 .wwo-card__panel-title {
   margin-top: 10px;
   font-family: var(--font-head);
-  font-size: 21px;
+  font-size: 22px;
   line-height: 28px;
   font-weight: 600;
   color: var(--white);
@@ -936,7 +945,7 @@
 .wwo-card__panel-text {
   margin-top: 14px;
   font-family: var(--font-body);
-  font-size: 15px;
+  font-size: 16px;
   line-height: 23px;
   color: var(--grey-200);
   opacity: 0;
@@ -1042,7 +1051,7 @@
    ============================================================ */
 @media (max-width: 1199px) {
   .wwo-ticker { --card-w: 344px; --card-h: 466px; --lift: 36px; --ticker-dur: 28s; }
-  .wwo-card__title { font-size: 29px; line-height: 35px; }
+  .wwo-card__title { font-size: 30px; line-height: 35px; }
 }
 
 @media (max-width: 991px) {
@@ -1051,7 +1060,7 @@
   .wwo-ticker { --card-w: 304px; --card-h: 428px; --lift: 28px; --ticker-dur: 24s; }
   .wwo-card__front { padding: 22px 22px 24px; }
   .wwo-card__panel { padding: 22px 20px; }
-  .wwo-card__title { font-size: 27px; line-height: 33px; }
+  .wwo-card__title { font-size: 28px; line-height: 33px; }
   .wwo-card__panel-title { font-size: 20px; line-height: 26px; }
   .wwo-card__panel-text { font-size: 14px; line-height: 22px; }
 }
@@ -1144,7 +1153,8 @@
 /* ============================================================
    Why Protect (3:1269)
    ============================================================ */
-.hm-why { margin-top: 80px; }
+/* the gold axis runs to the screen edge; clip it there so the page never scrolls sideways */
+.hm-why { margin-top: 80px; overflow-x: clip; }
 
 .hm-why__row {
   display: grid;
@@ -1299,7 +1309,7 @@
 .hm-know__num {
   padding-top: 12px;
   font-family: var(--font-head);
-  font-size: 15px;
+  font-size: 16px;
   font-weight: 600;
   line-height: 24px;
   letter-spacing: .8px;
@@ -1307,7 +1317,7 @@
 }
 .hm-know__head {
   font-family: var(--font-head);
-  font-size: 27px;
+  font-size: 28px;
   font-weight: 500;
   line-height: 38px;
   color: var(--navy);
@@ -1315,7 +1325,7 @@
 }
 .hm-know__text {
   padding-top: 8px;
-  font-size: 17px;
+  font-size: 18px;
   line-height: 30px;
   letter-spacing: -.4px;
   color: var(--grey-600);
@@ -1645,7 +1655,7 @@
   .hm-why__title { font-size: 32px; line-height: 39px; letter-spacing: -.6px; }
   .hm-why__text { padding-top: 24px; gap: 16px; }
   .hm-why__text p { font-size: 16px; line-height: 27px; }
-  .hm-why__quote { margin-top: 36px; padding-top: 26px; font-size: 23px; line-height: 32px; }
+  .hm-why__quote { margin-top: 36px; padding-top: 26px; font-size: 24px; line-height: 32px; }
   .hm-why__legend { margin-top: 32px; }
   .hm-why__figure { width: calc(100% - 30px); justify-self: start; margin-top: 10px; }
   .hm-why__ring { left: 14px; top: -14px; }
@@ -1655,8 +1665,8 @@
   .hm-know__item { grid-template-columns: 40px minmax(0, 1fr); padding: 20px 0; min-height: 0; }
   .hm-know__num { font-size: 14px; padding-top: 4px; }
   .hm-know__head { font-size: 20px; line-height: 28px; }
-  .hm-know__text { font-size: 15px; line-height: 24px; }
-  .hm-know__close { font-size: 23px; line-height: 33px; margin-top: 36px; }
+  .hm-know__text { font-size: 16px; line-height: 24px; }
+  .hm-know__close { font-size: 24px; line-height: 33px; margin-top: 36px; }
 
   .hm-stats__inner { padding: 60px 20px; }
   .hm-stats__title { font-size: 30px; line-height: 38px; }
@@ -1713,7 +1723,7 @@
 .hm-head .hm-h2 { margin-top: 20px; }
 .hm-head__lead {
   max-width: 420px;
-  font-size: 17px;
+  font-size: 18px;
   line-height: 28px;
   letter-spacing: -.4px;
   color: var(--grey-600);
@@ -1746,7 +1756,7 @@
 }
 .hm-stage__num {
   font-family: var(--font-head);
-  font-size: 15px;
+  font-size: 16px;
   font-weight: 600;
   line-height: 24px;
   letter-spacing: .8px;
@@ -1756,7 +1766,7 @@
   margin: 14px 0 24px;
   padding-bottom: 20px;
   border-bottom: 1px solid var(--grey-200);
-  font-size: 25px;
+  font-size: 26px;
   font-weight: 600;
   line-height: 32px;
   letter-spacing: -.36px;
@@ -1767,7 +1777,7 @@
   position: relative;
   display: block;
   padding-left: 18px;
-  font-size: 15px;
+  font-size: 16px;
   font-weight: 500;
   line-height: 22px;
   letter-spacing: -.23px;
@@ -1811,7 +1821,7 @@
 .hm-diff__lead {
   margin-top: 20px;
   max-width: 600px;
-  font-size: 17px;
+  font-size: 18px;
   line-height: 28px;
   letter-spacing: -.4px;
   color: var(--grey-400);
@@ -1830,7 +1840,7 @@
 .hm-diff__item:hover { border-top-color: var(--gold); }
 .hm-diff__num {
   font-family: var(--font-head);
-  font-size: 15px;
+  font-size: 16px;
   font-weight: 600;
   line-height: 24px;
   letter-spacing: .8px;
@@ -1838,14 +1848,14 @@
 }
 .hm-diff__title {
   margin: 16px 0 12px;
-  font-size: 21px;
+  font-size: 22px;
   font-weight: 600;
   line-height: 28px;
   letter-spacing: -.36px;
   color: var(--white);
 }
 .hm-diff__text {
-  font-size: 15px;
+  font-size: 16px;
   line-height: 25px;
   letter-spacing: -.23px;
   color: var(--grey-400);
@@ -1892,14 +1902,14 @@
 }
 .hm-res__title {
   margin: 24px 0 12px;
-  font-size: 25px;
+  font-size: 26px;
   font-weight: 600;
   line-height: 32px;
   letter-spacing: -.36px;
   color: var(--navy);
 }
 .hm-res__text {
-  font-size: 15px;
+  font-size: 16px;
   line-height: 25px;
   letter-spacing: -.23px;
   color: var(--grey-600);
@@ -2019,3 +2029,10 @@
 
 /* ordered lists: our own numbers are in the markup, so drop the browser ones */
 .hm-stages__grid, .hm-diff__list { list-style: none; padding-left: 0; }
+
+/* hero heading: even sizes per screen width (replaces the old fluid clamp) */
+@media (max-width: 1399px) { .s-hero__title { --hero-fs: 64px; --hero-joint: 28px; --hero-num: 12px; } }
+@media (max-width: 1199px) { .s-hero__title { --hero-fs: 56px; --hero-joint: 24px; --hero-num: 10px; } .s-hero__col-label { font-size: 16px; } }
+@media (max-width: 991px)  { .s-hero__title { --hero-fs: 48px; --hero-joint: 20px; --hero-num: 10px; } }
+@media (max-width: 767px)  { .s-hero__title { --hero-fs: 36px; --hero-joint: 16px; --hero-num: 8px; } }
+@media (max-width: 479px)  { .s-hero__title { --hero-fs: 32px; --hero-joint: 14px; --hero-num: 8px; } }
