@@ -1,268 +1,13 @@
-/* ===== _base.css ===== */
-/* section styles */
-
-/* ===== menu.css ===== */
 /* ============================================================
-   Navbar — mirrors builderss-wbs.webflow.io/home-2 `.simple-navbar`
-   measured: padding 50px 0 (h 145.2) · container pad 0 50px ·
-   brand 161x40 · right group flex gap 40 · links 18/25.2/500 #111213
-   pad 0 15px radius 8 · CTA 45.2h pad 10/25 gap 30 dark
+   Home (index.html) — page styles
+   Figma: Page 2 · frame 3:880 "Protect"
+   Hero (3:881) and the Five Ways ticker (3:962) carry over from the earlier
+   build (behaviour in js/main.js: initHero / initServiceTicker); the
+   remaining sections use the hm- prefix.
    ============================================================ */
 
-.s-nav {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 1000;
-  /* was 50px — that put the bar 140px deep before the page even started */
-  padding: 30px 0;
-}
-
-.s-nav__inner {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 20px;
-  width: 100%;
-  /* Same container as every section below it. Without the max-width the bar ran
-     edge-to-edge on 50px of padding while the page content sat centred in a
-     1420px column, so the logo and the CTA drifted further outboard of the
-     headline the wider the screen got. */
-  max-width: calc(var(--content) + 100px);
-  margin-inline: auto;
-  padding: 0 50px;
-}
-
-/* ---------- brand ---------- */
-/* The client's supplied lockup, used exactly as they composed it: shield above
-   the wordmark, gold rule, then the CONSTRUCTION CONSULTANTS line. It is a
-   vector trace of their master artwork (98% pixel-identical), so it stays crisp
-   at any size — but the arrangement is theirs, not a horizontal variant I made
-   up. Height is set, never width; the viewBox holds the proportion. */
-.s-nav__brand {
-  display: inline-flex;
-  align-items: center;
-  flex: none;
-}
-
-.s-nav__logo {
-  display: block;
-  width: auto;
-  height: 68px;
-}
-
-/* ---------- right group ---------- */
-.s-nav__right {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  gap: 40px;
-}
-
-.s-nav__menu {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-}
-
-/* The bracket effect: a fully transparent 2px border with an 8px radius.
-   On hover/current only the LEFT and RIGHT border colours turn accent, so the
-   rounded corners read as "( )" around the label. Text colour never changes.
-   Measured on the reference: margin 0 10px · padding 0 15px · border 2px ·
-   radius 8px · transition border-color .3s ease-in-out */
-.s-nav__link {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  margin: 0 10px;
-  padding: 0 15px;
-  border: 2px solid transparent;
-  border-radius: 8px;
-  font-family: var(--font-body);
-  font-size: 18px;
-  font-weight: 500;
-  line-height: 25.2px;
-  color: var(--ink);
-  white-space: nowrap;
-  transition: border-color .3s ease-in-out;
-}
-
-.s-nav__link:hover,
-.s-nav__link:focus-visible,
-.s-nav__link.is-current,
-.s-nav__dropdown:hover > .s-nav__link {
-  border-left-color: var(--gold);
-  border-right-color: var(--gold);
-}
-
-/* ---------- dropdown ---------- */
-.s-nav__dropdown { position: relative; }
-
-.s-nav__dropdown-toggle { padding-right: 30px; }
-
-.s-nav__chevron {
-  position: absolute;
-  top: 50%;
-  right: 12px;
-  width: 12px;
-  height: 8px;
-  margin-top: -4px;
-  transition: transform var(--dur) var(--ease);
-}
-
-.s-nav__dropdown:hover .s-nav__chevron { transform: rotate(180deg); }
-
-.s-nav__list {
-  position: absolute;
-  top: 100%;
-  left: 10px;
-  z-index: 900;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  width: 200px;
-  margin-top: 15px;
-  padding: 0 20px 15px;
-  background: var(--white);
-  border-radius: 8px;
-  box-shadow: 0 8px 32px rgba(2, 34, 79, .08);
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(-6px);
-  transition: opacity var(--dur) var(--ease), transform var(--dur) var(--ease), visibility var(--dur);
-}
-
-.s-nav__dropdown:hover .s-nav__list,
-.s-nav__dropdown:focus-within .s-nav__list {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0);
-}
-
-.s-nav__list-link {
-  width: 100%;
-  margin-top: 15px;
-  font-family: var(--font-body);
-  font-size: 18px;
-  font-weight: 600;
-  line-height: 23.4px;
-  color: var(--ink);
-  transition: color .3s ease-in-out;
-}
-
-.s-nav__list-link:hover { color: var(--gold-700); }
-
-/* ---------- CTA pill ---------- */
-.s-nav__cta { flex: none; }
-
-
-
-
-
-
-/* ---------- burger (mobile only) ---------- */
-.s-nav__burger {
-  display: none;
-  flex-direction: column;
-  justify-content: center;
-  gap: 6px;
-  width: 45px;
-  height: 45px;
-  padding: 0 10px;
-  background: var(--ink);
-  border-radius: 0;
-  flex: none;
-}
-
-.s-nav__burger span {
-  display: block;
-  height: 2px;
-  width: 100%;
-  background: var(--white);
-}
-
-/* ---------- mobile panel ---------- */
-.s-nav__panel {
-  position: fixed;
-  inset: 0;
-  z-index: 1100;
-  background: rgba(2, 34, 79, .45);
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity var(--dur) var(--ease), visibility var(--dur);
-}
-
-.s-nav__panel.is-open { opacity: 1; visibility: visible; }
-
-.s-nav__panel-inner {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 8px;
-  width: min(320px, 86vw);
-  padding: 30px;
-  background: var(--white);
-  transform: translateX(100%);
-  transition: transform var(--dur) var(--ease);
-}
-
-.s-nav__panel.is-open .s-nav__panel-inner { transform: translateX(0); }
-
-.s-nav__panel-close {
-  align-self: flex-end;
-  width: 40px;
-  height: 40px;
-  color: var(--ink);
-}
-.s-nav__panel-close svg { width: 20px; height: 20px; margin-inline: auto; }
-
-.s-nav__panel-menu {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  width: 100%;
-  margin-top: 10px;
-}
-
-.s-nav__panel-menu a {
-  padding: 10px 0;
-  font-family: var(--font-body);
-  font-size: 20px;
-  font-weight: 600;
-  line-height: 28px;
-  color: var(--ink);
-}
-.s-nav__panel-menu a:hover { color: var(--gold-700); }
-
-.s-nav__panel-cta { margin-top: 20px; }
-
-/* ============================ responsive ============================ */
-
-@media (max-width: 1100px) {
-  .s-nav__right { gap: 24px; }
-  .s-nav__link { margin: 0 4px; padding: 0 12px; font-size: 17px; }
-}
-
-@media (max-width: 991px) {
-  .s-nav { padding: 24px 0; }
-  .s-nav__logo { height: 58px; }
-  .s-nav__inner { padding: 0 30px; }
-  .s-nav__menu { display: none; }
-  .s-nav__burger { display: flex; }
-  .s-nav__right { gap: 16px; }
-}
-
-@media (max-width: 767px) {
-  .s-nav { padding: 20px 0; }
-  .s-nav__inner { padding: 0 20px; }
-  .s-nav__logo { height: 50px; }
-  .s-nav__cta { display: none; }
-}
+/* the home header sits on the same tint as the hero (Figma 3:1401) */
+.page-index .site-header { background: #F1F4FA; }
 
 /* ===== hero.css ===== */
 /* ============================================================
@@ -297,32 +42,16 @@
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  min-height: 100svh;
-  /* Top padding clears an overlaying nav AND buys the headline its own air. With
-     the eyebrow rail gone the h1 came up under the nav — and an 82px headline
-     needs roughly its own cap-height of space above it before the gap reads as
-     deliberate rather than cramped. */
-  padding: clamp(140px, 18vh, 185px) 0 clamp(38px, 5.4vh, 60px);
-  background: var(--grey-100);
+  /* Figma 3:881: the band is 596 tall and starts right under the 128px header
+     (the header is in flow now, so no top padding is needed to clear it). */
+  padding: 0;
+  background: #F1F4FA;
   isolation: isolate;
 
   /* Every text-sized accent in this section reads from here. Gold proper is
      2.7:1 on this near-white ground, so small type takes the AA step down and
      only graphic bars (the column rule below) get the full --gold. */
   --hero-accent: var(--gold-700);
-}
-
-/* Paper grain. A perfectly flat fill is the single loudest tell of a template —
-   4% of noise gives the plane a surface without anyone consciously seeing it. */
-.s-hero::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  z-index: 3;
-  opacity: .045;
-  mix-blend-mode: multiply;
-  pointer-events: none;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
 /* ---------- the lens ----------
@@ -405,24 +134,17 @@
    A flat-opacity PNG reads as a pasted rectangle — the first pass had a hard cut
    across the bottom. Masking it out on the bottom and left lets it belong to the
    page instead of sitting on top of it. */
+/* Figma 3:882: 792x545 at x638 / y0 of the band. The file is the design's own
+   pre-faded render (it already dissolves into #F1F4FA), so no mask or filter. */
 .s-hero__bg {
   position: absolute;
-  top: 4%;
-  right: max(-70px, -5vw);
+  top: 0;
+  left: calc(50% - 82px);
   z-index: -2;
-  width: min(880px, 55vw);
-  height: auto;
+  width: 792px;
+  height: 545px;
   max-width: none;
-  opacity: .36;
-  filter: grayscale(1) contrast(1.04);
-  -webkit-mask-image:
-    linear-gradient(to bottom, #000 46%, transparent 96%),
-    linear-gradient(to left, #000 58%, transparent 100%);
-  mask-image:
-    linear-gradient(to bottom, #000 46%, transparent 96%),
-    linear-gradient(to left, #000 58%, transparent 100%);
-  -webkit-mask-composite: source-in;
-  mask-composite: intersect;
+  object-fit: cover;
   transition: opacity .9s var(--ease), filter .7s var(--ease);
   pointer-events: none;
 }
@@ -433,8 +155,8 @@
    Only opacity is set here — GSAP owns the transform (scroll drift + a small
    shift toward whichever topic is live). */
 .s-hero.is-focused .s-hero__bg {
-  opacity: .09;
-  filter: grayscale(1) contrast(1.04) blur(22px);
+  opacity: .3;
+  filter: blur(22px);
 }
 
 .s-hero__inner {
@@ -463,7 +185,7 @@
   font-size: clamp(34px, 4.9vw, 72px);
   font-weight: 600;
   line-height: 1.06;
-  letter-spacing: -.035em;
+  letter-spacing: -.0326em;   /* Figma: -2.3px at 70.56px */
   color: var(--ink);
 }
 
@@ -542,16 +264,13 @@
 /* ---------- lead ----------
    Carries the left column so the space beside the photo is argument, not air. */
 .s-hero__lead {
-  max-width: 46ch;
-  /* auto on both sides splits the head block's leftover height evenly above and
-     below the lead. Pinned hard to the bottom it left one big band under the
-     headline; two smaller equal bands read as spacing rather than as a hole. */
-  margin: auto 0;
-  padding-top: clamp(22px, 3.4vh, 38px);
+  max-width: 507px;
+  margin: 57px 0 0;
   font-family: var(--font-body);
-  font-size: clamp(15px, 1.2vw, 17px);
+  font-size: 17px;
   font-weight: 500;
-  line-height: 1.55;
+  line-height: 26.4px;
+  letter-spacing: -.4px;
   color: var(--grey-600);
   transition: opacity .45s var(--ease), filter .45s var(--ease);
 }
@@ -564,7 +283,7 @@
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr)) auto;
   flex: none;
-  margin-top: clamp(30px, 5vh, 58px);
+  margin: 69px 10px 0;
 }
 
 .s-hero__col {
@@ -658,8 +377,8 @@
   font-family: var(--font-head);
   font-size: clamp(15px, 1.25vw, 18px);
   font-weight: 600;
-  line-height: 1.25;
-  letter-spacing: -.01em;
+  line-height: 22.5px;
+  letter-spacing: -.6px;
   color: var(--ink);
 }
 
@@ -667,7 +386,8 @@
   font-family: var(--font-body);
   font-size: 14px;
   font-weight: 500;
-  line-height: 1.45;
+  line-height: 20.3px;
+  letter-spacing: -.2px;
   color: var(--grey-500);
   transition: color .3s var(--ease);
 }
@@ -762,7 +482,10 @@
   /* side padding tracks .s-nav__inner at every step — the bar and the page must
      share one edge or the logo floats off the headline */
   .s-hero__inner { padding: 0 30px; }
-  .s-hero__bg { width: 62vw; top: 12%; opacity: .3; }
+  .s-hero { padding-top: 24px; }
+  .s-hero__bg { left: auto; right: -120px; width: 620px; height: auto; opacity: .7; }
+  .s-hero__lead { margin-top: 36px; }
+  .s-hero__index { margin: 48px 0 0; }
   .s-hero__index { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .s-hero__col:nth-child(3) { box-shadow: none; }
   .s-hero__col:nth-child(3), .s-hero__col:nth-child(4) { margin-top: 26px; }
@@ -777,15 +500,13 @@
 /* No hover below this, so nothing may depend on it: the four columns are a
    plain tapable list and the headline never dims. */
 @media (max-width: 767px) {
-  .s-hero {
-    min-height: 0;
-    padding: 104px 0 48px;
-  }
+  .s-hero { padding: 16px 0 40px; }
   .s-hero__inner { padding: 0 20px; }
 
   /* on a narrow column the building crossed the headline itself, so it drops
      below the type and back to a watermark rather than competing with it */
-  .s-hero__bg { opacity: .12; top: 22%; width: 72vw; }
+  .s-hero__bg { opacity: .45; top: 30px; right: -90px; width: 360px; }
+  .s-hero__lead { margin-top: 26px; font-size: 16px; line-height: 25px; }
 
   /* 1.06 is display leading — right when the headline is two or three long
      lines on a wide screen. Down here every topic word takes a line of its own,
@@ -832,7 +553,7 @@
   .s-hero.is-focused .s-hero__lead,
   .s-hero.is-focused .s-hero__col { opacity: 1; filter: none; }
   .s-hero.is-focused .s-hero__key.is-active { color: var(--ink); }
-  .s-hero.is-focused .s-hero__bg { filter: grayscale(1) contrast(1.04); }
+  .s-hero.is-focused .s-hero__bg { filter: none; }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -884,15 +605,11 @@
 .s-what-we-offer {
   margin-top: 80px;          /* separation from the hero band */
   padding-top: 64px;
-  padding-bottom: 64px;
+  padding-bottom: 56px;
   /* The textured ground sits on the SECTION, not on the 1400px wrapper, so it
      runs edge to edge behind the full-bleed belt. With it on the wrapper the
      outer cards ran off the panel and landed on bare white. */
-  background-color: var(--grey-100);
-  background-image: url("../assets/img/home-what-we-bg1.webp");
-  background-size: cover;
-  background-position: 100% 0;
-  background-repeat: no-repeat;
+  background: #F1F4FA;   /* Figma 3:962 — flat tint, no texture */
 }
 
 .s-what-we-offer__wrap { padding-top: 0; padding-bottom: 0; }
@@ -931,7 +648,7 @@
   font-size: 14px;
   line-height: 24px;
   font-weight: 500;
-  letter-spacing: 2.8px;
+  letter-spacing: 2.6px;
   text-transform: uppercase;
   color: var(--grey-600);
 }
@@ -942,6 +659,7 @@
   font-size: 48px;
   line-height: 56px;
   font-weight: 600;
+  letter-spacing: .4px;
   color: var(--ink);
 }
 
@@ -952,6 +670,7 @@
   font-size: 18px;
   line-height: 24px;
   font-weight: 400;
+  letter-spacing: -.4px;
   color: var(--grey-600);
 }
 
@@ -1121,7 +840,7 @@
   font-size: 13px;
   line-height: 1;
   font-weight: 600;
-  letter-spacing: 1.8px;
+  letter-spacing: 1.7px;
   color: var(--gold);
   text-shadow: 0 1px 10px rgba(2, 34, 79, .85);
 }
@@ -1145,6 +864,7 @@
   font-size: 31px;
   line-height: 37px;
   font-weight: 600;
+  letter-spacing: .4px;
   color: var(--white);
   text-wrap: balance;
   text-shadow: 0 2px 18px rgba(2, 34, 79, .75);
@@ -1300,13 +1020,14 @@
 
 /* ---------- closing note ---------- */
 .s-what-we-offer__note {
-  display: inline-flex;
-  flex-wrap: wrap;
-  gap: 5px;
-  margin-top: 48px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-top: 56px;
   font-family: var(--font-body);
   font-size: 18px;
   line-height: 24px;
+  letter-spacing: -.4px;
   color: var(--grey-600);
 }
 .s-what-we-offer__note-link {
@@ -1393,4 +1114,572 @@
   .wwo-card__toggle,
   .wwo-card__toggle-bar,
   .wwo-card__index::after { transition-duration: .01ms; }
+}
+
+/* ============================================================
+   hm- sections (Figma 3:1269, 3:1332, 3:1360)
+   Section rhythm in the frame: 80px of white between every band.
+   ============================================================ */
+
+/* ---------- shared eyebrow (Figma 3:1272) ---------- */
+.hm-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 24px;
+  letter-spacing: .2px;
+  color: var(--grey-600);
+}
+.hm-eyebrow__dot {
+  flex: none;
+  width: 7px;
+  height: 7px;
+  border-radius: 2px;
+  background: var(--gold);
+}
+
+/* ============================================================
+   Why Protect (3:1269)
+   ============================================================ */
+.hm-why { margin-top: 80px; }
+
+.hm-why__row {
+  display: grid;
+  grid-template-columns: minmax(0, 728px) minmax(0, 1fr);
+  gap: 40px;
+  margin-top: 30px;
+}
+
+.hm-why__title {
+  font-family: var(--font-head);
+  font-size: 50px;
+  font-weight: 600;
+  line-height: 58px;
+  letter-spacing: -.9px;
+  color: var(--navy);
+}
+
+.hm-why__text {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 612px;
+  padding-top: 34px;
+}
+.hm-why__text p {
+  font-size: 18px;
+  line-height: 31px;
+  letter-spacing: -.4px;
+  color: var(--grey-600);
+}
+
+.hm-why__quote {
+  margin-top: 54px;
+  padding-top: 34px;
+  border-top: 1px solid var(--gold);
+  font-family: var(--font-head);
+  font-size: 32px;
+  font-weight: 500;
+  line-height: 44px;
+  color: var(--navy);
+}
+
+.hm-why__legend {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  margin-top: 58px;
+}
+.hm-why__legend-item {
+  position: relative;
+  padding-left: 32px;
+  font-size: 14px;
+  line-height: 22px;
+  letter-spacing: .1px;
+  color: var(--grey-600);
+}
+.hm-why__legend-item::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 11px;
+  width: 22px;
+  height: 1px;
+  background: var(--grey-400);
+}
+.hm-why__legend-item--gold::before { background: var(--gold); }
+
+/* figure: 520px circle, gold ring offset +26/-26 at half opacity, and a gold
+   axis that runs from the circle's left edge off the right of the page */
+.hm-why__figure {
+  position: relative;
+  justify-self: end;
+  width: 520px;
+  max-width: 100%;
+  aspect-ratio: 1;
+  margin: 0;
+}
+.hm-why__circle {
+  position: relative;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 50%;
+  background: var(--navy);
+  /* keeps the round clip while the image inside is transformed */
+  -webkit-mask-image: -webkit-radial-gradient(white, black);
+}
+.hm-why__circle img {
+  position: absolute;
+  left: 0;
+  top: -6%;
+  width: 100%;
+  height: 112%;
+  object-fit: cover;
+  max-width: none;
+}
+.hm-why__ring {
+  position: absolute;
+  left: 26px;
+  top: -26px;
+  width: 100%;
+  height: 100%;
+  border: 1px solid var(--gold);
+  border-radius: 50%;
+  opacity: .5;
+  pointer-events: none;
+}
+.hm-why__axis {
+  position: absolute;
+  z-index: 2;
+  left: 0;
+  top: 53.54%;               /* 278.4 / 520 */
+  width: 100vw;
+  height: 1px;
+  background: var(--gold);
+  opacity: .7;
+  pointer-events: none;
+}
+.hm-why__axis::before {
+  content: "";
+  position: absolute;
+  left: -3px;
+  top: -3px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--gold);
+}
+
+/* ---------- We know exactly where you are ---------- */
+.hm-know { margin-top: 132px; }
+
+.hm-know__title {
+  font-family: var(--font-head);
+  font-size: 42px;
+  font-weight: 600;
+  line-height: 52px;
+  letter-spacing: -.2px;
+  color: var(--navy);
+}
+
+.hm-know__list { margin: 0; padding: 12px 0 0; list-style: none; }
+.hm-know__item {
+  display: grid;
+  grid-template-columns: 96px 628px minmax(0, 1fr);
+  align-items: start;
+  min-height: 101px;
+  padding: 33px 0 30px;
+  border-bottom: 1px solid var(--grey-200);
+}
+.hm-know__item:first-child { border-top: 1px solid var(--grey-200); }
+
+.hm-know__num {
+  padding-top: 12px;
+  font-family: var(--font-head);
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 24px;
+  letter-spacing: .8px;
+  color: var(--gold-700);
+}
+.hm-know__head {
+  font-family: var(--font-head);
+  font-size: 27px;
+  font-weight: 500;
+  line-height: 38px;
+  color: var(--navy);
+  transition: transform .45s var(--ease);
+}
+.hm-know__text {
+  padding-top: 8px;
+  font-size: 17px;
+  line-height: 30px;
+  letter-spacing: -.4px;
+  color: var(--grey-600);
+}
+.hm-know__item:hover .hm-know__head { transform: translateX(8px); }
+
+.hm-know__close {
+  max-width: 440px;
+  margin-top: 58px;
+  font-family: var(--font-head);
+  font-size: 32px;
+  font-weight: 500;
+  line-height: 46px;
+  color: var(--navy);
+}
+
+/* ============================================================
+   Stats band (3:1332)
+   ============================================================ */
+.hm-stats {
+  margin-top: 80px;
+  background: #002352;
+}
+.hm-stats__inner {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 92px 60px;
+}
+
+.hm-stats__title {
+  max-width: 760px;
+  font-family: var(--font-head);
+  font-size: 44px;
+  font-weight: 600;
+  line-height: 56px;
+  letter-spacing: -.4px;
+  color: var(--white);
+}
+
+.hm-stats__list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 44px;
+  margin: 62px 0 0;
+}
+
+.hm-stat {
+  padding-top: 24px;
+  border-top: 1px solid var(--gold);
+  outline: none;
+  cursor: default;
+  transition: opacity .5s var(--ease), filter .5s var(--ease), border-color .5s var(--ease);
+}
+/* unfocused figures are softened, as the design shows 23 and 10 */
+.hm-stat:not(.is-active) {
+  opacity: .42;
+  filter: blur(6px);
+  border-top-color: rgba(209, 155, 35, .25);
+}
+.hm-stat:focus-visible { box-shadow: 0 -3px 0 var(--gold); }
+
+.hm-stat__value {
+  display: flex;
+  align-items: flex-start;
+  margin: 0;
+}
+.hm-stat__num {
+  font-family: var(--font-head);
+  font-size: 82px;
+  font-weight: 500;
+  line-height: 84px;
+  letter-spacing: -3px;
+  color: var(--gold);
+  font-variant-numeric: tabular-nums;
+}
+.hm-stat__plus {
+  padding: 10px 0 0 5px;
+  font-family: var(--font-head);
+  font-size: 32px;
+  font-weight: 500;
+  line-height: 32px;
+  letter-spacing: .4px;
+  color: var(--gold);
+}
+
+.hm-stat__body {
+  max-width: 302px;
+  margin: 0;
+  padding-top: 16px;
+}
+.hm-stat__label {
+  font-size: 16px;
+  line-height: 26px;
+  letter-spacing: -.3px;
+  color: rgba(255, 255, 255, .76);
+}
+.hm-stat__note {
+  position: relative;
+  margin-top: 26px;
+  padding-top: 16px;
+  font-size: 14px;
+  line-height: 24px;
+  letter-spacing: -.2px;
+  color: rgba(255, 255, 255, .82);
+}
+.hm-stat__note::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 52px;
+  height: 2px;
+  background: var(--gold);
+  transform-origin: left;
+  transition: transform .6s var(--ease);
+}
+.hm-stat:not(.is-active) .hm-stat__note::before { transform: scaleX(.5); }
+
+.hm-stats__foot {
+  display: grid;
+  grid-template-columns: minmax(0, 760px) minmax(0, 536px);
+  justify-content: space-between;
+  gap: 24px;
+  margin-top: 56px;
+}
+.hm-stats__lead {
+  font-size: 18px;
+  line-height: 30px;
+  letter-spacing: -.4px;
+  color: rgba(255, 255, 255, .64);
+}
+.hm-stats__quote {
+  padding-top: 30px;
+  border-top: 1px solid var(--gold);
+  font-family: var(--font-head);
+  font-size: 30px;
+  font-weight: 500;
+  line-height: 44px;
+  letter-spacing: .1px;
+  color: var(--white);
+}
+
+/* ============================================================
+   Who we are / mission / vision (3:1360)
+   ============================================================ */
+.hm-about {
+  position: relative;
+  margin-top: 80px;
+  overflow: hidden;
+  background-color: #F3F6FA;
+  /* line-drawn towers bottom-left (1548x673) and the bar mark bottom-right
+     (315x403), both at their native size as in the design */
+  background-image: url("../assets/img/home-about-bars.png"), url("../assets/img/home-about-lines.png");
+  background-repeat: no-repeat, no-repeat;
+  background-position: right bottom, left bottom;
+  background-size: 315px 403px, 1548px 673px;
+}
+
+.hm-about__media {
+  position: relative;
+  height: 548px;
+  overflow: hidden;
+}
+.hm-about__media img {
+  position: absolute;
+  left: 0;
+  top: -65px;
+  width: 100%;
+  height: 748px;
+  max-width: none;
+  object-fit: cover;
+  object-position: left top;
+}
+/* fades the photograph into the section ground (68% to 100%) */
+.hm-about__media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(245, 245, 245, 0) 68%, #F5F5F5 100%);
+}
+
+.hm-about__body {
+  position: relative;
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 60px 0 80px;
+}
+
+.hm-about__tabs {
+  display: flex;
+  align-items: flex-start;
+}
+
+.hm-about__list {
+  display: flex;
+  flex: 0 0 200px;
+  flex-direction: column;
+  gap: 12px;
+}
+.hm-about__tab {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  height: 54px;
+  padding: 14px 30px;
+  border: 1px solid var(--grey-300);
+  border-radius: 4px;
+  background: var(--grey-200);
+  font-family: var(--font-head);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+  letter-spacing: -.3px;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: var(--grey-500);
+  transition: background-color .3s var(--ease), border-color .3s var(--ease), color .3s var(--ease);
+}
+.hm-about__tab:hover { color: var(--navy); border-color: var(--grey-400); }
+.hm-about__tab.is-current {
+  background: var(--navy);
+  border-color: var(--navy);
+  color: var(--white);
+}
+.hm-about__tab-dot {
+  flex: none;
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+  background: var(--gold);
+  transition: transform .4s var(--ease);
+}
+
+/* all three panes share one grid cell, so the block is as tall as the longest
+   and the buttons below never jump when the tab changes */
+.hm-about__panes {
+  display: grid;
+  flex: 1;
+  min-width: 0;
+  padding-left: 100px;
+}
+.hm-about__pane {
+  grid-area: 1 / 1;
+  visibility: hidden;
+  opacity: 0;
+}
+.hm-about__pane.is-current { visibility: visible; opacity: 1; }
+.hm-about__pane p {
+  max-width: 985px;
+  font-family: var(--font-head);
+  font-size: 28px;
+  font-weight: 500;
+  line-height: 36px;
+  letter-spacing: .4px;
+  color: var(--grey-600);
+}
+.hm-about__pane p + p { margin-top: 36px; }
+
+.hm-about__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 44px;
+  padding-left: 300px;
+}
+.hm-about__actions .btn__text { letter-spacing: -.2px; }
+
+.hm-btn-play__icon { background: var(--navy); }
+.hm-btn-play__icon svg { width: 20px; height: 20px; transition: transform .3s var(--ease); }
+.hm-btn-play:hover .hm-btn-play__icon svg { transform: scale(1.18); }
+
+/* ============================================================
+   hm- responsive
+   ============================================================ */
+@media (max-width: 1399px) {
+  .hm-about__body { padding-left: 60px; padding-right: 60px; }
+}
+
+@media (max-width: 1199px) {
+  .hm-why__row { grid-template-columns: minmax(0, 1fr) minmax(0, 420px); }
+  .hm-why__title { font-size: 44px; line-height: 52px; }
+  .hm-why__quote { font-size: 28px; line-height: 40px; }
+  .hm-know__item { grid-template-columns: 72px minmax(0, 1fr) minmax(0, 1fr); gap: 0 24px; }
+  .hm-stats__inner { padding: 80px 40px; }
+  .hm-stats__list { gap: 32px; }
+  .hm-stat__num { font-size: 68px; line-height: 72px; }
+  .hm-about__panes { padding-left: 60px; }
+  .hm-about__pane p { font-size: 24px; line-height: 33px; }
+  .hm-about__actions { padding-left: 260px; }
+}
+
+@media (max-width: 991px) {
+  .hm-why, .hm-stats, .hm-about { margin-top: 64px; }
+  .hm-why__row { grid-template-columns: 1fr; gap: 56px; }
+  .hm-why__figure { justify-self: center; width: min(460px, 86%); }
+  .hm-why__title { font-size: 40px; line-height: 48px; }
+  .hm-know { margin-top: 96px; }
+  .hm-know__title { font-size: 36px; line-height: 44px; }
+  .hm-know__item { grid-template-columns: 56px minmax(0, 1fr); padding: 24px 0; }
+  .hm-know__text { grid-column: 2; padding-top: 6px; }
+  .hm-know__num { padding-top: 7px; }
+  .hm-know__head { font-size: 24px; line-height: 34px; }
+  .hm-know__close { font-size: 28px; line-height: 40px; margin-top: 44px; }
+
+  .hm-stats__title { font-size: 38px; line-height: 48px; }
+  .hm-stats__list { grid-template-columns: 1fr; gap: 0; margin-top: 44px; }
+  .hm-stat { padding: 24px 0 32px; }
+  /* stacked, every figure is read in turn: nothing stays blurred */
+  .hm-stat:not(.is-active) { opacity: 1; filter: none; border-top-color: var(--gold); }
+  .hm-stat:not(.is-active) .hm-stat__note::before { transform: none; }
+  .hm-stat__body { max-width: 520px; }
+  .hm-stats__foot { grid-template-columns: 1fr; gap: 40px; margin-top: 24px; }
+  .hm-stats__quote { font-size: 26px; line-height: 38px; }
+
+  .hm-about__media { height: 420px; }
+  .hm-about__media img { top: -50px; height: 573px; }
+  .hm-about__body { padding: 48px 40px 64px; }
+  .hm-about__tabs { flex-direction: column; gap: 36px; }
+  .hm-about__list { flex: none; flex-direction: row; flex-wrap: wrap; }
+  .hm-about__panes { padding-left: 0; }
+  .hm-about__actions { padding-left: 0; margin-top: 40px; }
+}
+
+@media (max-width: 767px) {
+  .hm-why, .hm-stats, .hm-about { margin-top: 48px; }
+  .hm-why__row { margin-top: 20px; gap: 48px; }
+  .hm-why__title { font-size: 32px; line-height: 39px; letter-spacing: -.6px; }
+  .hm-why__text { padding-top: 24px; gap: 16px; }
+  .hm-why__text p { font-size: 16px; line-height: 27px; }
+  .hm-why__quote { margin-top: 36px; padding-top: 26px; font-size: 23px; line-height: 32px; }
+  .hm-why__legend { margin-top: 32px; }
+  .hm-why__figure { width: calc(100% - 30px); justify-self: start; margin-top: 10px; }
+  .hm-why__ring { left: 14px; top: -14px; }
+
+  .hm-know { margin-top: 72px; }
+  .hm-know__title { font-size: 28px; line-height: 35px; }
+  .hm-know__item { grid-template-columns: 40px minmax(0, 1fr); padding: 20px 0; min-height: 0; }
+  .hm-know__num { font-size: 14px; padding-top: 4px; }
+  .hm-know__head { font-size: 20px; line-height: 28px; }
+  .hm-know__text { font-size: 15px; line-height: 24px; }
+  .hm-know__close { font-size: 23px; line-height: 33px; margin-top: 36px; }
+
+  .hm-stats__inner { padding: 60px 20px; }
+  .hm-stats__title { font-size: 30px; line-height: 38px; }
+  .hm-stat__num { font-size: 60px; line-height: 64px; letter-spacing: -2px; }
+  .hm-stat__plus { font-size: 26px; }
+  .hm-stats__lead { font-size: 16px; line-height: 27px; }
+  .hm-stats__quote { font-size: 22px; line-height: 32px; }
+
+  .hm-about { background-size: 158px 202px, 774px 337px; }
+  .hm-about__media { height: 240px; }
+  .hm-about__media img { top: -28px; height: 328px; }
+  .hm-about__body { padding: 36px 20px 56px; }
+  .hm-about__tabs { gap: 28px; }
+  .hm-about__list { flex-direction: column; flex-wrap: nowrap; gap: 10px; }
+  .hm-about__tab { height: 50px; padding: 12px 22px; }
+  .hm-about__pane p { font-size: 20px; line-height: 29px; letter-spacing: .2px; }
+  .hm-about__pane p + p { margin-top: 20px; }
+  .hm-about__actions { flex-direction: column; align-items: flex-start; }
+}
+
+/* phones: one 20px gutter for every band (.section + .wrap would double it) */
+@media (max-width: 767px) {
+  .page-index .section { padding-left: 0; padding-right: 0; }
+  .s-what-we-offer { margin-top: 48px; padding-top: 48px; padding-bottom: 48px; }
+  .s-what-we-offer__wrap { padding-top: 0; padding-bottom: 0; }
 }

@@ -1,6 +1,6 @@
 /* ============================================================
    Heritage — global tokens, reset & shared components
-   Cloned from https://heritage-template.webflow.io/
+   Built from the Protect Figma design (fonts: General Sans + Inter)
    ============================================================ */
 
 :root {
@@ -38,7 +38,7 @@
 
   /* type */
   --font-head: "General Sans", system-ui, sans-serif;
-  --font-body: "Switzer", system-ui, sans-serif;
+  --font-body: "Inter", system-ui, sans-serif;
 
   /* layout */
   --content:     1320px;   /* inner content column at 1440 */

@@ -224,12 +224,27 @@ function initSliders() {
 function initNav() {
   const btn   = document.querySelector('[data-nav-toggle]');
   const panel = document.querySelector('[data-nav-panel]');
-  const close = document.querySelector('[data-nav-close]');
   if (!btn || !panel) return;
-  const set = on => { panel.classList.toggle('is-open', on); document.body.style.overflow = on ? 'hidden' : ''; };
+  const set = on => {
+    panel.classList.toggle('is-open', on);
+    btn.setAttribute('aria-expanded', on ? 'true' : 'false');
+    document.body.style.overflow = on ? 'hidden' : '';
+  };
   btn.addEventListener('click', () => set(!panel.classList.contains('is-open')));
-  close && close.addEventListener('click', () => set(false));
+  document.querySelectorAll('[data-nav-close]').forEach(el => el.addEventListener('click', () => set(false)));
   panel.addEventListener('click', e => { if (e.target === panel) set(false); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') set(false); });
+}
+
+/* ---------- 8b. Current page in the menu ----------
+   Marks the header link for the page you are on, so each page does not
+   have to remember to do it by hand. "/" and "/index.html" are both Home. */
+function initCurrentLink() {
+  const file = (location.pathname.split('/').pop() || 'index.html').replace(/\.html$/, '') || 'index';
+  document.querySelectorAll('.site-nav__link, .nav-panel__menu a').forEach(a => {
+    const target = (a.getAttribute('href') || '').split('#')[0].replace(/\.html$/, '');
+    a.classList.toggle('is-current', target === file);
+  });
 }
 
 /* ---------- 9. Inert forms (no backend) ---------- */
@@ -523,6 +538,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initTabs('[data-tabs]');
   initSliders();
   initNav();
+  initCurrentLink();
   initForms();
   initAccordion();
   initServiceTicker();
