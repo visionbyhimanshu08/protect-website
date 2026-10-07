@@ -1,0 +1,212 @@
+/* ============================================================
+   Heritage — global tokens, reset & shared components
+   Cloned from https://heritage-template.webflow.io/
+   ============================================================ */
+
+:root {
+  /* colour — sampled off the client's own logo artwork (the clean 1536x1024
+     master, not the earlier screenshot).
+
+     The one rule that governs every use below: GOLD IS A GRAPHIC COLOUR, NOT A
+     TEXT COLOUR ON WHITE. #D19B23 sits at 2.5:1 against white, so it carries
+     rules, bars, badges, icon tiles and anything on a navy ground (where it is
+     a comfortable 6.3:1) — but never small type on a light page. Light-page
+     accents drop to --gold-700 (4.67:1, AA) and large display accents to
+     --gold-600 (3.2:1, AA-large). Text on a gold fill is navy, never white. */
+  --navy:          #02224F;   /* brand navy, straight off the logo */
+  --navy-700:      #0C3369;
+  --gold:          #D19B23;   /* brand gold — graphic use, or text on navy */
+  --gold-600:      #B8871F;   /* display accents on white, and duotone icons */
+  --gold-700:      #966D18;   /* small-text accents on white    (AA)       */
+  --gold-20:       rgba(209, 155, 35, .2);
+  --black:         #000000;
+  /* the page ink IS the brand navy — that single swap is what makes every
+     heading, rule and dark panel read as this company's rather than as a
+     neutral template. The grey ramp is tinted to the same hue and
+     luminance-matched to the neutral ramp it replaced, so nothing loses
+     contrast against the copy it used to carry. */
+  --ink:           #02224F;
+  --ink-2:         #0C3369;
+  --ink-3:         #082B5C;
+  --grey-600:      #586479;   /* body copy — 5.98:1, was #666 at 5.74:1 */
+  --grey-500:      #8B96AA;
+  --grey-400:      #B6BECD;
+  --grey-300:      #CED5E0;
+  --grey-200:      #E2E7EE;
+  --grey-100:      #F3F6FA;
+  --white:         #ffffff;
+
+  /* type */
+  --font-head: "General Sans", system-ui, sans-serif;
+  --font-body: "Switzer", system-ui, sans-serif;
+
+  /* layout */
+  --content:     1320px;   /* inner content column at 1440 */
+  --gutter:      20px;     /* .section side padding */
+  --pad-inner:   40px;     /* wrapper inner padding */
+  --nav-h:       96px;
+  --bar-h:       56px;
+
+  /* motion */
+  --ease: cubic-bezier(.25, .46, .45, .94);
+  --dur:  .3s;
+}
+
+/* ---------- reset ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--white);
+  color: var(--grey-600);
+  font-family: var(--font-body);
+  font-size: 18px;
+  line-height: 25.2px;
+  font-weight: 500;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+img, svg, video { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; }
+ul { margin: 0; padding: 0; list-style: none; }
+h1, h2, h3, h4, h5, h6 { margin: 0; font-family: var(--font-head); font-weight: 600; color: var(--ink); }
+p { margin: 0; }
+input, textarea { font: inherit; }
+
+/* ---------- Lenis ---------- */
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-stopped { overflow: hidden; }
+
+/* ---------- typography scale (measured) ---------- */
+.h-48 { font-size: 48px; line-height: 56px; font-weight: 600; font-family: var(--font-head); }
+.h-42 { font-size: 42px; line-height: 49px; font-weight: 600; font-family: var(--font-head); }
+.h-36 { font-size: 36px; line-height: 44px; font-weight: 600; font-family: var(--font-head); text-transform: uppercase; }
+.h-32 { font-size: 32px; line-height: 38.4px; font-weight: 400; font-family: var(--font-head); }
+.h-24 { font-size: 24px; line-height: 31.92px; font-weight: 500; font-family: var(--font-head); }
+.h-20 { font-size: 20px; line-height: 28px; font-weight: 600; font-family: var(--font-head); }
+.body-16 { font-size: 16px; line-height: 24px; }
+.label-14 { font-size: 14px; line-height: 24px; font-weight: 600; text-transform: uppercase; letter-spacing: .7px; }
+
+/* ---------- layout helpers ---------- */
+.section { padding-left: var(--gutter); padding-right: var(--gutter); position: relative; }
+.wrap { width: 100%; max-width: calc(var(--content) + var(--pad-inner) * 2); margin-inline: auto; padding: 0 var(--pad-inner); }
+
+/* ---------- shared button (.button-main) ----------
+   Measured on heritage-template.webflow.io:
+   a 270x56 · flex · space-between · gap 32 · padding 4px 32px 4px 4px
+     bg #fff · 1px #d5d5d5 · radius 6 · transition .3s linear
+   .button-icon._02  48x48 · bg var(--gold) · radius 4 · overflow hidden
+   .button-icon-item      16x16, centred          idle translate(0)   hover translate(48px)
+   .button-icon-hover     16x16, absolute         idle translate(-48px) hover translate(0)
+   .button-text-main  14/24 · 600 · uppercase · #000
+   NOTE: on hover the button itself does NOT change — no colour, no border,
+   no transform. The only motion is the icon sliding through the tile. */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+  height: 56px;
+  padding: 4px 32px 4px 4px;
+  background: var(--white);
+  color: var(--ink);
+  border: 1px solid var(--grey-300);
+  border-radius: 6px;
+  transition: .3s linear;
+}
+
+.btn__icon {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  flex: none;
+  border-radius: 4px;
+  background: var(--gold);
+  overflow: hidden;
+}
+
+.btn__icon img {
+  width: 16px;
+  height: 16px;
+  transition: transform .3s linear;
+}
+
+/* the second copy waits just outside the tile on the left */
+.btn__icon img + img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: -8px 0 0 -8px;
+  transform: translateX(-48px);
+}
+
+.btn:hover .btn__icon img:first-child { transform: translateX(48px); }
+.btn:hover .btn__icon img + img { transform: translateX(0); }
+
+.btn__text {
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 24px;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+/* dark variant (.button-main._02 on the source) */
+.btn--dark {
+  background: var(--ink);
+  color: var(--white);
+  border-color: var(--ink);
+}
+
+/* ---------- marquee ---------- */
+.marquee { overflow: hidden; display: flex; width: 100%; }
+.marquee__track { display: flex; flex: none; align-items: center; animation: marquee var(--marquee-dur, 30s) linear infinite; }
+.marquee--rev .marquee__track { animation-direction: reverse; }
+@keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-100%); } }
+
+/* ---------- scroll reveal (fade + rise) ----------
+   The element is visible by default. JS adds .reveal-up to arm it and .is-in to
+   play it, so a JS/animation failure can never leave content invisible. */
+.reveal-up { opacity: 0; transform: translateY(60px); transition: opacity .9s var(--ease), transform .9s var(--ease); }
+.reveal-up.is-in { opacity: 1; transform: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal-up { opacity: 1; transform: none; transition: none; }
+}
+
+/* ---------- SplitText reveal ---------- */
+.split-line { display: block; overflow: hidden; }
+.split-line > span { display: block; will-change: transform; }
+
+/* ---------- reduced motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .marquee__track { animation: none; }
+  *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+}
+
+/* ---------- breakpoints ---------- */
+@media (max-width: 991px) {
+  :root { --nav-h: 75px; }
+}
+@media (max-width: 767px) {
+  :root { --pad-inner: 20px; }
+
+  /* .btn spaces its icon tile and its label apart, which is right while the
+     button is only as wide as its content. Several buttons go full-width down
+     here, and space-between then throws the tile against one edge and the label
+     against the other with a gulf between them.
+
+     Packing them to the START is the fix, not centring them: the gold tile
+     belongs in the button's left corner — that is the shape every other button
+     on the site makes — and the label sits one gap along from it. For an
+     auto-width button there is no free space to distribute, so this changes
+     nothing there and only reaches the stretched ones. */
+  .btn { justify-content: flex-start; }
+}

@@ -1,0 +1,1396 @@
+/* ===== _base.css ===== */
+/* section styles */
+
+/* ===== menu.css ===== */
+/* ============================================================
+   Navbar — mirrors builderss-wbs.webflow.io/home-2 `.simple-navbar`
+   measured: padding 50px 0 (h 145.2) · container pad 0 50px ·
+   brand 161x40 · right group flex gap 40 · links 18/25.2/500 #111213
+   pad 0 15px radius 8 · CTA 45.2h pad 10/25 gap 30 dark
+   ============================================================ */
+
+.s-nav {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  /* was 50px — that put the bar 140px deep before the page even started */
+  padding: 30px 0;
+}
+
+.s-nav__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  width: 100%;
+  /* Same container as every section below it. Without the max-width the bar ran
+     edge-to-edge on 50px of padding while the page content sat centred in a
+     1420px column, so the logo and the CTA drifted further outboard of the
+     headline the wider the screen got. */
+  max-width: calc(var(--content) + 100px);
+  margin-inline: auto;
+  padding: 0 50px;
+}
+
+/* ---------- brand ---------- */
+/* The client's supplied lockup, used exactly as they composed it: shield above
+   the wordmark, gold rule, then the CONSTRUCTION CONSULTANTS line. It is a
+   vector trace of their master artwork (98% pixel-identical), so it stays crisp
+   at any size — but the arrangement is theirs, not a horizontal variant I made
+   up. Height is set, never width; the viewBox holds the proportion. */
+.s-nav__brand {
+  display: inline-flex;
+  align-items: center;
+  flex: none;
+}
+
+.s-nav__logo {
+  display: block;
+  width: auto;
+  height: 68px;
+}
+
+/* ---------- right group ---------- */
+.s-nav__right {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 40px;
+}
+
+.s-nav__menu {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+/* The bracket effect: a fully transparent 2px border with an 8px radius.
+   On hover/current only the LEFT and RIGHT border colours turn accent, so the
+   rounded corners read as "( )" around the label. Text colour never changes.
+   Measured on the reference: margin 0 10px · padding 0 15px · border 2px ·
+   radius 8px · transition border-color .3s ease-in-out */
+.s-nav__link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  margin: 0 10px;
+  padding: 0 15px;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  font-family: var(--font-body);
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 25.2px;
+  color: var(--ink);
+  white-space: nowrap;
+  transition: border-color .3s ease-in-out;
+}
+
+.s-nav__link:hover,
+.s-nav__link:focus-visible,
+.s-nav__link.is-current,
+.s-nav__dropdown:hover > .s-nav__link {
+  border-left-color: var(--gold);
+  border-right-color: var(--gold);
+}
+
+/* ---------- dropdown ---------- */
+.s-nav__dropdown { position: relative; }
+
+.s-nav__dropdown-toggle { padding-right: 30px; }
+
+.s-nav__chevron {
+  position: absolute;
+  top: 50%;
+  right: 12px;
+  width: 12px;
+  height: 8px;
+  margin-top: -4px;
+  transition: transform var(--dur) var(--ease);
+}
+
+.s-nav__dropdown:hover .s-nav__chevron { transform: rotate(180deg); }
+
+.s-nav__list {
+  position: absolute;
+  top: 100%;
+  left: 10px;
+  z-index: 900;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 200px;
+  margin-top: 15px;
+  padding: 0 20px 15px;
+  background: var(--white);
+  border-radius: 8px;
+  box-shadow: 0 8px 32px rgba(2, 34, 79, .08);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-6px);
+  transition: opacity var(--dur) var(--ease), transform var(--dur) var(--ease), visibility var(--dur);
+}
+
+.s-nav__dropdown:hover .s-nav__list,
+.s-nav__dropdown:focus-within .s-nav__list {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.s-nav__list-link {
+  width: 100%;
+  margin-top: 15px;
+  font-family: var(--font-body);
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 23.4px;
+  color: var(--ink);
+  transition: color .3s ease-in-out;
+}
+
+.s-nav__list-link:hover { color: var(--gold-700); }
+
+/* ---------- CTA pill ---------- */
+.s-nav__cta { flex: none; }
+
+
+
+
+
+
+/* ---------- burger (mobile only) ---------- */
+.s-nav__burger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 6px;
+  width: 45px;
+  height: 45px;
+  padding: 0 10px;
+  background: var(--ink);
+  border-radius: 0;
+  flex: none;
+}
+
+.s-nav__burger span {
+  display: block;
+  height: 2px;
+  width: 100%;
+  background: var(--white);
+}
+
+/* ---------- mobile panel ---------- */
+.s-nav__panel {
+  position: fixed;
+  inset: 0;
+  z-index: 1100;
+  background: rgba(2, 34, 79, .45);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity var(--dur) var(--ease), visibility var(--dur);
+}
+
+.s-nav__panel.is-open { opacity: 1; visibility: visible; }
+
+.s-nav__panel-inner {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  width: min(320px, 86vw);
+  padding: 30px;
+  background: var(--white);
+  transform: translateX(100%);
+  transition: transform var(--dur) var(--ease);
+}
+
+.s-nav__panel.is-open .s-nav__panel-inner { transform: translateX(0); }
+
+.s-nav__panel-close {
+  align-self: flex-end;
+  width: 40px;
+  height: 40px;
+  color: var(--ink);
+}
+.s-nav__panel-close svg { width: 20px; height: 20px; margin-inline: auto; }
+
+.s-nav__panel-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 100%;
+  margin-top: 10px;
+}
+
+.s-nav__panel-menu a {
+  padding: 10px 0;
+  font-family: var(--font-body);
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 28px;
+  color: var(--ink);
+}
+.s-nav__panel-menu a:hover { color: var(--gold-700); }
+
+.s-nav__panel-cta { margin-top: 20px; }
+
+/* ============================ responsive ============================ */
+
+@media (max-width: 1100px) {
+  .s-nav__right { gap: 24px; }
+  .s-nav__link { margin: 0 4px; padding: 0 12px; font-size: 17px; }
+}
+
+@media (max-width: 991px) {
+  .s-nav { padding: 24px 0; }
+  .s-nav__logo { height: 58px; }
+  .s-nav__inner { padding: 0 30px; }
+  .s-nav__menu { display: none; }
+  .s-nav__burger { display: flex; }
+  .s-nav__right { gap: 16px; }
+}
+
+@media (max-width: 767px) {
+  .s-nav { padding: 20px 0; }
+  .s-nav__inner { padding: 0 20px; }
+  .s-nav__logo { height: 50px; }
+  .s-nav__cta { display: none; }
+}
+
+/* ===== hero.css ===== */
+/* ============================================================
+   Hero — "the headline is the navigation"
+
+   The client's reference (riverwoodecology.co.uk) hides three <sup> links in a
+   101px headline and, on hover, blurs everything except the hovered word —
+   spans to 12px, the other links to 3px — and drops the banner photo entirely.
+   Where it loses the brief is around that: the links are too small to read as
+   links, and you never learn where a word goes until after you click.
+
+   The client asked specifically for the reference's BLUR focus, so that is what
+   runs — same three depths the reference uses (joining words furthest out, the
+   other topics a shallow step back, the live word perfectly sharp). What is kept
+   from our version is everything the reference gets wrong around it:
+   · the four topics are the LARGEST words on the page, the connecting words the
+     smallest — the same size contrast the client's own mockup uses. Hierarchy
+     alone says "these four matter", so no pills, boxes or underlines are needed.
+   · the blur is dialled one step softer than the reference's 12px/3px and pairs
+     with a slight fade, so the sentence still reads as a sentence out of the
+     corner of your eye instead of turning to smoke.
+   · a title block along the bottom names all four destinations AT REST. Nothing
+     is hidden behind a hover; hovering only deepens what is already legible.
+   · the title block along the bottom is the only structure drawn — an earlier
+     pass laid faint verticals behind the headline too, but they sat on 25%
+     steps while the title block divides on 4 columns plus the CTA cell, so
+     they never lined up and read as noise.
+   ============================================================ */
+
+.s-hero {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  min-height: 100svh;
+  /* Top padding clears an overlaying nav AND buys the headline its own air. With
+     the eyebrow rail gone the h1 came up under the nav — and an 82px headline
+     needs roughly its own cap-height of space above it before the gap reads as
+     deliberate rather than cramped. */
+  padding: clamp(140px, 18vh, 185px) 0 clamp(38px, 5.4vh, 60px);
+  background: var(--grey-100);
+  isolation: isolate;
+
+  /* Every text-sized accent in this section reads from here. Gold proper is
+     2.7:1 on this near-white ground, so small type takes the AA step down and
+     only graphic bars (the column rule below) get the full --gold. */
+  --hero-accent: var(--gold-700);
+}
+
+/* Paper grain. A perfectly flat fill is the single loudest tell of a template —
+   4% of noise gives the plane a surface without anyone consciously seeing it. */
+.s-hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  opacity: .045;
+  mix-blend-mode: multiply;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* ---------- the lens ----------
+   The signature of this hero, and the answer to the brief's one requirement:
+   that a visitor arrives curious.
+
+   Everything this firm sells is invisible from the outside — the exclusion
+   buried in a quote, the builder's real record, the clause that costs you in
+   month nine. So the interaction is that proposition, not decoration on top of
+   it: point at a word and the page goes out of focus while a circle under your
+   pointer stays sharp AND shows a photograph of what that word actually means,
+   sitting underneath the page. Four words, four things you could not otherwise
+   see, and four gold numerals telling you the set is finite.
+
+   It replaced a white radial 'spotlight' that sat here before. The spotlight
+   lit a word; the lens reveals something. Only one of those earns its place. */
+
+.s-hero__lens {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity .5s var(--ease);
+  pointer-events: none;
+  /* the aperture: hard in the middle, feathered at the rim so the photograph
+     dissolves into the blurred page instead of ending on a cut line */
+  --lens-x: 50%;
+  --lens-y: 50%;
+  /* ~360px across — near enough the width of the longest topic word, so the
+     reveal frames the word instead of washing half the viewport. The first pass
+     ran 480px and read as fog rather than an aperture. */
+  --lens-r: 182px;
+  -webkit-mask-image: radial-gradient(circle var(--lens-r) at var(--lens-x) var(--lens-y),
+                        #000 44%, rgba(0, 0, 0, .5) 72%, transparent 100%);
+  mask-image: radial-gradient(circle var(--lens-r) at var(--lens-x) var(--lens-y),
+                        #000 44%, rgba(0, 0, 0, .5) 72%, transparent 100%);
+}
+
+/* .is-live is set by the first real pointermove. Without it the on-load demo —
+   which plays the four states once to teach the interaction — would open the
+   lens at its default centre and strobe four photographs across the middle of
+   the screen before the visitor has touched anything. The demo teaches the
+   focus; the lens stays the reward for actually pointing at a word. */
+.s-hero.is-focused .s-hero__lens.is-live { opacity: 1; }
+
+/* Sized to the APERTURE, not the viewport. Covering the viewport meant the
+   364px lens showed about 6% of a photograph — a patch of grey nobody could
+   read as anything. At 430px square, centred on the lens, the circle frames
+   ~85% of each axis and you see the whole subject: the drawings, the house, the
+   builders, the handshake.
+
+   The treatment is high-key for a hard reason: the navy headline sits ON this
+   image, so it can never go dark. The files ship with their tonal range lifted
+   clear of black (nothing below 105) and local contrast boosted, which buys
+   definition without buying darkness — so the photograph reads while the 72px
+   headline over it still clears 3:1. Greyscale keeps it out of the way of the
+   navy and gold. */
+.s-hero__lens-img {
+  position: absolute;
+  inset: 0;
+  background-repeat: no-repeat;
+  background-size: 430px 430px;
+  background-position: calc(var(--lens-x) - 215px) calc(var(--lens-y) - 215px);
+  opacity: 0;
+  transition: opacity .55s var(--ease);
+}
+
+.s-hero__lens-img.is-on { opacity: .78; }
+
+/* ---------- head block: everything above the title block ---------- */
+
+.s-hero__head {
+  position: relative;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+
+/* ---------- the building, dissolved into the sheet ----------
+   A flat-opacity PNG reads as a pasted rectangle — the first pass had a hard cut
+   across the bottom. Masking it out on the bottom and left lets it belong to the
+   page instead of sitting on top of it. */
+.s-hero__bg {
+  position: absolute;
+  top: 4%;
+  right: max(-70px, -5vw);
+  z-index: -2;
+  width: min(880px, 55vw);
+  height: auto;
+  max-width: none;
+  opacity: .36;
+  filter: grayscale(1) contrast(1.04);
+  -webkit-mask-image:
+    linear-gradient(to bottom, #000 46%, transparent 96%),
+    linear-gradient(to left, #000 58%, transparent 100%);
+  mask-image:
+    linear-gradient(to bottom, #000 46%, transparent 96%),
+    linear-gradient(to left, #000 58%, transparent 100%);
+  -webkit-mask-composite: source-in;
+  mask-composite: intersect;
+  transition: opacity .9s var(--ease), filter .7s var(--ease);
+  pointer-events: none;
+}
+
+/* focus recedes EVERYTHING that is not the chosen word — the photo louder while
+   the sentence dims had the building winning the frame */
+/* focus recedes everything that is not the chosen word, the photo included.
+   Only opacity is set here — GSAP owns the transform (scroll drift + a small
+   shift toward whichever topic is live). */
+.s-hero.is-focused .s-hero__bg {
+  opacity: .09;
+  filter: grayscale(1) contrast(1.04) blur(22px);
+}
+
+.s-hero__inner {
+  position: relative;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  width: 100%;
+  max-width: calc(var(--content) + 100px);
+  margin-inline: auto;
+  padding: 0 50px;
+}
+
+/* ---------- headline ---------- */
+
+.s-hero__title {
+  /* Optical left-align, not box-align. The box sits on the container edge but
+     the "P" stem paints 5.3px inboard of it (its left sidebearing), so against
+     the logo mark above — whose ink starts hard on the same edge — the headline
+     read as indented. Pulling the block back by that sidebearing, in em so it
+     survives every clamp step, lines the INK up instead of the boxes. */
+  margin: 0 0 0 -.073em;
+  font-family: var(--font-head);
+  /* 84px filled the full measure and shouted. At 72 the four words still own
+     the page but the line has air around it. */
+  font-size: clamp(34px, 4.9vw, 72px);
+  font-weight: 600;
+  line-height: 1.06;
+  letter-spacing: -.035em;
+  color: var(--ink);
+}
+
+.s-hero__line { display: block; }
+.s-hero__line--joint { padding-left: .08em; }
+.s-hero__joint--inline { margin: 0 .2em 0 0; }
+
+/* The connecting words carry the sentence, so the contrast has to stop short of
+   burying them: at .34em the ratio to a key word was ~3:1 and you read four
+   nouns before hunting for the joins. .43em keeps the hierarchy obvious at
+   ~2.3:1 while the line still reads as one sentence. */
+.s-hero__joint {
+  font-size: .43em;
+  font-weight: 400;
+  letter-spacing: -.005em;
+  color: var(--grey-500);
+  margin-right: .2em;
+  transition: opacity .45s var(--ease), filter .45s var(--ease);
+}
+
+/* --- a topic word --- */
+
+.s-hero__key {
+  display: inline-flex;
+  align-items: flex-start;
+  color: var(--ink);
+  transition: opacity .45s var(--ease), color .3s var(--ease), filter .45s var(--ease);
+}
+
+.s-hero__key { margin-right: .3em; }
+
+/* the resting affordance. An orange index number reads as "linked, and part of
+   a set of four" — and unlike a rule it never collides with a descender, which
+   is what made the first pass look broken under "Protecting". */
+.s-hero__key-num {
+  font-family: var(--font-body);
+  font-size: .175em;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: .1em;
+  margin: .85em 0 0 .42em;
+  color: var(--hero-accent);
+  font-variant-numeric: tabular-nums;
+}
+
+/* --- the focus itself ---------------------------------------------------
+   Three depths, exactly as the reference stages them. The joining words are
+   pushed furthest out because they are the least load-bearing thing on the
+   line; the other three topics sit only one shallow step back so they still
+   read as "the other options", not as noise; the live word is untouched. */
+
+.s-hero.is-focused .s-hero__joint {
+  opacity: .45;
+  filter: blur(17px);
+}
+
+.s-hero.is-focused .s-hero__key {
+  opacity: .4;
+  filter: blur(11px);
+}
+
+/* No colour change any more — the live word is the ONLY sharp thing on a fogged
+   page, and sharpness at this depth of blur is a far louder signal than a hue
+   swap ever was. */
+.s-hero.is-focused .s-hero__key.is-active {
+  opacity: 1;
+  filter: blur(0);
+}
+
+.s-hero__key:focus-visible {
+  outline: 2px solid var(--hero-accent);
+  outline-offset: 6px;
+  border-radius: 4px;
+}
+
+/* ---------- lead ----------
+   Carries the left column so the space beside the photo is argument, not air. */
+.s-hero__lead {
+  max-width: 46ch;
+  /* auto on both sides splits the head block's leftover height evenly above and
+     below the lead. Pinned hard to the bottom it left one big band under the
+     headline; two smaller equal bands read as spacing rather than as a hole. */
+  margin: auto 0;
+  padding-top: clamp(22px, 3.4vh, 38px);
+  font-family: var(--font-body);
+  font-size: clamp(15px, 1.2vw, 17px);
+  font-weight: 500;
+  line-height: 1.55;
+  color: var(--grey-600);
+  transition: opacity .45s var(--ease), filter .45s var(--ease);
+}
+
+.s-hero.is-focused .s-hero__lead { opacity: .28; filter: blur(9px); }
+
+/* ---------- title block: four named destinations, always visible ---------- */
+
+.s-hero__index {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr)) auto;
+  flex: none;
+  margin-top: clamp(30px, 5vh, 58px);
+}
+
+.s-hero__col {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 26px 26px 4px;
+  border-top: 1px solid var(--grey-300);
+  color: inherit;
+}
+
+.s-hero__col + .s-hero__col {
+  box-shadow: inset 1px 0 0 var(--grey-300);
+}
+
+/* the gold rule wipes across the column's own top edge */
+.s-hero__col-rule {
+  position: absolute;
+  top: -1px;
+  left: -14px;
+  right: -14px;
+  height: 2px;
+  background: var(--gold);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform .5s var(--ease);
+}
+
+.s-hero__col.is-active .s-hero__col-rule { transform: scaleX(1); }
+
+/* the live cell lifts to white — depth, so the title block is not four flat
+   text blocks with one gold line */
+.s-hero__col {
+  transition: background .4s var(--ease), box-shadow .4s var(--ease),
+              opacity .4s var(--ease), filter .4s var(--ease);
+}
+
+/* The columns go out of focus with everything else. They are 14px copy, so 6px
+   is already past reading — which is the intent: at rest all four are legible,
+   under focus only the live one is. */
+.s-hero.is-focused .s-hero__col { opacity: .38; filter: blur(6px); }
+.s-hero.is-focused .s-hero__col.is-active { opacity: 1; filter: blur(0); }
+
+/* Every column carries a filter, so each paints in DOM order at z-index auto —
+   which put the blurred columns 02-04 ON TOP of a live column 01. A 6px blur
+   spreads well past its own border box, so their smear washed across the live
+   card's edges and it read as a sticker pasted over a dirty background. Lifting
+   the live one above its neighbours is the whole fix: the bleed now passes
+   underneath it and its edges stay clean. */
+.s-hero__col.is-active { z-index: 2; }
+
+/* The live state is drawn as a layer that bleeds OUTWARD rather than as a
+   background on the column box, so the card carries even padding on all four
+   sides and the bleed lands in space that already exists — 26px of column
+   padding either side.
+
+   Column 01 used to carry no left padding at all so its copy could sit flush
+   under the headline; that left its card 22px on the left against 48px on the
+   right. All four columns share one inset now. The top hairline still starts on
+   the container edge under the headline — only the copy steps in from it,
+   exactly as the other three columns already did. */
+.s-hero__col::after {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  inset: -1px -14px -26px -14px;
+  background: var(--white);
+  box-shadow: 0 24px 48px -34px rgba(2, 34, 79, .45);
+  opacity: 0;
+  transition: opacity .4s var(--ease);
+  pointer-events: none;
+}
+
+.s-hero__col.is-active::after { opacity: 1; }
+
+.s-hero__col-num {
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: .12em;
+  color: var(--grey-500);
+  font-variant-numeric: tabular-nums;
+  transition: color .3s var(--ease);
+}
+
+.s-hero__col.is-active .s-hero__col-num { color: var(--hero-accent); }
+
+.s-hero__col-label {
+  margin: 12px 0 7px;
+  font-family: var(--font-head);
+  font-size: clamp(15px, 1.25vw, 18px);
+  font-weight: 600;
+  line-height: 1.25;
+  letter-spacing: -.01em;
+  color: var(--ink);
+}
+
+.s-hero__col-desc {
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.45;
+  color: var(--grey-500);
+  transition: color .3s var(--ease);
+}
+
+.s-hero__col.is-active .s-hero__col-desc { color: var(--grey-600); }
+
+/* the destination, named. Space is reserved so nothing shifts when it arrives. */
+/* margin-top:auto, not a fixed gap. The four columns stretch to a common height,
+   so the shortest one used to end its text mid-card and leave a dead band of
+   white underneath. Pinning the destination to the floor spends that space as
+   the gap above it, which is what makes the block read as a card. */
+.s-hero__col-go {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 20px;
+  margin-top: auto;
+  padding-top: 16px;
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--ink);
+  opacity: 0;
+  transform: translateY(4px);
+  transition: opacity .35s var(--ease), transform .35s var(--ease);
+}
+
+.s-hero__col.is-active .s-hero__col-go { opacity: 1; transform: none; }
+
+.s-hero__cta {
+  display: flex;
+  align-items: flex-start;
+  padding: 18px 0 0 34px;
+  border-top: 1px solid var(--grey-300);
+  box-shadow: inset 1px 0 0 var(--grey-300);
+}
+
+.s-hero__btn { flex: none; }
+
+/* ---------- pointer ring ----------
+   The reference draws a 150px ring around the word itself. Attaching it to the
+   pointer keeps the same promise without pushing the typography around. */
+
+.s-hero__cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 40;
+  display: grid;
+  place-items: center;
+  width: 64px;
+  height: 64px;
+  margin: -32px 0 0 -32px;
+  border: 1px solid var(--hero-accent);
+  border-radius: 50%;
+  background: rgba(2, 34, 79, .05);
+  color: var(--hero-accent);
+  opacity: 0;
+  transform: scale(.4);
+  transition: opacity .3s var(--ease), transform .35s var(--ease);
+  pointer-events: none;
+}
+
+.s-hero__cursor.is-on { opacity: 1; transform: scale(1); }
+
+/* no pointer, no lens — there is nothing to track */
+@media (hover: none), (pointer: coarse) {
+  .s-hero__lens { display: none; }
+
+  /* ...and nothing may stay hidden behind a hover that can never happen. A
+     touch tablet at 800px is wide enough to miss the phone breakpoint but has
+     no pointer, so these destinations were invisible on it permanently. Gate on
+     the capability, not the width. */
+  .s-hero__col-go { opacity: 1; transform: none; }
+}
+
+@media (hover: none), (pointer: coarse) {
+  .s-hero__cursor { display: none; }
+}
+
+/* ============================ responsive ============================ */
+
+@media (max-width: 1199px) {
+  .s-hero__col { padding-left: 18px; padding-right: 18px; }
+  .s-hero__col-desc { font-size: 13px; }
+  .s-hero__cta { padding-left: 24px; }
+}
+
+@media (max-width: 991px) {
+  /* side padding tracks .s-nav__inner at every step — the bar and the page must
+     share one edge or the logo floats off the headline */
+  .s-hero__inner { padding: 0 30px; }
+  .s-hero__bg { width: 62vw; top: 12%; opacity: .3; }
+  .s-hero__index { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .s-hero__col:nth-child(3) { box-shadow: none; }
+  .s-hero__col:nth-child(3), .s-hero__col:nth-child(4) { margin-top: 26px; }
+  .s-hero__cta {
+    grid-column: 1 / -1;
+    padding: 24px 0 0;
+    border-top: 0;
+    box-shadow: none;
+  }
+}
+
+/* No hover below this, so nothing may depend on it: the four columns are a
+   plain tapable list and the headline never dims. */
+@media (max-width: 767px) {
+  .s-hero {
+    min-height: 0;
+    padding: 104px 0 48px;
+  }
+  .s-hero__inner { padding: 0 20px; }
+
+  /* on a narrow column the building crossed the headline itself, so it drops
+     below the type and back to a watermark rather than competing with it */
+  .s-hero__bg { opacity: .12; top: 22%; width: 72vw; }
+
+  /* 1.06 is display leading — right when the headline is two or three long
+     lines on a wide screen. Down here every topic word takes a line of its own,
+     so five near-touching lines stack up and the sentence reads as a block.
+
+     1.16 was still not enough: "Protecting" and "Homeowners" wrap inside ONE
+     span, so nothing but leading separates them, and the "g" descender ran into
+     the "H" cap below it — about a quarter-em of daylight between two 31px
+     words. 1.3 clears the descender properly and lets each word read as its own
+     line, which is the whole point of the stack down here. */
+  .s-hero__title {
+    font-size: clamp(31px, 7.8vw, 48px);
+    letter-spacing: -.028em;
+    line-height: 1.3;
+  }
+  /* the small connector is a beat between the big words, not another line of
+     them — a little air either side is what makes the sentence read in three */
+  .s-hero__line--joint { margin: .16em 0 .1em; }
+  .s-hero__key { margin-right: .22em; }
+
+  .s-hero__index { display: block; margin-top: 0; padding-top: 34px; }
+  .s-hero__col {
+    padding: 16px 0;
+    border-top: 1px solid var(--grey-300);
+  }
+  .s-hero__col + .s-hero__col { box-shadow: none; margin-top: 0; }
+  .s-hero__col:last-of-type { border-bottom: 1px solid var(--grey-300); }
+  .s-hero__col-label { margin: 8px 0 5px; font-size: 17px; }
+  .s-hero__col-go { opacity: 1; transform: none; margin-top: 0; padding-top: 10px; }
+  .s-hero__col-rule { display: none; }
+  .s-hero__col::after { display: none; }
+  /* the JS gates the whole interaction on (hover: hover) and min-width 768, so
+     the lens is switched off on the same line rather than left idle at opacity 0 */
+  .s-hero__lens { display: none; }
+
+  .s-hero__cta { padding: 26px 0 0; border-top: 0; box-shadow: none; }
+  /* stretched edge to edge it read as a banner, not a control: the gold tile
+     pinned to one corner with the label adrift in a wide empty bar. Sized to
+     its content it keeps the same shape it has everywhere else on the site. */
+  .s-hero__btn { width: auto; }
+
+  .s-hero.is-focused .s-hero__key,
+  .s-hero.is-focused .s-hero__joint,
+  .s-hero.is-focused .s-hero__lead,
+  .s-hero.is-focused .s-hero__col { opacity: 1; filter: none; }
+  .s-hero.is-focused .s-hero__key.is-active { color: var(--ink); }
+  .s-hero.is-focused .s-hero__bg { filter: grayscale(1) contrast(1.04); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .s-hero__bg,
+  .s-hero__key,
+  .s-hero__joint,
+  .s-hero__lead,
+  .s-hero__col,
+  .s-hero__col-rule,
+  .s-hero__col-go,
+  .s-hero__lens,
+  .s-hero__lens-img,
+  .s-hero__cursor { transition: none; }
+  .s-hero__cursor { display: none; }
+
+  /* The reward stays, the tracking goes. With no pointer chase the photograph
+     simply washes in behind the whole headline, faint enough to sit under the
+     type — so a visitor who cannot take the motion still learns that each word
+     has something behind it. */
+  .s-hero__lens {
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+  /* no aperture to frame, so the photograph goes back to covering the plane */
+  .s-hero__lens-img {
+    background-size: cover;
+    background-position: center;
+  }
+  .s-hero__lens-img.is-on { opacity: .14; }
+}
+
+/* ===== what-we-offer.css ===== */
+/* ============================================================
+   What We Offer — "Five Ways We Protect Your Build"
+   A continuous right-to-left ticker of five image cards.
+
+   The mechanic is the client's reference (riverwoodecology.co.uk):
+   the art idles blurred and desaturated, focuses on hover, and a circular
+   "+" slides a detail panel up over the card. Three deliberate departures,
+   because the reference gets them wrong:
+     · the reference snaps blur -> sharp with no transition; here it eases,
+       so the focus pull reads as the animation rather than a glitch.
+     · the reference never pauses, so a card you want to read walks away
+       mid-sentence. Here hover / focus / an open panel all hold the belt.
+     · the reference has no scrim, so white titles land on whatever the photo
+       happens to be. Here a navy scrim guarantees the type stays AA.
+   ============================================================ */
+
+.s-what-we-offer {
+  margin-top: 80px;          /* separation from the hero band */
+  padding-top: 64px;
+  padding-bottom: 64px;
+  /* The textured ground sits on the SECTION, not on the 1400px wrapper, so it
+     runs edge to edge behind the full-bleed belt. With it on the wrapper the
+     outer cards ran off the panel and landed on bare white. */
+  background-color: var(--grey-100);
+  background-image: url("../assets/img/home-what-we-bg1.webp");
+  background-size: cover;
+  background-position: 100% 0;
+  background-repeat: no-repeat;
+}
+
+.s-what-we-offer__wrap { padding-top: 0; padding-bottom: 0; }
+
+/* ---------- heading row ---------- */
+.s-what-we-offer__head {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 30px;
+}
+.s-what-we-offer__head-left {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-width: 0;
+  max-width: 100%;
+}
+
+.s-what-we-offer__eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.s-what-we-offer__eyebrow-dot {
+  width: 6px;
+  height: 6px;
+  min-width: 6px;
+  border-radius: 2px;
+  background: var(--gold);
+}
+.s-what-we-offer__eyebrow-text {
+  flex: 0 0 auto;
+  font-family: var(--font-body);
+  font-size: 14px;
+  line-height: 24px;
+  font-weight: 500;
+  letter-spacing: 2.8px;
+  text-transform: uppercase;
+  color: var(--grey-600);
+}
+
+.s-what-we-offer__title {
+  margin: 20px 0 10px;
+  font-family: var(--font-head);
+  font-size: 48px;
+  line-height: 56px;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.s-what-we-offer__lead {
+  padding-top: 10px;
+  max-width: 680px;
+  font-family: var(--font-body);
+  font-size: 18px;
+  line-height: 24px;
+  font-weight: 400;
+  color: var(--grey-600);
+}
+
+.s-what-we-offer__main { margin-top: 40px; }
+
+/* ============================================================
+   Ticker
+   ============================================================ */
+
+.wwo-ticker {
+  /* every dimension in the belt hangs off these */
+  --card-w: 388px;
+  --card-h: 476px;
+  --card-gap: 22px;
+  --ticker-dur: 32s;
+  --lift: 44px;              /* the stagger step — see the wave below */
+
+  /* Full-bleed to the viewport, not to the 1400px wrapper. Bleeding only to
+     the wrapper left two pale dead bands down the sides and made the loop look
+     like a row that ends. body already carries overflow-x: hidden. */
+  width: auto;
+  max-width: none;
+  margin-inline: calc(50% - 50vw);
+  position: relative;
+}
+
+/* soft edges instead of a hard cut, so a card dissolves in and out.
+   The vertical padding is headroom: cards lift on hover and cast a shadow,
+   and overflow:hidden would slice both off. */
+.wwo-ticker__rail {
+  display: flex;
+  width: 100%;
+  padding: 18px 0 30px;
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 60px, #000 calc(100% - 60px), transparent 100%);
+          mask-image: linear-gradient(90deg, transparent 0, #000 60px, #000 calc(100% - 60px), transparent 100%);
+}
+
+/* Two identical tracks sit side by side (the second is cloned in main.js).
+   Each carries a trailing gap and translates -100% of its OWN width, so the
+   hand-off is exact at any card count — the same trick as .s-marquee. */
+.wwo-ticker__track {
+  display: flex;
+  align-items: flex-start;
+  flex: none;
+  gap: var(--card-gap);
+  padding-right: var(--card-gap);
+  animation: wwo-ticker var(--ticker-dur) linear infinite;
+  will-change: transform;
+}
+@keyframes wwo-ticker {
+  from { transform: translate3d(0, 0, 0); }
+  to   { transform: translate3d(-100%, 0, 0); }
+}
+
+/* hold the belt whenever someone is actually engaging with it */
+.wwo-ticker:hover .wwo-ticker__track,
+.wwo-ticker:focus-within .wwo-ticker__track,
+.wwo-ticker.is-locked .wwo-ticker__track { animation-play-state: paused; }
+
+/* ============================================================
+   Card
+   ============================================================ */
+
+.wwo-card {
+  position: relative;
+  flex: 0 0 auto;
+  width: var(--card-w);
+  height: var(--card-h);
+  overflow: hidden;
+  border-radius: 12px;
+  background: var(--ink-3);
+  box-shadow: 0 10px 30px rgba(2, 34, 79, .10), inset 0 0 0 1px rgba(255, 255, 255, .10);
+  isolation: isolate;
+  transition: transform .5s var(--ease), box-shadow .5s var(--ease), opacity .4s var(--ease);
+}
+
+/* A three-step wave, not odd/even. With five cards per track an alternating
+   pattern lands two flat cards against each other at every loop seam; a 3n
+   wave never repeats itself across the join. */
+.wwo-card:nth-child(3n + 2) { margin-top: var(--lift); }
+.wwo-card:nth-child(3n + 3) { margin-top: calc(var(--lift) / 2); }
+
+/* NOTE: an opacity dim on the unfocused cards was tried and removed. Against
+   this light page it did not read as "stepped back", it read as washed-out
+   white holes in the belt. The idle state below does the same job by going
+   DARKER instead — the focused card is the only one in colour. */
+
+.wwo-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 28px 64px rgba(2, 34, 79, .30), inset 0 0 0 1px rgba(209, 155, 35, .35);
+}
+
+/* the signature: a gold rule sweeps the top edge as the card takes focus */
+.wwo-card::after {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  z-index: 5;
+  height: 2px;
+  background: var(--gold);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform .55s var(--ease);
+}
+.wwo-card:hover::after,
+.wwo-card.is-peek::after,
+.wwo-card.is-open::after { transform: scaleX(1); }
+
+/* The art is inset NEGATIVELY: a large blur samples transparent pixels at the
+   element edge and leaves a pale halo inside the card's rounded corners.
+   Pushing the layer past every side moves that halo outside the clip. */
+.wwo-card__media {
+  position: absolute;
+  inset: -30px;
+  background-size: cover;
+  background-position: 50% 50%;
+  filter: blur(12px) saturate(1.06) brightness(.97);
+  transform: scale(1.06);
+  transition: filter .7s var(--ease), transform 1.1s var(--ease);
+}
+.wwo-card:hover .wwo-card__media,
+.wwo-card.is-peek .wwo-card__media,
+.wwo-card.is-open .wwo-card__media {
+  filter: blur(0) saturate(1.06) brightness(1);
+  transform: scale(1);
+}
+
+/* Bottom-weighted scrim, not a flat veil. The veil made five different photos
+   read as five identical grey bricks; this keeps the picture open at the top
+   and only pays for contrast where the type actually sits. */
+.wwo-card__scrim {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg,
+      rgba(2, 34, 79, .70) 0%,
+      rgba(2, 34, 79, .34) 11%,
+      rgba(2, 34, 79, .05) 26%,
+      rgba(2, 34, 79, .08) 44%,
+      rgba(2, 34, 79, .46) 68%,
+      rgba(2, 34, 79, .90) 100%);
+}
+
+/* ---------- front face ---------- */
+.wwo-card__front {
+  opacity: 1;
+  transition: opacity .3s var(--ease);
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  height: 100%;
+  padding: 26px 26px 28px;
+  pointer-events: none;      /* the whole card is the peek target on touch */
+}
+
+/* Poster order: step marker at the top, then the title block anchored to the
+   floor with the badge as its eyebrow. Reading order in the DOM stays
+   title-then-badge, which is the right order to hear it announced. */
+.wwo-card__index { order: 1; }
+.wwo-card__title { order: 2; margin-top: auto; }
+
+.wwo-card__index {
+  font-family: var(--font-head);
+  font-size: 13px;
+  line-height: 1;
+  font-weight: 600;
+  letter-spacing: 1.8px;
+  color: var(--gold);
+  text-shadow: 0 1px 10px rgba(2, 34, 79, .85);
+}
+.wwo-card__index::after {
+  content: "";
+  display: block;
+  width: 26px;
+  height: 2px;
+  margin-top: 10px;
+  background: var(--gold);
+  transform-origin: left;
+  transform: scaleX(.45);
+  transition: transform .55s var(--ease);
+}
+.wwo-card:hover .wwo-card__index::after,
+.wwo-card.is-peek .wwo-card__index::after { transform: scaleX(1); }
+
+.wwo-card__title {
+  padding-right: 74px;       /* clears the + button */
+  font-family: var(--font-head);
+  font-size: 31px;
+  line-height: 37px;
+  font-weight: 600;
+  color: var(--white);
+  text-wrap: balance;
+  text-shadow: 0 2px 18px rgba(2, 34, 79, .75);
+}
+
+/* ---------- detail panel ---------- */
+/* Glass only reads as glass if you can see it has EDGES. Filling the card
+   corner to corner just looked like a darker card, which is what happened the
+   first time round. So the panel is inset: the card's own photograph stays
+   visible as a frame all the way around, the pane carries a lit top edge and a
+   drop shadow, and the blur behind it is unmistakably a blur of that photo. */
+.wwo-card__panel {
+  position: absolute;
+  inset: 12px;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 24px 22px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, .20);
+  background:
+    linear-gradient(152deg, rgba(255, 255, 255, .16) 0%, rgba(255, 255, 255, .03) 38%, rgba(255, 255, 255, 0) 70%),
+    rgba(2, 28, 64, .78);
+  -webkit-backdrop-filter: blur(28px) saturate(165%);
+          backdrop-filter: blur(28px) saturate(165%);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, .38), inset 0 1px 0 rgba(255, 255, 255, .26);
+  /* +14px so the pane's own top edge clears the card before it is clipped */
+  transform: translate3d(0, calc(100% + 14px), 0);
+  transition: transform .55s var(--ease);
+  will-change: transform;
+}
+.wwo-card.is-open .wwo-card__panel { transform: translate3d(0, 0, 0); }
+
+/* Without backdrop-filter the panel would be 80% navy over a SHARP photo, which
+   is unreadable soup. Fall back to solid. */
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .wwo-card__panel { background: rgba(2, 34, 79, .96); }
+}
+.wwo-card.is-open .wwo-card__front { opacity: 0; transition-delay: .2s; }
+
+.wwo-card__index--panel { order: 0; color: #EFC15A; }
+.wwo-card__index--panel::after { transform: scaleX(1); }
+
+.wwo-card__panel-badge {
+  display: block;
+  margin-top: 16px;
+  max-width: 32ch;
+  font-family: var(--font-body);
+  font-size: 11px;
+  line-height: 17px;
+  font-weight: 600;
+  letter-spacing: .9px;
+  text-transform: uppercase;
+  color: #EFC15A;          /* brand gold lifted to clear AA on the glass */
+}
+
+.wwo-card__panel-title {
+  margin-top: 10px;
+  font-family: var(--font-head);
+  font-size: 21px;
+  line-height: 28px;
+  font-weight: 600;
+  color: var(--white);
+  text-wrap: balance;
+}
+
+/* copy and CTA lag the panel slightly — the card fills, then the words land */
+.wwo-card__panel-text {
+  margin-top: 14px;
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 23px;
+  color: var(--grey-200);
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity .35s var(--ease), transform .35s var(--ease);
+}
+.wwo-card__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  max-width: calc(100% - 62px);   /* clears the × button */
+  margin-top: auto;
+  padding-bottom: 7px;
+  border-bottom: 1px solid rgba(239, 193, 90, .5);
+  font-family: var(--font-body);
+  font-size: 14px;
+  line-height: 22px;
+  font-weight: 600;
+  letter-spacing: .2px;
+  color: #EFC15A;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity .35s var(--ease), transform .35s var(--ease), border-color var(--dur) var(--ease), color var(--dur) var(--ease);
+}
+.wwo-card.is-open .wwo-card__panel-text,
+.wwo-card.is-open .wwo-card__link { opacity: 1; transform: translateY(0); }
+.wwo-card.is-open .wwo-card__panel-text { transition-delay: .16s; }
+.wwo-card.is-open .wwo-card__link      { transition-delay: .24s; }
+
+.wwo-card__link:hover { color: #FFD777; border-color: #FFD777; }
+.wwo-card__link-arrow { flex: 0 0 auto; transition: transform var(--dur) var(--ease); }
+.wwo-card__link:hover .wwo-card__link-arrow { transform: translateX(4px); }
+
+/* ---------- the + / × button ---------- */
+.wwo-card__toggle {
+  position: absolute;
+  right: 22px;
+  bottom: 22px;
+  z-index: 4;
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  padding: 0;
+  border-radius: 50%;
+  background: var(--gold);
+  box-shadow: 0 6px 20px rgba(2, 34, 79, .45);
+  transition: transform .45s var(--ease), background-color var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
+}
+.wwo-card__toggle:hover { transform: scale(1.1); background: #E8B948; }
+.wwo-card__toggle:focus-visible { outline: 2px solid var(--white); outline-offset: 3px; }
+
+/* a soft gold halo that only breathes on the card in focus, so the eye is
+   told where the interaction is without ten pulsing dots on screen */
+.wwo-card:hover .wwo-card__toggle { box-shadow: 0 6px 20px rgba(2, 34, 79, .45), 0 0 0 8px rgba(209, 155, 35, .18); }
+.wwo-card.is-open .wwo-card__toggle,
+.wwo-card.is-open:hover .wwo-card__toggle { box-shadow: 0 6px 20px rgba(0, 0, 0, .3), 0 0 0 8px rgba(255, 255, 255, .13); }
+
+.wwo-card__toggle-bar {
+  grid-area: 1 / 1;
+  width: 17px;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--ink);
+  transition: transform .45s var(--ease);
+}
+.wwo-card__toggle-bar + .wwo-card__toggle-bar { transform: rotate(90deg); }
+/* open state: the plus turns through 135° into a close cross */
+.wwo-card.is-open .wwo-card__toggle { background: var(--white); }
+.wwo-card.is-open .wwo-card__toggle-bar { transform: rotate(135deg); }
+.wwo-card.is-open .wwo-card__toggle-bar + .wwo-card__toggle-bar { transform: rotate(45deg); }
+
+.wwo-card__toggle-label {
+  position: absolute;
+  width: 1px; height: 1px;
+  margin: -1px; padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* ---------- closing note ---------- */
+.s-what-we-offer__note {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-top: 48px;
+  font-family: var(--font-body);
+  font-size: 18px;
+  line-height: 24px;
+  color: var(--grey-600);
+}
+.s-what-we-offer__note-link {
+  font-weight: 500;
+  color: var(--ink);
+  transition: .3s linear;
+}
+.s-what-we-offer__note-link:hover { color: var(--gold-700); }
+
+/* ============================================================
+   Responsive
+   ============================================================ */
+@media (max-width: 1199px) {
+  .wwo-ticker { --card-w: 344px; --card-h: 466px; --lift: 36px; --ticker-dur: 28s; }
+  .wwo-card__title { font-size: 29px; line-height: 35px; }
+}
+
+@media (max-width: 991px) {
+  .s-what-we-offer__title { font-size: 42px; line-height: 49px; }
+  .s-what-we-offer__main { margin-top: 48px; }
+  .wwo-ticker { --card-w: 304px; --card-h: 428px; --lift: 28px; --ticker-dur: 24s; }
+  .wwo-card__front { padding: 22px 22px 24px; }
+  .wwo-card__panel { padding: 22px 20px; }
+  .wwo-card__title { font-size: 27px; line-height: 33px; }
+  .wwo-card__panel-title { font-size: 20px; line-height: 26px; }
+  .wwo-card__panel-text { font-size: 14px; line-height: 22px; }
+}
+
+/* Touch: there is no hover, so the belt becomes a swipeable rail. First tap on
+   a card pulls it into focus, the + still opens the detail. */
+@media (hover: none) {
+  .wwo-ticker__rail {
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    -webkit-mask-image: none;
+            mask-image: none;
+  }
+  .wwo-ticker__rail::-webkit-scrollbar { display: none; }
+  .wwo-ticker__track { animation: none; padding-inline: var(--pad-inner); }
+  .wwo-ticker__track[data-ticker-clone] { display: none; }
+  .wwo-card { scroll-snap-align: center; margin-top: 0 !important; }
+  .wwo-card__media { filter: blur(10px) saturate(1.06) brightness(.97); }
+}
+
+@media (max-width: 767px) {
+  .s-what-we-offer__wrap { padding-top: 50px; padding-bottom: 50px; }
+  .s-what-we-offer__head { flex-direction: column; align-items: flex-start; }
+  .s-what-we-offer__title { font-size: 36px; line-height: 42px; }
+  .s-what-we-offer__lead { font-size: 16px; }
+  .wwo-ticker { --card-w: 278px; --card-h: 430px; --card-gap: 14px; }
+  .wwo-ticker__rail { padding: 10px 0 18px; }
+  .wwo-card__toggle { width: 46px; height: 46px; right: 18px; bottom: 18px; }
+  .wwo-card__title { padding-right: 58px; }
+  .wwo-card__front { padding: 20px 20px 22px; }
+  .wwo-card__panel { inset: 10px; padding: 20px 18px; }
+  .wwo-card__title { font-size: 24px; line-height: 30px; }
+  .s-what-we-offer__note { margin-top: 36px; font-size: 16px; }
+}
+
+@media (max-width: 479px) {
+  .s-what-we-offer__title { font-size: 32px; line-height: 37.33px; }
+}
+
+/* Reduced motion: the belt stops entirely and becomes a scroll rail. The blur
+   and the panel stay — they are content states, not decoration — but they cut
+   instead of easing. */
+@media (prefers-reduced-motion: reduce) {
+  .wwo-ticker__rail {
+    overflow-x: auto;
+    -webkit-mask-image: none;
+            mask-image: none;
+  }
+  .wwo-ticker__track { animation: none; }
+  .wwo-ticker__track[data-ticker-clone] { display: none; }
+  .wwo-card { margin-top: 0 !important; }
+  .wwo-card,
+  .wwo-card::after,
+  .wwo-card__media,
+  .wwo-card__panel,
+  .wwo-card__panel-text,
+  .wwo-card__link,
+  .wwo-card__toggle,
+  .wwo-card__toggle-bar,
+  .wwo-card__index::after { transition-duration: .01ms; }
+}
