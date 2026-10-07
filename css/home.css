@@ -1728,7 +1728,8 @@
   letter-spacing: -.4px;
   color: var(--grey-600);
 }
-.hm-center { display: flex; justify-content: center; margin-top: 48px; }
+/* buttons sit on the left, under the content, like every other section */
+.hm-actions { display: flex; justify-content: flex-start; margin-top: 48px; }
 
 /* ---------- services by stage ---------- */
 .hm-stages { margin-top: 120px; }
