@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="lenis">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -14,6 +14,9 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://api.fontshare.com/v2/css?f%5B%5D=general-sans@400,500,600,700&display=swap">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@14.3.0/swiper-bundle.min.css">
 <link rel="stylesheet" href="css/globals.css">
 <link rel="stylesheet" href="css/layout.css">
 <link rel="stylesheet" href="css/home.css">
@@ -36,12 +39,12 @@
         <a class="site-nav__link" href="resources.html">Resources</a>
         <a class="site-nav__link" href="faq.html">FAQ</a>
       </nav>
-      <a class="btn" href="#contact">
-        <span class="btn__icon">
+      <a class="p-btn" href="#contact">
+        <span class="p-btn__icon">
           <img src="assets/img/icon-arrows-navy.svg" alt="" width="16" height="16">
           <img src="assets/img/icon-arrows-navy.svg" alt="" aria-hidden="true" width="16" height="16">
         </span>
-        <span class="btn__text">Contact us</span>
+        <span class="p-btn__text">Contact us</span>
       </a>
       <button class="site-header__burger" type="button" data-nav-toggle aria-label="Open menu" aria-expanded="false">
         <span></span><span></span><span></span>
@@ -63,12 +66,12 @@
       <a href="resources.html">Resources</a>
       <a href="faq.html">FAQ</a>
     </nav>
-    <a class="btn" href="#contact" data-nav-close>
-      <span class="btn__icon">
+    <a class="p-btn" href="#contact" data-nav-close>
+      <span class="p-btn__icon">
         <img src="assets/img/icon-arrows-navy.svg" alt="" width="16" height="16">
         <img src="assets/img/icon-arrows-navy.svg" alt="" aria-hidden="true" width="16" height="16">
       </span>
-      <span class="btn__text">Contact us</span>
+      <span class="p-btn__text">Contact us</span>
     </a>
   </div>
 </div>
@@ -165,12 +168,12 @@
       </a>
 
       <div class="s-hero__cta">
-        <a class="btn btn--dark s-hero__btn" href="#contact">
-          <span class="btn__icon">
+        <a class="p-btn p-btn--dark s-hero__btn" href="#contact">
+          <span class="p-btn__icon">
             <img src="assets/img/icon-arrows-navy.svg" alt="" width="16" height="16">
             <img src="assets/img/icon-arrows-navy.svg" alt="" aria-hidden="true" width="16" height="16">
           </span>
-          <span class="btn__text">Book Now</span>
+          <span class="p-btn__text">Book Now</span>
         </a>
       </div>
 
@@ -213,14 +216,14 @@
 
     <div class="s-what-we-offer__main">
 
-      <!-- The rail holds ONE authored track; js/main.js clones it so the loop is
+      <!-- The rail is a Swiper. js/main.js copies the five cards once so the loop is
            seamless. background-position is set per card because the subject sits
            in a different part of each frame. -->
       <div class="wwo-ticker" data-ticker>
-        <div class="wwo-ticker__rail">
-          <div class="wwo-ticker__track" data-ticker-track>
+        <div class="wwo-ticker__rail swiper">
+          <div class="wwo-ticker__track swiper-wrapper" data-ticker-track>
 
-            <article class="wwo-card" data-card>
+            <article class="wwo-card swiper-slide" data-card>
               <div class="wwo-card__media" style="background-image:url('assets/img/svc-pre-construction.jpg');background-position:50% 50%" aria-hidden="true"></div>
               <div class="wwo-card__scrim" aria-hidden="true"></div>
 
@@ -247,7 +250,7 @@
               </button>
             </article>
 
-            <article class="wwo-card" data-card>
+            <article class="wwo-card swiper-slide wwo-card--lift" data-card>
               <div class="wwo-card__media" style="background-image:url('assets/img/svc-quote-review.jpg');background-position:58% 50%" aria-hidden="true"></div>
               <div class="wwo-card__scrim" aria-hidden="true"></div>
 
@@ -274,7 +277,7 @@
               </button>
             </article>
 
-            <article class="wwo-card" data-card>
+            <article class="wwo-card swiper-slide wwo-card--half" data-card>
               <div class="wwo-card__media" style="background-image:url('assets/img/svc-budget-control.jpg');background-position:45% 56%" aria-hidden="true"></div>
               <div class="wwo-card__scrim" aria-hidden="true"></div>
 
@@ -301,7 +304,7 @@
               </button>
             </article>
 
-            <article class="wwo-card" data-card>
+            <article class="wwo-card swiper-slide" data-card>
               <div class="wwo-card__media" style="background-image:url('assets/img/svc-terms-build.jpg');background-position:44% 51%" aria-hidden="true"></div>
               <div class="wwo-card__scrim" aria-hidden="true"></div>
 
@@ -328,7 +331,7 @@
               </button>
             </article>
 
-            <article class="wwo-card" data-card>
+            <article class="wwo-card swiper-slide wwo-card--lift" data-card>
               <div class="wwo-card__media" style="background-image:url('assets/img/svc-builder-reporting.jpg');background-position:44% 46%" aria-hidden="true"></div>
               <div class="wwo-card__scrim" aria-hidden="true"></div>
 
@@ -369,7 +372,7 @@
 <!-- Why Protect — "Many Melbourne building companies collapsed…" + "We know exactly where you are" (Figma 3:1269) -->
 <section class="section hm-why">
   <div class="wrap">
-    <p class="hm-eyebrow" data-reveal="up"><span class="hm-eyebrow__dot" aria-hidden="true"></span>Why Protect Construction Consultants</p>
+    <p class="hm-eyebrow" data-aos="fade-up"><span class="hm-eyebrow__dot" aria-hidden="true"></span>Why Protect Construction Consultants</p>
 
     <div class="hm-why__row">
       <div class="hm-why__copy">
@@ -388,7 +391,7 @@
       <figure class="hm-why__figure" data-hm-figure>
         <span class="hm-why__axis" aria-hidden="true"></span>
         <div class="hm-why__circle">
-          <img src="assets/img/home-site.jpg" alt="A Melbourne residential site part way through construction" width="900" height="900" loading="lazy" data-parallax="6">
+          <img src="assets/img/home-site.jpg" alt="A Melbourne residential site part way through construction" width="900" height="900" loading="lazy">
         </div>
         <span class="hm-why__ring" aria-hidden="true" data-hm-ring></span>
       </figure>
@@ -457,7 +460,7 @@
 <!-- Who we are / Our mission / Our vision (Figma 3:1360) -->
 <section class="hm-about">
   <div class="hm-about__media" aria-hidden="true">
-    <img src="assets/img/home-cranes.jpg" alt="" width="1056" height="548" loading="lazy" data-parallax="8">
+    <img src="assets/img/home-cranes.jpg" alt="" width="1056" height="548" loading="lazy">
   </div>
 
   <div class="hm-about__body">
@@ -485,18 +488,18 @@
     </div>
 
     <div class="hm-about__actions" data-reveal-group>
-      <a class="btn btn--dark" href="about-us.html">
-        <span class="btn__icon">
+      <a class="p-btn p-btn--dark" href="about-us.html">
+        <span class="p-btn__icon">
           <img src="assets/img/icon-arrows-navy.svg" alt="" width="16" height="16">
           <img src="assets/img/icon-arrows-navy.svg" alt="" aria-hidden="true" width="16" height="16">
         </span>
-        <span class="btn__text">More about us</span>
+        <span class="p-btn__text">More about us</span>
       </a>
-      <a class="btn hm-btn-play" href="about-us.html">
-        <span class="btn__icon hm-btn-play__icon">
+      <a class="p-btn hm-btn-play" href="about-us.html">
+        <span class="p-btn__icon hm-btn-play__icon">
           <svg viewBox="0 0 20 20" width="20" height="20" aria-hidden="true"><path d="M6 4.2v11.6L15.4 10z" fill="#D19B23"/></svg>
         </span>
-        <span class="btn__text">Our journey</span>
+        <span class="p-btn__text">Our journey</span>
       </a>
     </div>
   </div>
@@ -507,7 +510,7 @@
   <div class="wrap">
     <div class="hm-head">
       <div>
-        <p class="hm-eyebrow" data-reveal="up"><span class="hm-eyebrow__dot" aria-hidden="true"></span>Our services</p>
+        <p class="hm-eyebrow" data-aos="fade-up"><span class="hm-eyebrow__dot" aria-hidden="true"></span>Our services</p>
         <h2 class="hm-h2" id="hm-stages-title" data-reveal="lines">Independent advice at every stage of your build</h2>
       </div>
       <p class="hm-head__lead" data-reveal="lines">Pick the stage you are at. Each service is done for you alone — never for the builder.</p>
@@ -552,13 +555,13 @@
       </li>
     </ol>
 
-    <div class="hm-actions" data-reveal="up">
-      <a class="btn" href="services.html">
-        <span class="btn__icon">
+    <div class="hm-actions" data-aos="fade-up">
+      <a class="p-btn" href="services.html">
+        <span class="p-btn__icon">
           <img src="assets/img/icon-arrows-navy.svg" alt="" width="16" height="16">
           <img src="assets/img/icon-arrows-navy.svg" alt="" aria-hidden="true" width="16" height="16">
         </span>
-        <span class="btn__text">View all services</span>
+        <span class="p-btn__text">View all services</span>
       </a>
     </div>
   </div>
@@ -568,7 +571,7 @@
 <section class="hm-diff" aria-labelledby="hm-diff-title">
   <div class="hm-diff__inner">
     <div class="hm-diff__head">
-      <p class="hm-eyebrow hm-eyebrow--light" data-reveal="up"><span class="hm-eyebrow__dot" aria-hidden="true"></span>What makes us different</p>
+      <p class="hm-eyebrow hm-eyebrow--light" data-aos="fade-up"><span class="hm-eyebrow__dot" aria-hidden="true"></span>What makes us different</p>
       <h2 class="hm-h2 hm-h2--light" id="hm-diff-title" data-reveal="lines">We know what builders hope homeowners don’t notice.</h2>
       <p class="hm-diff__lead" data-reveal="lines">We know how quotes are structured, where costs are hidden and how variations are generated. We use that knowledge only to protect you.</p>
     </div>
@@ -594,13 +597,13 @@
         <p class="hm-diff__text">We know Victoria’s rules, the VBA, Melbourne’s councils and the local builder market. This is advice built on real Melbourne experience.</p>
       </li>
     </ol>
-    <div class="hm-diff__foot" data-reveal="up">
-      <a class="btn" href="why-protect.html">
-        <span class="btn__icon">
+    <div class="hm-diff__foot" data-aos="fade-up">
+      <a class="p-btn" href="why-protect.html">
+        <span class="p-btn__icon">
           <img src="assets/img/icon-arrows-navy.svg" alt="" width="16" height="16">
           <img src="assets/img/icon-arrows-navy.svg" alt="" aria-hidden="true" width="16" height="16">
         </span>
-        <span class="btn__text">Why Protect</span>
+        <span class="p-btn__text">Why Protect</span>
       </a>
     </div>
   </div>
@@ -611,7 +614,7 @@
   <div class="wrap">
     <div class="hm-head">
       <div>
-        <p class="hm-eyebrow" data-reveal="up"><span class="hm-eyebrow__dot" aria-hidden="true"></span>Free resources</p>
+        <p class="hm-eyebrow" data-aos="fade-up"><span class="hm-eyebrow__dot" aria-hidden="true"></span>Free resources</p>
         <h2 class="hm-h2" id="hm-res-title" data-reveal="lines">Know before you sign.</h2>
       </div>
       <p class="hm-head__lead" data-reveal="lines">Free tools from 23 years on the builder’s side of the table. No sign-up needed.</p>
@@ -650,21 +653,21 @@
 <section class="section hm-faq" aria-labelledby="hm-faq-title">
   <div class="wrap hm-faq__grid">
     <div class="hm-faq__side">
-      <p class="hm-eyebrow" data-reveal="up"><span class="hm-eyebrow__dot" aria-hidden="true"></span>FAQ</p>
+      <p class="hm-eyebrow" data-aos="fade-up"><span class="hm-eyebrow__dot" aria-hidden="true"></span>FAQ</p>
       <h2 class="hm-h2" id="hm-faq-title" data-reveal="lines">Questions homeowners ask us most.</h2>
       <p class="hm-head__lead" data-reveal="lines">Straight answers, in plain English. There are 50 more on our FAQ page.</p>
-      <div data-reveal="up">
-        <a class="btn" href="faq.html">
-          <span class="btn__icon">
+      <div data-aos="fade-up">
+        <a class="p-btn" href="faq.html">
+          <span class="p-btn__icon">
             <img src="assets/img/icon-arrows-navy.svg" alt="" width="16" height="16">
             <img src="assets/img/icon-arrows-navy.svg" alt="" aria-hidden="true" width="16" height="16">
           </span>
-          <span class="btn__text">See all questions</span>
+          <span class="p-btn__text">See all questions</span>
         </a>
       </div>
     </div>
 
-    <div class="hm-faq__list" data-hm-faq data-reveal="up">
+    <div class="hm-faq__list" data-hm-faq data-aos="fade-up">
       <div class="hm-faq__item is-open">
         <h3 class="hm-faq__h">
           <button class="hm-faq__btn" type="button" id="hm-q1" aria-expanded="true" aria-controls="hm-a1">
@@ -854,10 +857,10 @@
 </div>
 
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-<script src="https://unpkg.com/lenis@1.3.25/dist/lenis.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@14.3.0/swiper-bundle.min.js"></script>
 <script src="js/main.js"></script>
 <script src="js/home.js"></script>
 </body>

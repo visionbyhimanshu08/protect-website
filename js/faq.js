@@ -4,7 +4,7 @@
   const root = document.querySelector('[data-faq]');
   if (!root) return;
   const noMotion = (typeof reduced !== 'undefined' && reduced) || !window.gsap;
-  const refresh = () => { if (window.ScrollTrigger) ScrollTrigger.refresh(); };
+  const refresh = () => { if (window.AOS) AOS.refresh(); };
 
   /* ---------- accordion ---------- */
   function setOpen(item, open, animate = true) {

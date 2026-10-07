@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="lenis">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -14,6 +14,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://api.fontshare.com/v2/css?f%5B%5D=general-sans@400,500,600,700&display=swap">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css">
 <link rel="stylesheet" href="css/globals.css">
 <link rel="stylesheet" href="css/layout.css">
 <link rel="stylesheet" href="css/faq.css">
@@ -36,12 +38,12 @@
         <a class="site-nav__link" href="resources.html">Resources</a>
         <a class="site-nav__link" href="faq.html">FAQ</a>
       </nav>
-      <a class="btn" href="#contact">
-        <span class="btn__icon">
+      <a class="p-btn" href="#contact">
+        <span class="p-btn__icon">
           <img src="assets/img/icon-arrows-navy.svg" alt="" width="16" height="16">
           <img src="assets/img/icon-arrows-navy.svg" alt="" aria-hidden="true" width="16" height="16">
         </span>
-        <span class="btn__text">Contact us</span>
+        <span class="p-btn__text">Contact us</span>
       </a>
       <button class="site-header__burger" type="button" data-nav-toggle aria-label="Open menu" aria-expanded="false">
         <span></span><span></span><span></span>
@@ -63,12 +65,12 @@
       <a href="resources.html">Resources</a>
       <a href="faq.html">FAQ</a>
     </nav>
-    <a class="btn" href="#contact" data-nav-close>
-      <span class="btn__icon">
+    <a class="p-btn" href="#contact" data-nav-close>
+      <span class="p-btn__icon">
         <img src="assets/img/icon-arrows-navy.svg" alt="" width="16" height="16">
         <img src="assets/img/icon-arrows-navy.svg" alt="" aria-hidden="true" width="16" height="16">
       </span>
-      <span class="btn__text">Contact us</span>
+      <span class="p-btn__text">Contact us</span>
     </a>
   </div>
 </div>
@@ -168,7 +170,7 @@
             <h2 class="fq-topic__title" id="about-title">About Protect Construction Consultants</h2>
             <span class="fq-topic__count">6 questions</span>
           </header>
-          <div class="fq-card" data-reveal="up">
+          <div class="fq-card" data-aos="fade-up">
             <div class="fq-item is-open">
               <h3 class="fq-item__h">
                 <button class="fq-item__btn" type="button" id="fq-q1" aria-expanded="true" aria-controls="fq-a1">
@@ -250,7 +252,7 @@
             <h2 class="fq-topic__title" id="getting-started-title">Getting Started</h2>
             <span class="fq-topic__count">5 questions</span>
           </header>
-          <div class="fq-card" data-reveal="up">
+          <div class="fq-card" data-aos="fade-up">
             <div class="fq-item">
               <h3 class="fq-item__h">
                 <button class="fq-item__btn" type="button" id="fq-q7" aria-expanded="false" aria-controls="fq-a7">
@@ -320,7 +322,7 @@
             <h2 class="fq-topic__title" id="builder-quotes-title">Builder Quotes</h2>
             <span class="fq-topic__count">6 questions</span>
           </header>
-          <div class="fq-card" data-reveal="up">
+          <div class="fq-card" data-aos="fade-up">
             <div class="fq-item">
               <h3 class="fq-item__h">
                 <button class="fq-item__btn" type="button" id="fq-q12" aria-expanded="false" aria-controls="fq-a12">
@@ -402,7 +404,7 @@
             <h2 class="fq-topic__title" id="building-contracts-title">Building Contracts</h2>
             <span class="fq-topic__count">5 questions</span>
           </header>
-          <div class="fq-card" data-reveal="up">
+          <div class="fq-card" data-aos="fade-up">
             <div class="fq-item">
               <h3 class="fq-item__h">
                 <button class="fq-item__btn" type="button" id="fq-q18" aria-expanded="false" aria-controls="fq-a18">
@@ -472,7 +474,7 @@
             <h2 class="fq-topic__title" id="variations-title">Variations</h2>
             <span class="fq-topic__count">4 questions</span>
           </header>
-          <div class="fq-card" data-reveal="up">
+          <div class="fq-card" data-aos="fade-up">
             <div class="fq-item">
               <h3 class="fq-item__h">
                 <button class="fq-item__btn" type="button" id="fq-q23" aria-expanded="false" aria-controls="fq-a23">
@@ -530,7 +532,7 @@
             <h2 class="fq-topic__title" id="building-inspections-title">Building Inspections</h2>
             <span class="fq-topic__count">4 questions</span>
           </header>
-          <div class="fq-card" data-reveal="up">
+          <div class="fq-card" data-aos="fade-up">
             <div class="fq-item">
               <h3 class="fq-item__h">
                 <button class="fq-item__btn" type="button" id="fq-q27" aria-expanded="false" aria-controls="fq-a27">
@@ -588,7 +590,7 @@
             <h2 class="fq-topic__title" id="builder-problems-title">Builder Problems and Disputes</h2>
             <span class="fq-topic__count">5 questions</span>
           </header>
-          <div class="fq-card" data-reveal="up">
+          <div class="fq-card" data-aos="fade-up">
             <div class="fq-item">
               <h3 class="fq-item__h">
                 <button class="fq-item__btn" type="button" id="fq-q31" aria-expanded="false" aria-controls="fq-a31">
@@ -658,7 +660,7 @@
             <h2 class="fq-topic__title" id="costs-budgeting-title">Costs and Budgeting</h2>
             <span class="fq-topic__count">4 questions</span>
           </header>
-          <div class="fq-card" data-reveal="up">
+          <div class="fq-card" data-aos="fade-up">
             <div class="fq-item">
               <h3 class="fq-item__h">
                 <button class="fq-item__btn" type="button" id="fq-q36" aria-expanded="false" aria-controls="fq-a36">
@@ -716,7 +718,7 @@
             <h2 class="fq-topic__title" id="owner-builders-title">Owner Builders</h2>
             <span class="fq-topic__count">3 questions</span>
           </header>
-          <div class="fq-card" data-reveal="up">
+          <div class="fq-card" data-aos="fade-up">
             <div class="fq-item">
               <h3 class="fq-item__h">
                 <button class="fq-item__btn" type="button" id="fq-q40" aria-expanded="false" aria-controls="fq-a40">
@@ -762,7 +764,7 @@
             <h2 class="fq-topic__title" id="planning-land-title">Planning and Land</h2>
             <span class="fq-topic__count">3 questions</span>
           </header>
-          <div class="fq-card" data-reveal="up">
+          <div class="fq-card" data-aos="fade-up">
             <div class="fq-item">
               <h3 class="fq-item__h">
                 <button class="fq-item__btn" type="button" id="fq-q43" aria-expanded="false" aria-controls="fq-a43">
@@ -808,7 +810,7 @@
             <h2 class="fq-topic__title" id="working-with-us-title">Working With Protect Construction Consultants</h2>
             <span class="fq-topic__count">5 questions</span>
           </header>
-          <div class="fq-card" data-reveal="up">
+          <div class="fq-card" data-aos="fade-up">
             <div class="fq-item">
               <h3 class="fq-item__h">
                 <button class="fq-item__btn" type="button" id="fq-q46" aria-expanded="false" aria-controls="fq-a46">
@@ -1004,10 +1006,9 @@
 </div>
 
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-<script src="https://unpkg.com/lenis@1.3.25/dist/lenis.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
 <script src="js/main.js"></script>
 <script src="js/faq.js"></script>
 </body>

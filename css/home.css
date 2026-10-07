@@ -694,7 +694,6 @@
   --card-w: 388px;
   --card-h: 476px;
   --card-gap: 22px;
-  --ticker-dur: 32s;
   --lift: 44px;              /* the stagger step — see the wave below */
 
   /* Full-bleed to the viewport, not to the 1400px wrapper. Bleeding only to
@@ -710,7 +709,7 @@
    The vertical padding is headroom: cards lift on hover and cast a shadow,
    and overflow:hidden would slice both off. */
 .wwo-ticker__rail {
-  display: flex;
+  display: block;
   width: 100%;
   padding: 18px 0 30px;
   overflow: hidden;
@@ -718,27 +717,13 @@
           mask-image: linear-gradient(90deg, transparent 0, #000 60px, #000 calc(100% - 60px), transparent 100%);
 }
 
-/* Two identical tracks sit side by side (the second is cloned in main.js).
-   Each carries a trailing gap and translates -100% of its OWN width, so the
-   hand-off is exact at any card count — the same trick as .s-marquee. */
+/* The track is the Swiper wrapper. Swiper moves it and spaces the cards
+   (spaceBetween = --card-gap, read in js/main.js), so no CSS gap here.
+   Linear timing makes the autoplay run as one smooth belt. */
 .wwo-ticker__track {
-  display: flex;
   align-items: flex-start;
-  flex: none;
-  gap: var(--card-gap);
-  padding-right: var(--card-gap);
-  animation: wwo-ticker var(--ticker-dur) linear infinite;
-  will-change: transform;
+  transition-timing-function: linear !important;
 }
-@keyframes wwo-ticker {
-  from { transform: translate3d(0, 0, 0); }
-  to   { transform: translate3d(-100%, 0, 0); }
-}
-
-/* hold the belt whenever someone is actually engaging with it */
-.wwo-ticker:hover .wwo-ticker__track,
-.wwo-ticker:focus-within .wwo-ticker__track,
-.wwo-ticker.is-locked .wwo-ticker__track { animation-play-state: paused; }
 
 /* ============================================================
    Card
@@ -760,8 +745,10 @@
 /* A three-step wave, not odd/even. With five cards per track an alternating
    pattern lands two flat cards against each other at every loop seam; a 3n
    wave never repeats itself across the join. */
-.wwo-card:nth-child(3n + 2) { margin-top: var(--lift); }
-.wwo-card:nth-child(3n + 3) { margin-top: calc(var(--lift) / 2); }
+/* Classes, not nth-child: Swiper moves slides around in loop mode, and an
+   nth-child wave would make cards jump up and down as they move. */
+.wwo-card--lift { margin-top: var(--lift); }
+.wwo-card--half { margin-top: calc(var(--lift) / 2); }
 
 /* NOTE: an opacity dim on the unfocused cards was tried and removed. Against
    this light page it did not read as "stepped back", it read as washed-out
@@ -800,6 +787,8 @@
   filter: blur(12px) saturate(1.06) brightness(.97);
   transform: scale(1.06);
   transition: filter .7s var(--ease), transform 1.1s var(--ease);
+  /* own GPU layer: the blur is drawn once, not repainted while the belt moves */
+  will-change: transform, filter;
 }
 .wwo-card:hover .wwo-card__media,
 .wwo-card.is-peek .wwo-card__media,
@@ -1050,14 +1039,14 @@
    Responsive
    ============================================================ */
 @media (max-width: 1199px) {
-  .wwo-ticker { --card-w: 344px; --card-h: 466px; --lift: 36px; --ticker-dur: 28s; }
+  .wwo-ticker { --card-w: 344px; --card-h: 466px; --lift: 36px; }
   .wwo-card__title { font-size: 30px; line-height: 35px; }
 }
 
 @media (max-width: 991px) {
   .s-what-we-offer__title { font-size: 42px; line-height: 49px; }
   .s-what-we-offer__main { margin-top: 48px; }
-  .wwo-ticker { --card-w: 304px; --card-h: 428px; --lift: 28px; --ticker-dur: 24s; }
+  .wwo-ticker { --card-w: 304px; --card-h: 428px; --lift: 28px; }
   .wwo-card__front { padding: 22px 22px 24px; }
   .wwo-card__panel { padding: 22px 20px; }
   .wwo-card__title { font-size: 28px; line-height: 33px; }
@@ -1069,17 +1058,10 @@
    a card pulls it into focus, the + still opens the detail. */
 @media (hover: none) {
   .wwo-ticker__rail {
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
     -webkit-mask-image: none;
             mask-image: none;
   }
-  .wwo-ticker__rail::-webkit-scrollbar { display: none; }
-  .wwo-ticker__track { animation: none; padding-inline: var(--pad-inner); }
-  .wwo-ticker__track[data-ticker-clone] { display: none; }
-  .wwo-card { scroll-snap-align: center; margin-top: 0 !important; }
+  .wwo-card { margin-top: 0 !important; }
   .wwo-card__media { filter: blur(10px) saturate(1.06) brightness(.97); }
 }
 
@@ -1107,12 +1089,9 @@
    instead of easing. */
 @media (prefers-reduced-motion: reduce) {
   .wwo-ticker__rail {
-    overflow-x: auto;
     -webkit-mask-image: none;
             mask-image: none;
   }
-  .wwo-ticker__track { animation: none; }
-  .wwo-ticker__track[data-ticker-clone] { display: none; }
   .wwo-card { margin-top: 0 !important; }
   .wwo-card,
   .wwo-card::after,
@@ -1591,7 +1570,7 @@
   margin-top: 44px;
   padding-left: 300px;
 }
-.hm-about__actions .btn__text { letter-spacing: -.2px; }
+.hm-about__actions .p-btn__text { letter-spacing: -.2px; }
 
 .hm-btn-play__icon { background: var(--navy); }
 .hm-btn-play__icon svg { width: 20px; height: 20px; transition: transform .3s var(--ease); }

@@ -2,9 +2,7 @@
    1. Stats band: one figure is in focus at a time (Figma 3:1332 shows the
       first sharp and the other two softened). Hover, focus or tap brings a
       figure forward.
-   2. "Shown vs buying" figure: the gold ring drifts across the
-      photograph as the section scrolls (Figma offset at mid-scroll).
-   3. Common questions: accessible open/close with a GSAP height tween. */
+   2. Common questions: accessible open/close with a GSAP height tween. */
 (function () {
   const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -21,7 +19,7 @@
     list.addEventListener('mouseleave', () => set(items[0]));
   });
 
-  /* ---------- 3. common questions ----------
+  /* ---------- 2. common questions ----------
      Each question opens on its own. Height animates with GSAP; without it
      (or with reduced motion) the answer just appears. */
   document.querySelectorAll('[data-hm-faq] .hm-faq__btn').forEach((btn) => {
@@ -50,19 +48,6 @@
       }
     });
   });
-  function refresh() { if (window.ScrollTrigger) ScrollTrigger.refresh(); }
+  function refresh() { if (window.AOS) AOS.refresh(); }
 
-  /* ---------- 2. ring drift ---------- */
-  const ring = document.querySelector('[data-hm-ring]');
-  if (ring && window.gsap && window.ScrollTrigger && !reduced) {
-    gsap.fromTo(ring, { x: 26, y: -26 }, {
-      x: -26, y: 26, ease: 'none',
-      scrollTrigger: {
-        trigger: ring.parentElement,
-        start: 'clamp(top 90%)',
-        end: 'clamp(bottom 20%)',
-        scrub: 0.8
-      }
-    });
-  }
 })();

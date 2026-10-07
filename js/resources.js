@@ -88,7 +88,7 @@
       if (rail.scrollWidth > rail.clientWidth) {
         rail.scrollTo({ left: tab.offsetLeft - parseFloat(getComputedStyle(rail).paddingLeft), behavior: reduced ? 'auto' : 'smooth' });
       }
-      if (window.ScrollTrigger) ScrollTrigger.refresh();
+      if (window.AOS) AOS.refresh();
     }
 
     tabs.forEach((tab, i) => {

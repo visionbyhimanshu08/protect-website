@@ -218,8 +218,8 @@
   color: var(--gold);
 }
 .wp-pane__btn { margin-top: 24px; }
-.wp-pane__btn .btn__text,
-.wp-table__btn .btn__text { letter-spacing: -0.2px; }
+.wp-pane__btn .p-btn__text,
+.wp-table__btn .p-btn__text { letter-spacing: -0.2px; }
 
 .wp-where__outro {
   max-width: 717px;

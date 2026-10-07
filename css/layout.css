@@ -98,7 +98,7 @@
   color: var(--navy);
 }
 .nav-panel__menu a.is-current { color: var(--gold-700); }
-.nav-panel .btn { align-self: flex-start; }
+.nav-panel .p-btn { align-self: flex-start; }
 
 /* ---------- contact section (Figma 3:1855) ---------- */
 .s-contact {
@@ -417,7 +417,7 @@ a.contact-card:hover .contact-card__value { color: var(--gold-700); }
   .site-header { padding: 16px 0; }
   .site-header__inner { padding: 0 20px; }
   .site-header__logo { width: 76px; height: 54px; }
-  .site-nav, .site-header__right > .btn { display: none; }
+  .site-nav, .site-header__right > .p-btn { display: none; }
   .site-header__burger { display: flex; }
 
   .s-contact__top { flex-direction: column; }

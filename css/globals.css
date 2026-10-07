@@ -75,10 +75,21 @@ h1, h2, h3, h4, h5, h6 { margin: 0; font-family: var(--font-head); font-weight: 
 p { margin: 0; }
 input, textarea { font: inherit; }
 
-/* ---------- Lenis ---------- */
-html.lenis, html.lenis body { height: auto; }
-.lenis.lenis-smooth { scroll-behavior: auto !important; }
-.lenis.lenis-stopped { overflow: hidden; }
+/* ---------- Bootstrap reboot, undone ----------
+   Bootstrap loads before this file. Its reboot gives headings, lists, figures
+   and buttons new sizes and spacing; the design was built on plain browser
+   defaults, so put those back. Classes later in our CSS still win. */
+h1 { font-size: 2em; } h2 { font-size: 1.5em; } h3 { font-size: 1.17em; }
+h4 { font-size: 1em; } h5 { font-size: .83em; } h6 { font-size: .67em; }
+h1, h2, h3, h4, h5, h6 { line-height: inherit; }
+ol { margin: 1em 0; padding-left: 40px; }
+dl { margin: 1em 0; }
+dt { font-weight: inherit; }
+dd { margin: 0 0 0 40px; }
+figure { margin: 1em 40px; }
+small { font-size: smaller; }
+sup { position: static; top: auto; font-size: smaller; line-height: inherit; vertical-align: super; }
+label { display: inline; }
 
 /* ---------- typography scale (measured) ---------- */
 .h-48 { font-size: 48px; line-height: 56px; font-weight: 600; font-family: var(--font-head); }
@@ -104,7 +115,7 @@ html.lenis, html.lenis body { height: auto; }
    .button-text-main  14/24 · 600 · uppercase · #000
    NOTE: on hover the button itself does NOT change — no colour, no border,
    no transform. The only motion is the icon sliding through the tile. */
-.btn {
+.p-btn {
   display: inline-flex;
   align-items: center;
   justify-content: space-between;
@@ -118,7 +129,7 @@ html.lenis, html.lenis body { height: auto; }
   transition: .3s linear;
 }
 
-.btn__icon {
+.p-btn__icon {
   position: relative;
   display: flex;
   align-items: center;
@@ -131,14 +142,14 @@ html.lenis, html.lenis body { height: auto; }
   overflow: hidden;
 }
 
-.btn__icon img {
+.p-btn__icon img {
   width: 16px;
   height: 16px;
   transition: transform .3s linear;
 }
 
 /* the second copy waits just outside the tile on the left */
-.btn__icon img + img {
+.p-btn__icon img + img {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -146,10 +157,10 @@ html.lenis, html.lenis body { height: auto; }
   transform: translateX(-48px);
 }
 
-.btn:hover .btn__icon img:first-child { transform: translateX(48px); }
-.btn:hover .btn__icon img + img { transform: translateX(0); }
+.p-btn:hover .p-btn__icon img:first-child { transform: translateX(48px); }
+.p-btn:hover .p-btn__icon img + img { transform: translateX(0); }
 
-.btn__text {
+.p-btn__text {
   font-family: var(--font-body);
   font-size: 14px;
   font-weight: 600;
@@ -159,7 +170,7 @@ html.lenis, html.lenis body { height: auto; }
 }
 
 /* dark variant (.button-main._02 on the source) */
-.btn--dark {
+.p-btn--dark {
   background: var(--ink);
   color: var(--white);
   border-color: var(--ink);
@@ -171,19 +182,19 @@ html.lenis, html.lenis body { height: auto; }
 .marquee--rev .marquee__track { animation-direction: reverse; }
 @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-100%); } }
 
-/* ---------- scroll reveal (fade + rise) ----------
-   The element is visible by default. JS adds .reveal-up to arm it and .is-in to
-   play it, so a JS/animation failure can never leave content invisible. */
-.reveal-up { opacity: 0; transform: translateY(60px); transition: opacity .9s var(--ease), transform .9s var(--ease); }
-.reveal-up.is-in { opacity: 1; transform: none; }
+/* ---------- AOS (cards, buttons, lists) ----------
+   AOS moves things 100px by default; the design rises 60px. */
+[data-aos="fade-up"] { transform: translate3d(0, 60px, 0); }
+
+/* ---------- reveal() (headings and text) ----------
+   The element is visible by default. js/main.js adds .reveal to arm it and
+   .active to play it, so a JS failure can never leave text invisible. */
+.reveal { opacity: 0; transform: translateY(40px); transition: opacity .9s var(--ease), transform .9s var(--ease); }
+.reveal.active { opacity: 1; transform: none; }
 
 @media (prefers-reduced-motion: reduce) {
-  .reveal-up { opacity: 1; transform: none; transition: none; }
+  .reveal { opacity: 1; transform: none; transition: none; }
 }
-
-/* ---------- SplitText reveal ---------- */
-.split-line { display: block; overflow: hidden; }
-.split-line > span { display: block; will-change: transform; }
 
 /* ---------- reduced motion ---------- */
 @media (prefers-reduced-motion: reduce) {
@@ -198,7 +209,7 @@ html.lenis, html.lenis body { height: auto; }
 @media (max-width: 767px) {
   :root { --pad-inner: 20px; }
 
-  /* .btn spaces its icon tile and its label apart, which is right while the
+  /* .p-btn spaces its icon tile and its label apart, which is right while the
      button is only as wide as its content. Several buttons go full-width down
      here, and space-between then throws the tile against one edge and the label
      against the other with a gulf between them.
@@ -208,5 +219,5 @@ html.lenis, html.lenis body { height: auto; }
      on the site makes — and the label sits one gap along from it. For an
      auto-width button there is no free space to distribute, so this changes
      nothing there and only reaches the stretched ones. */
-  .btn { justify-content: flex-start; }
+  .p-btn { justify-content: flex-start; }
 }

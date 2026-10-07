@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="lenis">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -14,6 +14,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://api.fontshare.com/v2/css?f%5B%5D=general-sans@400,500,600,700&display=swap">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css">
 <link rel="stylesheet" href="css/globals.css">
 <link rel="stylesheet" href="css/layout.css">
 <link rel="stylesheet" href="css/about-us.css">
@@ -36,12 +38,12 @@
         <a class="site-nav__link" href="resources.html">Resources</a>
         <a class="site-nav__link" href="faq.html">FAQ</a>
       </nav>
-      <a class="btn" href="#contact">
-        <span class="btn__icon">
+      <a class="p-btn" href="#contact">
+        <span class="p-btn__icon">
           <img src="assets/img/icon-arrows-navy.svg" alt="" width="16" height="16">
           <img src="assets/img/icon-arrows-navy.svg" alt="" aria-hidden="true" width="16" height="16">
         </span>
-        <span class="btn__text">Contact us</span>
+        <span class="p-btn__text">Contact us</span>
       </a>
       <button class="site-header__burger" type="button" data-nav-toggle aria-label="Open menu" aria-expanded="false">
         <span></span><span></span><span></span>
@@ -63,12 +65,12 @@
       <a href="resources.html">Resources</a>
       <a href="faq.html">FAQ</a>
     </nav>
-    <a class="btn" href="#contact" data-nav-close>
-      <span class="btn__icon">
+    <a class="p-btn" href="#contact" data-nav-close>
+      <span class="p-btn__icon">
         <img src="assets/img/icon-arrows-navy.svg" alt="" width="16" height="16">
         <img src="assets/img/icon-arrows-navy.svg" alt="" aria-hidden="true" width="16" height="16">
       </span>
-      <span class="btn__text">Contact us</span>
+      <span class="p-btn__text">Contact us</span>
     </a>
   </div>
 </div>
@@ -84,12 +86,12 @@
         <h1 class="ab-hero__title" id="ab-hero-title" data-reveal="lines">Independent <br class="ab-br">construction guidance <br class="ab-br">for Melbourne <br class="ab-br">homeowners</h1>
         <p class="ab-hero__lead" data-reveal="lines">Twenty-three years spent on the builder’s side of the table, now spent entirely on yours — reading the quotes, the contracts and the site, so you know exactly what you are signing and exactly what you are getting.</p>
         <div class="ab-hero__cta" data-ab-intro>
-          <a class="btn ab-btn" href="#contact">
-            <span class="btn__icon">
+          <a class="p-btn ab-btn" href="#contact">
+            <span class="p-btn__icon">
               <img src="assets/img/icon-arrows-navy.svg" alt="" width="16" height="16">
               <img src="assets/img/icon-arrows-navy.svg" alt="" aria-hidden="true" width="16" height="16">
             </span>
-            <span class="btn__text">Talk to us</span>
+            <span class="p-btn__text">Talk to us</span>
           </a>
         </div>
         <ul class="ab-hero__facts" data-ab-intro>
@@ -111,23 +113,23 @@
     <section class="ab-sec ab-sec--first" aria-labelledby="ab-what-title">
       <div class="wrap ab-split">
         <figure class="ab-photo">
-          <div class="ab-photo__layer" data-parallax="6"><img src="assets/img/about-us-what-we-do.jpg" alt="A building contract on a desk" width="800" height="1200" loading="lazy"></div>
+          <div class="ab-photo__layer"><img src="assets/img/about-us-what-we-do.jpg" alt="A building contract on a desk" width="800" height="1200" loading="lazy"></div>
           <span class="ab-photo__shade" aria-hidden="true"></span>
           <figcaption class="ab-photo__cap"><h2 class="ab-photo__title" id="ab-what-title" data-reveal="lines">What we do</h2></figcaption>
         </figure>
-        <div class="ab-card ab-card--center" data-reveal="up">
+        <div class="ab-card ab-card--center" data-aos="fade-up">
           <div class="ab-what">
             <p class="ab-what__num"><span data-count="23">23</span></p>
             <div class="ab-what__body">
               <h3 class="ab-what__title">Years reading the documents homeowners are asked to sign</h3>
               <p class="ab-copy ab-what__p1">We review builder quotes, explain contracts in plain English, assess construction progress, identify defects, and guide homeowners through every stage of the building process — from the first question to the final handover.</p>
               <p class="ab-copy ab-what__p2">We are not a building company. We are not a referral agent. We do not earn commissions from builders, developers or material suppliers.</p>
-              <a class="btn ab-btn ab-what__btn" href="#contact">
-                <span class="btn__icon">
+              <a class="p-btn ab-btn ab-what__btn" href="#contact">
+                <span class="p-btn__icon">
                   <img src="assets/img/icon-arrows-navy.svg" alt="" width="16" height="16">
                   <img src="assets/img/icon-arrows-navy.svg" alt="" aria-hidden="true" width="16" height="16">
                 </span>
-                <span class="btn__text">Talk to us</span>
+                <span class="p-btn__text">Talk to us</span>
               </a>
             </div>
           </div>
@@ -167,7 +169,7 @@
                 <p class="ab-who__text">Purchasing land, comparing builder quotes, reviewing a contract before you sign, or wanting an independent set of eyes before you commit to anything.</p>
               </li>
             </ol>
-            <p class="ab-who__note" data-reveal="up">We work extensively with Melbourne’s first-home builders, established homeowners undertaking major renovations, property investors, owner-builders navigating the process independently, and members of Melbourne’s Indian and South Asian communities who have found themselves dealing with builders who overpromised and underdelivered.</p>
+            <p class="ab-who__note" data-aos="fade-up">We work extensively with Melbourne’s first-home builders, established homeowners undertaking major renovations, property investors, owner-builders navigating the process independently, and members of Melbourne’s Indian and South Asian communities who have found themselves dealing with builders who overpromised and underdelivered.</p>
           </div>
         </div>
       </div>
@@ -211,7 +213,7 @@
           </ol>
         </div>
         <figure class="ab-diff__figure">
-          <div class="ab-photo__layer" data-parallax="6"><img src="assets/img/about-us-different.jpg" alt="A Melbourne residential site at the end of the working day" width="900" height="900" loading="lazy"></div>
+          <div class="ab-photo__layer"><img src="assets/img/about-us-different.jpg" alt="A Melbourne residential site at the end of the working day" width="900" height="900" loading="lazy"></div>
           <span class="ab-photo__shade" aria-hidden="true"></span>
         </figure>
       </div>
@@ -247,11 +249,11 @@
     <section class="ab-sec" aria-labelledby="ab-exp-title">
       <div class="wrap ab-split ab-split--tall">
         <figure class="ab-photo">
-          <div class="ab-photo__layer" data-parallax="6"><img src="assets/img/about-us-expertise.jpg" alt="A partly framed Melbourne home under independent inspection" width="800" height="1422" loading="lazy"></div>
+          <div class="ab-photo__layer"><img src="assets/img/about-us-expertise.jpg" alt="A partly framed Melbourne home under independent inspection" width="800" height="1422" loading="lazy"></div>
           <span class="ab-photo__shade" aria-hidden="true"></span>
           <figcaption class="ab-photo__cap"><h2 class="ab-photo__title" id="ab-exp-title" data-reveal="lines">Expertise</h2></figcaption>
         </figure>
-        <div class="ab-card ab-card--center" data-reveal="up">
+        <div class="ab-card ab-card--center" data-aos="fade-up">
           <p class="ab-exp__lead">We do not offer opinions. We offer expertise earned over 23 years of construction management across residential and commercial projects in Australia and internationally — from individual custom homes to multi-million dollar development portfolios.</p>
           <dl class="ab-stats">
             <div class="ab-stat">
@@ -320,17 +322,17 @@
   <section class="ab-china" aria-labelledby="ab-china-title">
     <div class="ab-china__inner">
       <div class="ab-china__main">
-        <p class="ab-china__eyebrow" data-reveal="up">Outside the build sequence</p>
+        <p class="ab-china__eyebrow" data-aos="fade-up">Outside the build sequence</p>
         <h2 class="ab-china__title" id="ab-china-title" data-reveal="lines">China Procurement Assistance</h2>
         <p class="ab-china__sub" data-reveal="lines">Access quality building materials through established supply channels</p>
         <p class="ab-china__text" data-reveal="lines">Melbourne’s construction industry has long sourced materials, fixtures and fittings through Chinese manufacturing. The challenge is knowing which suppliers are reliable, which products meet Australian standards, and how to manage quality, shipping, customs and compliance without getting burnt.</p>
-        <div class="ab-china__cta" data-reveal="up">
-          <a class="btn ab-btn" href="#contact">
-            <span class="btn__icon">
+        <div class="ab-china__cta" data-aos="fade-up">
+          <a class="p-btn ab-btn" href="#contact">
+            <span class="p-btn__icon">
               <img src="assets/img/icon-arrows-navy.svg" alt="" width="16" height="16">
               <img src="assets/img/icon-arrows-navy.svg" alt="" aria-hidden="true" width="16" height="16">
             </span>
-            <span class="btn__text">Talk to us about sourcing</span>
+            <span class="p-btn__text">Talk to us about sourcing</span>
           </a>
         </div>
       </div>
@@ -478,10 +480,9 @@
 </div>
 
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-<script src="https://unpkg.com/lenis@1.3.25/dist/lenis.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
 <script src="js/main.js"></script>
 <script src="js/about-us.js"></script>
 </body>

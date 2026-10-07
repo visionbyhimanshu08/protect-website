@@ -156,7 +156,7 @@
   gap: 24px 32px;
   padding-top: 40px;
 }
-.rs-hero__ctas .btn__text { letter-spacing: -0.2px; }
+.rs-hero__ctas .p-btn__text { letter-spacing: -0.2px; }
 
 /* the tilted checklist card */
 .rs-hero__art {

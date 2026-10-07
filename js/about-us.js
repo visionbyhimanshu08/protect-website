@@ -1,6 +1,5 @@
 /* About us — page-only motion (loaded after main.js)
-   - hero: eyebrow / CTA / facts rise in, photo settles from a slight zoom,
-     then drifts as the hero scrolls away
+   - hero: eyebrow / CTA / facts rise in, photo settles from a slight zoom
    - "What makes us different" list numbers tick in as the list arrives */
 (function () {
   const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -21,12 +20,6 @@
     const img = hero.querySelector('.ab-hero__img');
     if (img) {
       gsap.fromTo(img, { scale: 1.14 }, { scale: 1.04, duration: 1.8, ease: 'power3.out' });
-      if (window.ScrollTrigger) {
-        gsap.to(img, {
-          yPercent: 6, ease: 'none',
-          scrollTrigger: { trigger: hero, start: 'top top', end: 'bottom top', scrub: 0.8 }
-        });
-      }
     }
 
     /* the gold rule in front of the eyebrow draws itself */

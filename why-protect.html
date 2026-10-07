@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="lenis">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -14,6 +14,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://api.fontshare.com/v2/css?f%5B%5D=general-sans@400,500,600,700&display=swap">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css">
 <link rel="stylesheet" href="css/globals.css">
 <link rel="stylesheet" href="css/layout.css">
 <link rel="stylesheet" href="css/why-protect.css">
@@ -36,12 +38,12 @@
         <a class="site-nav__link" href="resources.html">Resources</a>
         <a class="site-nav__link" href="faq.html">FAQ</a>
       </nav>
-      <a class="btn" href="#contact">
-        <span class="btn__icon">
+      <a class="p-btn" href="#contact">
+        <span class="p-btn__icon">
           <img src="assets/img/icon-arrows-navy.svg" alt="" width="16" height="16">
           <img src="assets/img/icon-arrows-navy.svg" alt="" aria-hidden="true" width="16" height="16">
         </span>
-        <span class="btn__text">Contact us</span>
+        <span class="p-btn__text">Contact us</span>
       </a>
       <button class="site-header__burger" type="button" data-nav-toggle aria-label="Open menu" aria-expanded="false">
         <span></span><span></span><span></span>
@@ -63,12 +65,12 @@
       <a href="resources.html">Resources</a>
       <a href="faq.html">FAQ</a>
     </nav>
-    <a class="btn" href="#contact" data-nav-close>
-      <span class="btn__icon">
+    <a class="p-btn" href="#contact" data-nav-close>
+      <span class="p-btn__icon">
         <img src="assets/img/icon-arrows-navy.svg" alt="" width="16" height="16">
         <img src="assets/img/icon-arrows-navy.svg" alt="" aria-hidden="true" width="16" height="16">
       </span>
-      <span class="btn__text">Contact us</span>
+      <span class="p-btn__text">Contact us</span>
     </a>
   </div>
 </div>
@@ -79,11 +81,11 @@
   <!-- ===== HERO ===== -->
   <section class="wp-hero section">
     <div class="wrap">
-      <p class="wp-eyebrow" data-reveal="up">Why Protect Construction Consultants</p>
+      <p class="wp-eyebrow" data-aos="fade-up">Why Protect Construction Consultants</p>
       <h1 class="wp-hero__title" data-reveal="lines">Many Melbourne building companies collapsed last year.</h1>
       <div class="wp-hero__foot">
         <p class="wp-hero__lead" data-reveal="lines">Hundreds of homeowners were left with unfinished homes, frozen deposits and no clear answers.</p>
-        <a class="wp-pill" href="#wp-where" data-reveal="up">
+        <a class="wp-pill" href="#wp-where" data-aos="fade-up">
           <span class="wp-pill__text">But most homeowners lose money on builds that never collapse. <b>See how</b></span>
           <span class="wp-pill__icon" aria-hidden="true">
             <svg viewBox="0 0 16 16" width="16" height="16" fill="none"><path d="M8 2.5v11M3.5 9L8 13.5 12.5 9" stroke="#02224F" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -98,7 +100,7 @@
     <div class="wrap">
       <div class="wp-where__head">
         <h2 class="wp-where__title" data-reveal="lines">We know exactly where <br class="wp-br">you are right now.</h2>
-        <p class="wp-where__hint" data-reveal="up">Choose the one that sounds like you.</p>
+        <p class="wp-where__hint" data-aos="fade-up">Choose the one that sounds like you.</p>
       </div>
 
       <div class="wp-tabs" data-tabs>
@@ -117,9 +119,9 @@
               <li>Tell you what things typically cost — before you approach a builder</li>
               <li>Arm you with the right questions, and the mistakes to avoid from the very beginning</li>
             </ol>
-            <a class="btn wp-pane__btn" href="services.html#pre-construction">
-              <span class="btn__icon"><img src="assets/img/icon-arrows-navy.svg" alt="" width="16" height="16"><img src="assets/img/icon-arrows-navy.svg" alt="" aria-hidden="true" width="16" height="16"></span>
-              <span class="btn__text">Homeowner Advisory</span>
+            <a class="p-btn wp-pane__btn" href="services.html#pre-construction">
+              <span class="p-btn__icon"><img src="assets/img/icon-arrows-navy.svg" alt="" width="16" height="16"><img src="assets/img/icon-arrows-navy.svg" alt="" aria-hidden="true" width="16" height="16"></span>
+              <span class="p-btn__text">Homeowner Advisory</span>
             </a>
           </div>
         </div>
@@ -133,9 +135,9 @@
               <li>Inspect the site independently and report back in plain English</li>
               <li>Hold your builder to the budget, the program and the quality you paid for</li>
             </ol>
-            <a class="btn wp-pane__btn" href="services.html#budget-control">
-              <span class="btn__icon"><img src="assets/img/icon-arrows-navy.svg" alt="" width="16" height="16"><img src="assets/img/icon-arrows-navy.svg" alt="" aria-hidden="true" width="16" height="16"></span>
-              <span class="btn__text">Budget Control</span>
+            <a class="p-btn wp-pane__btn" href="services.html#budget-control">
+              <span class="p-btn__icon"><img src="assets/img/icon-arrows-navy.svg" alt="" width="16" height="16"><img src="assets/img/icon-arrows-navy.svg" alt="" aria-hidden="true" width="16" height="16"></span>
+              <span class="p-btn__text">Budget Control</span>
             </a>
           </div>
         </div>
@@ -149,9 +151,9 @@
               <li>Guide you through your domestic building insurance claim</li>
               <li>Find, brief and manage a new builder to finish the job on your terms</li>
             </ol>
-            <a class="btn wp-pane__btn" href="#contact">
-              <span class="btn__icon"><img src="assets/img/icon-arrows-navy.svg" alt="" width="16" height="16"><img src="assets/img/icon-arrows-navy.svg" alt="" aria-hidden="true" width="16" height="16"></span>
-              <span class="btn__text">Talk to us</span>
+            <a class="p-btn wp-pane__btn" href="#contact">
+              <span class="p-btn__icon"><img src="assets/img/icon-arrows-navy.svg" alt="" width="16" height="16"><img src="assets/img/icon-arrows-navy.svg" alt="" aria-hidden="true" width="16" height="16"></span>
+              <span class="p-btn__text">Talk to us</span>
             </a>
           </div>
         </div>
@@ -164,8 +166,8 @@
   <!-- ===== WHAT WE BRING (stats) ===== -->
   <section class="wp-bring section">
     <div class="wrap wp-bring__grid">
-      <figure class="wp-bring__media" data-reveal="up">
-        <img src="assets/img/why-protect-team.jpg" alt="Protect consultant inspecting a timber-frame home under construction" width="800" height="1422" loading="lazy" data-parallax="7">
+      <figure class="wp-bring__media" data-aos="fade-up">
+        <img src="assets/img/why-protect-team.jpg" alt="Protect consultant inspecting a timber-frame home under construction" width="800" height="1422" loading="lazy">
       </figure>
       <div class="wp-bring__body">
         <h2 class="wp-bring__title" data-reveal="lines">Here is what we bring <br class="wp-br">to your side of the table.</h2>
@@ -197,17 +199,17 @@
     <div class="wp-table__inner">
       <div class="wp-table__copy">
         <h2 class="wp-table__title">
-          <span class="wp-table__l1" data-reveal="up">We have sat at <span class="wp-strike">the builder’s table.<i class="wp-strike__bar" aria-hidden="true"></i></span></span>
+          <span class="wp-table__l1" data-aos="fade-up">We have sat at <span class="wp-strike">the builder’s table.<i class="wp-strike__bar" aria-hidden="true"></i></span></span>
           <span class="wp-table__l2" data-reveal="lines">We know exactly how it works.</span>
           <span class="wp-table__l3" data-reveal="lines">Now we sit at yours.</span>
         </h2>
-        <a class="btn wp-table__btn" href="#contact" data-reveal="up">
-          <span class="btn__icon"><img src="assets/img/icon-arrows-navy.svg" alt="" width="16" height="16"><img src="assets/img/icon-arrows-navy.svg" alt="" aria-hidden="true" width="16" height="16"></span>
-          <span class="btn__text">Talk to us</span>
+        <a class="p-btn wp-table__btn" href="#contact" data-aos="fade-up">
+          <span class="p-btn__icon"><img src="assets/img/icon-arrows-navy.svg" alt="" width="16" height="16"><img src="assets/img/icon-arrows-navy.svg" alt="" aria-hidden="true" width="16" height="16"></span>
+          <span class="p-btn__text">Talk to us</span>
         </a>
       </div>
       <div class="wp-table__media" aria-hidden="true">
-        <img src="assets/img/why-protect-table.jpg" alt="" width="900" height="900" loading="lazy" data-parallax="6">
+        <img src="assets/img/why-protect-table.jpg" alt="" width="900" height="900" loading="lazy">
       </div>
     </div>
   </section>
@@ -342,10 +344,9 @@
 </div>
 
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-<script src="https://unpkg.com/lenis@1.3.25/dist/lenis.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
 <script src="js/main.js"></script>
 <script src="js/why-protect.js"></script>
 </body>

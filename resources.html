@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="lenis">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -14,6 +14,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://api.fontshare.com/v2/css?f%5B%5D=general-sans@400,500,600,700&display=swap">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css">
 <link rel="stylesheet" href="css/globals.css">
 <link rel="stylesheet" href="css/layout.css">
 <link rel="stylesheet" href="css/resources.css">
@@ -36,12 +38,12 @@
         <a class="site-nav__link" href="resources.html">Resources</a>
         <a class="site-nav__link" href="faq.html">FAQ</a>
       </nav>
-      <a class="btn" href="#contact">
-        <span class="btn__icon">
+      <a class="p-btn" href="#contact">
+        <span class="p-btn__icon">
           <img src="assets/img/icon-arrows-navy.svg" alt="" width="16" height="16">
           <img src="assets/img/icon-arrows-navy.svg" alt="" aria-hidden="true" width="16" height="16">
         </span>
-        <span class="btn__text">Contact us</span>
+        <span class="p-btn__text">Contact us</span>
       </a>
       <button class="site-header__burger" type="button" data-nav-toggle aria-label="Open menu" aria-expanded="false">
         <span></span><span></span><span></span>
@@ -63,12 +65,12 @@
       <a href="resources.html">Resources</a>
       <a href="faq.html">FAQ</a>
     </nav>
-    <a class="btn" href="#contact" data-nav-close>
-      <span class="btn__icon">
+    <a class="p-btn" href="#contact" data-nav-close>
+      <span class="p-btn__icon">
         <img src="assets/img/icon-arrows-navy.svg" alt="" width="16" height="16">
         <img src="assets/img/icon-arrows-navy.svg" alt="" aria-hidden="true" width="16" height="16">
       </span>
-      <span class="btn__text">Contact us</span>
+      <span class="p-btn__text">Contact us</span>
     </a>
   </div>
 </div>
@@ -80,16 +82,16 @@
   <section class="section rs-hero">
     <div class="wrap rs-hero__wrap">
       <div class="rs-hero__copy">
-        <p class="rs-eyebrow rs-eyebrow--lg" data-reveal="up">Free resources</p>
+        <p class="rs-eyebrow rs-eyebrow--lg" data-aos="fade-up">Free resources</p>
         <h1 class="rs-hero__title" data-reveal="lines"><span>Know before you</span> <span>sign.</span></h1>
         <p class="rs-hero__lead" data-reveal="lines">Checklists for every stage of your build, a quick check for a builder in trouble, and the words in your contract translated into plain English — from 23 years on the builder’s side of the table.</p>
-        <div class="rs-hero__ctas" data-reveal="up">
-          <a class="btn" href="#checklists">
-            <span class="btn__icon">
+        <div class="rs-hero__ctas" data-aos="fade-up">
+          <a class="p-btn" href="#checklists">
+            <span class="p-btn__icon">
               <img src="assets/img/icon-arrows-navy.svg" alt="" width="16" height="16">
               <img src="assets/img/icon-arrows-navy.svg" alt="" aria-hidden="true" width="16" height="16">
             </span>
-            <span class="btn__text">Open the checklists</span>
+            <span class="p-btn__text">Open the checklists</span>
           </a>
           <a class="rs-link" href="#builder-speak">Decode builder-speak <svg class="rs-link__icon" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M1.5 7h10.5M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
         </div>
@@ -119,7 +121,7 @@
         <h2 class="rs-head__title" data-reveal="lines">A checklist for every stage</h2>
         <p class="rs-head__text" data-reveal="lines">Tick as you go. Your progress stays saved on this device, so you can come back to it after the next site meeting.</p>
       </div>
-      <div class="rs-stages__body" data-checklists data-reveal="up">
+      <div class="rs-stages__body" data-checklists data-aos="fade-up">
         <div class="rs-tabs" role="tablist" aria-label="Checklists" aria-orientation="vertical">
           <button class="rs-tab is-current" type="button" role="tab" id="rs-tab-buy" aria-controls="rs-pane-buy" aria-selected="true" tabindex="0" data-stage-tab="buy">
             <span class="rs-eyebrow rs-eyebrow--sm">Before you buy</span>
@@ -569,7 +571,7 @@
   <section class="section rs-trouble" id="quick-check">
     <div class="wrap rs-trouble__wrap">
       <div class="rs-trouble__copy">
-        <p class="rs-eyebrow rs-eyebrow--gold" data-reveal="up">Quick check</p>
+        <p class="rs-eyebrow rs-eyebrow--gold" data-aos="fade-up">Quick check</p>
         <h2 class="rs-trouble__title" data-reveal="lines"><span>Is your builder in</span> <span>trouble?</span></h2>
         <p class="rs-trouble__lead" data-reveal="lines">None of these alone confirms financial trouble — but a pattern is concerning. Tick what you are seeing on your build.</p>
       </div>
@@ -618,7 +620,7 @@
                 </label>
             </li>
         </ul>
-        <div class="rs-meter" data-level="0" data-reveal="up">
+        <div class="rs-meter" data-level="0" data-aos="fade-up">
           <div class="rs-meter__bars" aria-hidden="true"><span></span><span></span><span></span></div>
           <p class="rs-meter__title" data-signs-title aria-live="polite">Tick any sign you are seeing.</p>
           <p class="rs-meter__text"><span data-signs-text>Nothing ticked — nothing to worry about yet.</span> <a class="rs-meter__cta" href="#contact" data-signs-cta>Talk to us <svg class="rs-link__icon" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M1.5 7h10.5M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></p>
@@ -992,10 +994,9 @@
 </div>
 
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-<script src="https://unpkg.com/lenis@1.3.25/dist/lenis.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
 <script src="js/main.js"></script>
 <script src="js/resources.js"></script>
 </body>

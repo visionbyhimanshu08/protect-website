@@ -2,7 +2,7 @@
    Loaded after main.js. */
 (function () {
   const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const refresh = () => { if (window.ScrollTrigger) ScrollTrigger.refresh(); };
+  const refresh = () => { if (window.AOS) AOS.refresh(); };
 
   /* ---------- 1. service cards: one open at a time ---------- */
   const cards = [...document.querySelectorAll('[data-card-acc]')];
@@ -112,27 +112,41 @@
     idx.addEventListener('mouseleave', () => { if (preview) preview.classList.remove('is-on'); });
   }
 
-  /* ---------- 3. stage rail: gold fill scrubs with scroll, dots light up ---------- */
+  /* ---------- 3. stage rail: gold fill grows with scroll, dots light up ----------
+     One passive scroll listener, at most one update per frame, and it only
+     runs while the rail is on screen. */
   const fill = document.querySelector('[data-stages-fill]');
   const stages = [...document.querySelectorAll('[data-stage]')];
   if (stages.length) stages[0].classList.add('is-active');
 
-  if (stagesRoot && window.gsap && window.ScrollTrigger && !reduced) {
-    if (fill) {
-      gsap.fromTo(fill, { scaleY: 0 }, {
-        scaleY: 1, ease: 'none',
-        scrollTrigger: { trigger: stagesRoot, start: 'top 60%', end: 'bottom 60%', scrub: 0.6 }
-      });
-    }
-    stages.forEach((s, i) => {
-      if (i === 0) return;
-      ScrollTrigger.create({
-        trigger: s, start: 'top 60%',
-        onEnter: () => s.classList.add('is-active'),
-        onLeaveBack: () => s.classList.remove('is-active')
-      });
-    });
+  if (stagesRoot && !reduced) {
+    let onScreen = false;
+    let queued = false;
 
+    const update = () => {
+      queued = false;
+      const line = window.innerHeight * 0.6;          // 60% down the screen
+      if (fill) {
+        const r = stagesRoot.getBoundingClientRect();
+        const p = Math.min(Math.max((line - r.top) / r.height, 0), 1);
+        fill.style.transform = `scaleY(${p})`;
+      }
+      stages.forEach((st, i) => {
+        if (i) st.classList.toggle('is-active', st.getBoundingClientRect().top < line);
+      });
+    };
+    const onScroll = () => {
+      if (onScreen && !queued) { queued = true; requestAnimationFrame(update); }
+    };
+
+    new IntersectionObserver((entries) => {
+      onScreen = entries[0].isIntersecting;
+      if (onScreen) onScroll();
+    }).observe(stagesRoot);
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+    update();
   } else {
     stages.forEach(s => s.classList.add('is-active'));
   }

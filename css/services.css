@@ -19,7 +19,7 @@
   border: 0;
 }
 
-.sv-btn .btn__text { letter-spacing: -0.2px; }
+.sv-btn .p-btn__text { letter-spacing: -0.2px; }
 
 /* ============================================================
    1. Hero + service index (3:1996)
@@ -419,7 +419,7 @@
   scroll-margin-top: 24px;
   transition: background-color .45s var(--ease), border-color .45s var(--ease), box-shadow .3s var(--ease);
 }
-.sv-card.reveal-up {
+.sv-card[data-aos] {
   transition: opacity .9s var(--ease), transform .9s var(--ease), background-color .45s var(--ease), border-color .45s var(--ease), box-shadow .3s var(--ease);
 }
 .sv-card:not(.is-open):hover { box-shadow: 0 10px 30px rgba(2, 34, 79, .07); }
@@ -751,7 +751,7 @@
   .sv-start__copy p { font-size: 16px; line-height: 27px; }
   .sv-start__steps { grid-template-columns: 1fr; }
   .sv-start__steps li { padding: 22px 20px; }
-  .sv-start__cta .btn { width: 100%; }
+  .sv-start__cta .p-btn { width: 100%; }
 
   .sv-stats { padding: 44px 20px; }
   .sv-stats__title { font-size: 26px; line-height: 34px; }
@@ -783,7 +783,7 @@
   .sv-china__panel { padding: 44px 20px; }
   .sv-china__title { font-size: 30px; line-height: 38px; }
   .sv-china__eyebrow { font-size: 14px; }
-  .sv-china__cta .btn { width: 100%; }
+  .sv-china__cta .p-btn { width: 100%; }
 }
 
 @media (max-width: 420px) {
