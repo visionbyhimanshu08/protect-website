@@ -41,15 +41,39 @@
   --font-body: "Inter", system-ui, sans-serif;
 
   /* layout */
-  --content:     1320px;   /* inner content column at 1440 */
-  --gutter:      20px;     /* .section side padding */
-  --pad-inner:   40px;     /* wrapper inner padding */
+  /* page side space: every block on every page starts and ends this far from
+     the screen edge, so all content sits on the same two vertical lines.
+     80px on desktop, 40px at <=1199, 20px at <=767. */
+  --side:        80px;
+  --content:     100%;     /* content column = screen width minus --side x 2 */
+  --gutter:      0px;      /* .section side padding (side space lives in .wrap) */
+  --pad-inner:   var(--side);   /* wrapper inner padding */
   --nav-h:       96px;
   --bar-h:       56px;
 
   /* motion */
   --ease: cubic-bezier(.25, .46, .45, .94);
   --dur:  .3s;
+
+  /* type scale — copied from the client's own About page (watch/style.css,
+     .heading_text_1 … _6, p, span, .text_14). Every text size on every page
+     comes from this list and nothing else, so the same kind of text is the
+     same size everywhere. Size / line-height, all even numbers. The values
+     step down at 1199px and 767px (see the media queries at the bottom). */
+  --fs-h1: 64px;   --lh-h1: 72px;    /* home hero headline            */
+  --fs-h2: 56px;   --lh-h2: 66px;    /* page hero title               */
+  --fs-h3: 48px;   --lh-h3: 56px;    /* section title                 */
+  --fs-h4: 36px;   --lh-h4: 44px;    /* sub-section title, big quote  */
+  --fs-h5: 24px;   --lh-h5: 32px;    /* card title, lead statement    */
+  --fs-h6: 20px;   --lh-h6: 28px;    /* small card title              */
+  --fs-p:  18px;   --lh-p:  28px;    /* body copy                     */
+  --fs-sm: 16px;   --lh-sm: 24px;    /* small copy                    */
+  --fs-xs: 14px;   --lh-xs: 24px;    /* labels, eyebrows, buttons     */
+
+  /* display numbers (counters, step numbers) — client's .what_we_num and
+     .expertise_counter_num */
+  --fs-num-xl: 104px; --lh-num-xl: 96px;
+  --fs-num:    56px;  --lh-num:    56px;
 }
 
 /* ---------- reset ---------- */
@@ -60,9 +84,8 @@ body {
   background: var(--white);
   color: var(--grey-600);
   font-family: var(--font-body);
-  font-size: 18px;
-  line-height: 25.2px;
-  font-weight: 500;
+  font-size: var(--fs-p);
+  line-height: var(--lh-p);
   font-weight: 400;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
@@ -79,9 +102,13 @@ input, textarea { font: inherit; }
    Bootstrap loads before this file. Its reboot gives headings, lists, figures
    and buttons new sizes and spacing; the design was built on plain browser
    defaults, so put those back. Classes later in our CSS still win. */
-h1 { font-size: 2em; } h2 { font-size: 1.5em; } h3 { font-size: 1.17em; }
-h4 { font-size: 1em; } h5 { font-size: .83em; } h6 { font-size: .67em; }
-h1, h2, h3, h4, h5, h6 { line-height: inherit; }
+/* plain h1-h6 use the client's heading scale; page classes still win */
+h1 { font-size: var(--fs-h1); line-height: var(--lh-h1); }
+h2 { font-size: var(--fs-h2); line-height: var(--lh-h2); }
+h3 { font-size: var(--fs-h3); line-height: var(--lh-h3); }
+h4 { font-size: var(--fs-h4); line-height: var(--lh-h4); }
+h5 { font-size: var(--fs-h5); line-height: var(--lh-h5); }
+h6 { font-size: var(--fs-h6); line-height: var(--lh-h6); }
 ol { margin: 1em 0; padding-left: 40px; }
 dl { margin: 1em 0; }
 dt { font-weight: inherit; }
@@ -91,19 +118,18 @@ small { font-size: smaller; }
 sup { position: static; top: auto; font-size: smaller; line-height: inherit; vertical-align: super; }
 label { display: inline; }
 
-/* ---------- typography scale (measured) ---------- */
-.h-48 { font-size: 48px; line-height: 56px; font-weight: 600; font-family: var(--font-head); }
-.h-42 { font-size: 42px; line-height: 49px; font-weight: 600; font-family: var(--font-head); }
-.h-36 { font-size: 36px; line-height: 44px; font-weight: 600; font-family: var(--font-head); text-transform: uppercase; }
-.h-32 { font-size: 32px; line-height: 38.4px; font-weight: 400; font-family: var(--font-head); }
-.h-24 { font-size: 24px; line-height: 31.92px; font-weight: 500; font-family: var(--font-head); }
-.h-20 { font-size: 20px; line-height: 28px; font-weight: 600; font-family: var(--font-head); }
-.body-16 { font-size: 16px; line-height: 24px; }
-.label-14 { font-size: 14px; line-height: 24px; font-weight: 600; text-transform: uppercase; letter-spacing: .7px; }
+/* ---------- typography scale (client's class names) ---------- */
+.heading_text_1 { font-size: var(--fs-h1); line-height: var(--lh-h1); font-weight: 600; font-family: var(--font-head); }
+.heading_text_2 { font-size: var(--fs-h2); line-height: var(--lh-h2); font-weight: 600; font-family: var(--font-head); }
+.heading_text_3 { font-size: var(--fs-h3); line-height: var(--lh-h3); font-weight: 600; font-family: var(--font-head); }
+.heading_text_4 { font-size: var(--fs-h4); line-height: var(--lh-h4); font-weight: 600; font-family: var(--font-head); }
+.heading_text_5 { font-size: var(--fs-h5); line-height: var(--lh-h5); font-weight: 500; font-family: var(--font-head); }
+.heading_text_6 { font-size: var(--fs-h6); line-height: var(--lh-h6); font-weight: 600; font-family: var(--font-head); }
+.text_14 { font-size: var(--fs-xs); line-height: var(--lh-xs); font-weight: 600; }
 
 /* ---------- layout helpers ---------- */
 .section { padding-left: var(--gutter); padding-right: var(--gutter); position: relative; }
-.wrap { width: 100%; max-width: calc(var(--content) + var(--pad-inner) * 2); margin-inline: auto; padding: 0 var(--pad-inner); }
+.wrap { width: 100%; margin-inline: auto; padding: 0 var(--pad-inner); }
 
 /* ---------- shared button (.button-main) ----------
    Measured on heritage-template.webflow.io:
@@ -162,9 +188,9 @@ label { display: inline; }
 
 .p-btn__text {
   font-family: var(--font-body);
-  font-size: 14px;
+  font-size: var(--fs-xs);
   font-weight: 600;
-  line-height: 24px;
+  line-height: var(--lh-xs);
   text-transform: uppercase;
   white-space: nowrap;
 }
@@ -202,12 +228,34 @@ label { display: inline; }
   *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
 }
 
-/* ---------- breakpoints ---------- */
+/* ---------- breakpoints ----------
+   Only Bootstrap's own: 1399 / 1199 / 991 / 767 / 575. */
+@media (max-width: 1199px) {
+  :root {
+    --side: 40px;
+    --fs-h1: 56px; --lh-h1: 64px;
+    --fs-h2: 48px; --lh-h2: 56px;
+    --fs-h3: 36px; --lh-h3: 44px;
+    --fs-num-xl: 84px; --lh-num-xl: 84px;
+    --fs-num: 48px;    --lh-num: 48px;
+  }
+}
 @media (max-width: 991px) {
-  :root { --nav-h: 75px; }
+  :root { --nav-h: 76px; }
 }
 @media (max-width: 767px) {
-  :root { --pad-inner: 20px; }
+  :root {
+    --side: 20px;
+    --fs-h1: 40px; --lh-h1: 48px;
+    --fs-h2: 36px; --lh-h2: 44px;
+    --fs-h3: 28px; --lh-h3: 36px;
+    --fs-h4: 22px; --lh-h4: 32px;
+    --fs-h5: 18px; --lh-h5: 28px;
+    --fs-h6: 16px; --lh-h6: 24px;
+    --fs-p:  16px; --lh-p:  24px;
+    --fs-num-xl: 72px; --lh-num-xl: 72px;
+    --fs-num: 40px;    --lh-num: 48px;
+  }
 
   /* .p-btn spaces its icon tile and its label apart, which is right while the
      button is only as wide as its content. Several buttons go full-width down

@@ -81,7 +81,8 @@
     /* on tablet/mobile the nav is a horizontal strip: keep the current chip in view */
     const link = navLinks[i];
     if (nav && link && nav.scrollWidth > nav.clientWidth + 1) {
-      nav.scrollTo({ left: link.offsetLeft - nav.offsetLeft - 16, behavior: noMotion ? 'auto' : 'smooth' });
+      const side = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--side')) || 20;
+      nav.scrollTo({ left: link.offsetLeft - nav.offsetLeft - side, behavior: noMotion ? 'auto' : 'smooth' });
     }
   }
 

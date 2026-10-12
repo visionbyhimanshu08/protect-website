@@ -12,9 +12,9 @@
 
 .fq-eyebrow {
   font-family: var(--font-body);
-  font-size: 12px;
+  font-size: var(--fs-xs);
   font-weight: 600;
-  line-height: 20px;
+  line-height: var(--lh-xs);
   letter-spacing: 1.5px;
   text-transform: uppercase;
   color: var(--navy-700);
@@ -22,7 +22,7 @@
 
 /* ---------- hero (3:2629) ---------- */
 .fq-hero {
-  padding: 30px 20px 0;          /* 158 in Figma, minus the 128px header */
+  padding: 30px 0 0;             /* 158 in Figma, minus the 128px header; sides come from .wrap (var(--side)) */
   background: var(--grey-100);
 }
 .fq-hero__inner {
@@ -33,17 +33,17 @@
 }
 .fq-hero__title {
   max-width: 668px;
-  font-size: 64px;
-  line-height: 72px;
-  letter-spacing: -2.2px;
+  font-size: var(--fs-h2);
+  line-height: var(--lh-h2);
+  letter-spacing: -.024em;
   font-weight: 600;
   color: var(--navy);
 }
 .fq-hero__aside { flex: 0 0 520px; max-width: 520px; }
 .fq-hero__lead {
   max-width: 472px;
-  font-size: 18px;
-  line-height: 29px;
+  font-size: var(--fs-p);
+  line-height: var(--lh-p);
   letter-spacing: -0.4px;
   color: var(--grey-600);
 }
@@ -56,13 +56,12 @@
   align-items: center;
   justify-content: space-between;
   gap: 16px;
-  margin: 0 -16px;
-  padding: 16px;
+  padding: 16px 0;               /* no outward -16px nudge: text + hover box sit on the side lines */
   border-radius: 10px;
   font-family: var(--font-head);
-  font-size: 18px;
+  font-size: var(--fs-p);
   font-weight: 500;
-  line-height: 26px;
+  line-height: var(--lh-p);
   letter-spacing: -0.6px;
   color: var(--navy);
   transition: background-color var(--dur) var(--ease);
@@ -81,7 +80,7 @@
 
 /* ---------- Q&A block (3:2675) ---------- */
 .fq-qa {
-  padding: 72px 20px 104px;
+  padding: 72px 0 104px;         /* sides come from .wrap (var(--side)) */
   background: var(--grey-100);
 }
 .fq-qa__inner {
@@ -102,7 +101,7 @@
   position: relative;
   display: flex;
   align-items: flex-start;
-  padding: 9px 0 10px 16px;
+  padding: 10px 0 10px 16px;
   color: var(--grey-600);
   transition: color var(--dur) var(--ease);
 }
@@ -110,8 +109,8 @@
   content: "";
   position: absolute;
   left: 0;
-  top: 9px;
-  bottom: 9px;
+  top: 10px;
+  bottom: 10px;
   width: 2px;
   border-radius: 2px;
   background: var(--gold);
@@ -120,26 +119,25 @@
 }
 .fq-nav__num {
   flex: 0 0 38px;
-  padding-top: 1px;
   font-family: var(--font-head);
-  font-size: 12px;
+  font-size: var(--fs-xs);
   font-weight: 600;
-  line-height: 22px;
+  line-height: var(--lh-xs);
   letter-spacing: 0.8px;
   color: var(--grey-600);
   transition: color var(--dur) var(--ease);
 }
 .fq-nav__name {
   flex: 0 1 220px;
-  font-size: 16px;
-  line-height: 22px;
+  font-size: var(--fs-sm);
+  line-height: var(--lh-sm);
   letter-spacing: -0.2px;
   font-weight: 400;
 }
 .fq-nav__count {
   margin-left: auto;
-  font-size: 14px;
-  line-height: 22px;
+  font-size: var(--fs-xs);
+  line-height: var(--lh-xs);
   letter-spacing: -0.1px;
   font-weight: 400;
   color: var(--grey-600);
@@ -158,16 +156,16 @@
 }
 .fq-help__title {
   font-family: var(--font-head);
-  font-size: 20px;
+  font-size: var(--fs-h6);
   font-weight: 600;
-  line-height: 27px;
+  line-height: var(--lh-h6);
   letter-spacing: -0.4px;
   color: var(--white);
 }
 .fq-help__text {
   padding-top: 8px;
-  font-size: 14px;
-  line-height: 23px;
+  font-size: var(--fs-xs);
+  line-height: var(--lh-xs);
   letter-spacing: -0.2px;
   color: rgba(255, 255, 255, .74);
 }
@@ -176,11 +174,11 @@
   align-items: center;
   gap: 8px;
   margin-top: 16px;
-  padding-bottom: 3px;
+  padding-bottom: 4px;
   border-bottom: 1px solid rgba(209, 155, 35, .45);
-  font-size: 14px;
+  font-size: var(--fs-xs);
   font-weight: 600;
-  line-height: 22px;
+  line-height: 20px;
   letter-spacing: -0.2px;
   color: var(--gold);
   transition: border-color var(--dur) var(--ease);
@@ -201,24 +199,24 @@
 .fq-topic__num {
   flex: none;
   font-family: var(--font-head);
-  font-size: 16px;
+  font-size: var(--fs-sm);
   font-weight: 600;
-  line-height: 25.2px;
+  line-height: var(--lh-sm);
   letter-spacing: 0.8px;
   color: var(--gold-700);
 }
 .fq-topic__title {
-  font-size: 32px;
-  line-height: 40px;
-  letter-spacing: -0.4px;
+  font-size: var(--fs-h4);
+  line-height: var(--lh-h4);
+  letter-spacing: -.014em;
   font-weight: 600;
   color: var(--navy);
 }
 .fq-topic__count {
   flex: none;
   margin-left: auto;
-  font-size: 14px;
-  line-height: 22px;
+  font-size: var(--fs-xs);
+  line-height: var(--lh-xs);
   letter-spacing: -0.2px;
   color: var(--grey-600);
 }
@@ -245,17 +243,17 @@
 .fq-item__btn:focus-visible { outline: 2px solid var(--gold); outline-offset: 4px; border-radius: 4px; }
 .fq-item__num {
   font-family: var(--font-head);
-  font-size: 14px;
+  font-size: var(--fs-xs);
   font-weight: 600;
-  line-height: 30px;
+  line-height: var(--lh-h6);      /* same line box as the question beside it */
   letter-spacing: 0.5px;
   color: var(--gold-700);
 }
 .fq-item__q {
   font-family: var(--font-head);
-  font-size: 20px;
+  font-size: var(--fs-h6);
   font-weight: 600;
-  line-height: 30px;
+  line-height: var(--lh-h6);
   letter-spacing: -0.6px;
   color: var(--navy);
   transition: color var(--dur) var(--ease);
@@ -263,12 +261,13 @@
 .fq-item__btn:hover .fq-item__q { color: var(--navy-700); }
 
 /* +/- icon: 36px circle; open = navy fill with white minus,
-   closed = grey ring with navy plus (Figma 3:2751 / 3:2764) */
+   closed = grey ring with navy plus (Figma 3:2751 / 3:2764).
+   -4px top margin centres it on the question's first line. */
 .fq-item__icon {
   position: relative;
   width: 36px;
   height: 36px;
-  margin-top: -3px;
+  margin-top: -4px;
   border-radius: 50%;
   border: 1px solid var(--grey-300);
   background: var(--white);
@@ -284,11 +283,11 @@
   background: var(--navy);
   transition: transform .35s var(--ease), background-color var(--dur) var(--ease);
 }
-.fq-item__icon::before { width: 12px; height: 1.6px; transform: translate(-50%, -50%); }
+.fq-item__icon::before { width: 12px; height: 2px; transform: translate(-50%, -50%); }
 .fq-item__icon::after  { width: 2px; height: 12px; transform: translate(-50%, -50%); }
 .fq-item__btn:hover .fq-item__icon { border-color: var(--navy); }
 .fq-item__btn[aria-expanded="true"] .fq-item__icon { background: var(--navy); border-color: var(--navy); }
-.fq-item__btn[aria-expanded="true"] .fq-item__icon::before { height: 2px; background: var(--white); }
+.fq-item__btn[aria-expanded="true"] .fq-item__icon::before { background: var(--white); }
 .fq-item__btn[aria-expanded="true"] .fq-item__icon::after {
   background: var(--white);
   transform: translate(-50%, -50%) rotate(90deg) scaleX(0);
@@ -300,15 +299,14 @@
 .fq-item__body { padding: 0 52px 28px 62px; }
 .fq-item__body p {
   max-width: 686px;
-  font-size: 16px;
-  line-height: 29px;
+  font-size: var(--fs-p);
+  line-height: var(--lh-p);
   letter-spacing: -0.3px;
   color: var(--grey-600);
 }
 
 /* ---------- responsive ---------- */
 @media (max-width: 1199px) {
-  .fq-hero__title { font-size: 54px; line-height: 62px; letter-spacing: -1.8px; }
   .fq-hero__aside { flex-basis: 440px; }
   .fq-qa__inner { grid-template-columns: 250px minmax(0, 1fr); gap: 40px; }
   .fq-nav__num { flex-basis: 30px; }
@@ -322,7 +320,7 @@
   .fq-hero__aside { flex-basis: auto; max-width: none; }
   .fq-hero__lead { max-width: 600px; }
 
-  .fq-qa { padding: 56px 20px 80px; }
+  .fq-qa { padding: 56px 0 80px; }
   .fq-qa__inner { grid-template-columns: minmax(0, 1fr); gap: 0; }
   /* sidebar pieces become grid items: topics strip on top, help card last */
   .fq-side { display: contents; }
@@ -331,8 +329,9 @@
     order: 1;
     flex-direction: row;
     gap: 8px;
-    margin-bottom: 40px;
-    padding: 12px 0 4px;
+    /* scroller bleeds to the screen edge; first pill still starts on the side line */
+    margin: 0 calc(-1 * var(--side)) 40px;
+    padding: 12px var(--side) 4px;
     overflow-x: auto;
     scrollbar-width: none;
   }
@@ -347,8 +346,10 @@
     background: var(--white);
   }
   .fq-nav__link::before { display: none; }
+  /* snap on the small number (its margin reaches back over the 1px border + 14px padding
+     to the pill edge): a pill wider than the strip would otherwise switch snapping off */
   .fq-nav__num, .fq-nav__name { flex: none; padding: 0; }
-  .fq-nav__name { white-space: nowrap; font-size: 14px; }
+  .fq-nav__name { white-space: nowrap; }
   .fq-nav__count { margin-left: 0; }
   .fq-nav__link.is-current { border-color: var(--navy); }
   .fq-topics { order: 2; }
@@ -358,22 +359,15 @@
 
 @media (max-width: 767px) {
   .page-faq .s-contact { margin: 56px 0; }
-  .fq-hero { padding: 32px 16px 0; }
-  .fq-hero .wrap, .fq-qa .wrap { padding: 0; }
-  .fq-hero__title { font-size: 38px; line-height: 44px; letter-spacing: -1.2px; }
-  .fq-hero__lead { font-size: 16px; line-height: 27px; }
-  .fq-paths__link { font-size: 18px; line-height: 24px; }
+  .fq-hero { padding-top: 32px; }
 
-  .fq-qa { padding: 48px 16px 64px; }
+  .fq-qa { padding: 48px 0 64px; }
   .fq-topic + .fq-topic { padding-top: 48px; }
   .fq-topic__head { flex-wrap: wrap; gap: 4px 12px; padding-bottom: 16px; }
-  .fq-topic__title { font-size: 24px; line-height: 31px; flex: 1 1 calc(100% - 40px); }
+  .fq-topic__title { flex: 1 1 calc(100% - 40px); }
   .fq-topic__count { margin-left: 0; flex-basis: 100%; padding-left: 30px; }
   .fq-card { padding: 0 18px; }
   .fq-item__btn { grid-template-columns: 30px minmax(0, 1fr) 32px; gap: 10px; padding: 20px 0; }
-  .fq-item__q { font-size: 18px; line-height: 26px; }
-  .fq-item__num { line-height: 26px; }
-  .fq-item__icon { width: 32px; height: 32px; margin-top: -3px; }
+  .fq-item__icon { width: 32px; height: 32px; }   /* -4px top margin centres it on the 24px line */
   .fq-item__body { padding: 0 0 24px 40px; }
-  .fq-item__body p { font-size: 16px; line-height: 26px; }
 }
