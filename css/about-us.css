@@ -230,7 +230,7 @@
 
 /* Expertise — client .expertise_* */
 .ab-exp__lead {
-  font: 500 var(--fs-h5)/39px var(--font-head); color: var(--navy);
+  font: 500 var(--fs-h5)/40px var(--font-head); color: var(--navy);
 }
 .ab-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 34px 40px; margin: 0; }
 .ab-stat {
@@ -250,7 +250,7 @@
 }
 .ab-stat__label {
   margin: 0;
-  font-size: 16px; line-height: 25px; font-weight: 700;
+  font-size: 16px; line-height: 26px; font-weight: 700;
   letter-spacing: -.23px; color: var(--grey-600);
 }
 
@@ -261,7 +261,7 @@
   color: var(--navy);
 }
 .ab-acc__list li {
-  font-size: var(--fs-p); line-height: 25px; font-weight: 700;
+  font-size: var(--fs-p); line-height: 26px; font-weight: 700;
   letter-spacing: -.44px; color: var(--grey-600);
 }
 
@@ -292,7 +292,7 @@
   position: relative;
   padding: 13px 0 13px 22px;
   border-top: 1px solid rgba(255, 255, 255, .12);
-  font: 400 16px/25px var(--font-body); letter-spacing: -.23px;
+  font: 400 16px/26px var(--font-body); letter-spacing: -.23px;
   color: rgba(255, 255, 255, .8);
 }
 .ab-china__list li::before {
@@ -375,7 +375,7 @@
 
   .ab-copy { line-height: var(--lh-p); }
   .ab-what__num { letter-spacing: -3px; }
-  .ab-what__title { font-size: var(--fs-h4); line-height: 31px; }
+  .ab-what__title { font-size: var(--fs-h4); line-height: var(--lh-h4); }
   .ab-what__p1, .ab-what__p2 { margin-top: 16px; line-height: 28px; }
   .ab-exp__lead { line-height: var(--lh-h5); }
 
@@ -383,7 +383,6 @@
   .ab-diff__figure { height: 300px; }
   .ab-acc__list li { line-height: var(--lh-p); }
   .ab-acc .ab-copy { line-height: 30px; }
-  .ab-china__title { line-height: 31px; }
 }
 
 @media (max-width: 575px) {

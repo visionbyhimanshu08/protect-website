@@ -59,13 +59,13 @@
   /* type scale — copied from the client's own About page (watch/style.css,
      .heading_text_1 … _6, p, span, .text_14). Every text size on every page
      comes from this list and nothing else, so the same kind of text is the
-     same size everywhere. Size / line-height, exactly as the client set them.
+     same size everywhere. Size / line-height, the client's values on even numbers.
      The values step down at 1199px and 767px (see the media queries at the bottom). */
   --fs-h1: 64px;   --lh-h1: 72px;    /* home hero headline            */
   --fs-h2: 56px;   --lh-h2: 66px;    /* page hero title               */
   --fs-h3: 48px;   --lh-h3: 56px;    /* section title                 */
   --fs-h4: 36px;   --lh-h4: 44px;    /* sub-section title, big quote  */
-  --fs-h5: 24px;   --lh-h5: 31.92px;   /* card title, lead statement    */
+  --fs-h5: 24px;   --lh-h5: 32px;      /* card title, lead statement    */
   --fs-h6: 20px;   --lh-h6: 28px;    /* small card title              */
   --fs-p:  18px;   --lh-p:  28px;    /* body copy                     */
   --fs-sm: 16px;   --lh-sm: 24px;    /* small copy                    */
@@ -252,12 +252,12 @@ label { display: inline; }
     --fs-h1: 40px; --lh-h1: 48px;
     --fs-h2: 36px; --lh-h2: 44px;
     --fs-h3: 28px; --lh-h3: 36px;
-    --fs-h4: 22px; --lh-h4: 31px;
+    --fs-h4: 22px; --lh-h4: 32px;
     --fs-h5: 18px; --lh-h5: 28px;
     --fs-h6: 16px; --lh-h6: 24px;
     --fs-p:  16px; --lh-p:  24px;
     --fs-num-xl: 72px; --lh-num-xl: 72px;
-    --fs-num: 40px;    --lh-num: 48px;
+    --fs-num: 48px;    --lh-num: 48px;
   }
 
   /* .p-btn spaces its icon tile and its label apart, which is right while the
