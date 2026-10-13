@@ -43,8 +43,9 @@
   /* layout */
   /* page side space: every block on every page starts and ends this far from
      the screen edge, so all content sits on the same two vertical lines.
-     80px on desktop, 40px at <=1199, 20px at <=767. */
-  --side:        80px;
+     Same as the client's .container padding: 60px on desktop, 32px at <=1399,
+     16px at <=767. */
+  --side:        60px;
   --content:     100%;     /* content column = screen width minus --side x 2 */
   --gutter:      0px;      /* .section side padding (side space lives in .wrap) */
   --pad-inner:   var(--side);   /* wrapper inner padding */
@@ -58,13 +59,13 @@
   /* type scale — copied from the client's own About page (watch/style.css,
      .heading_text_1 … _6, p, span, .text_14). Every text size on every page
      comes from this list and nothing else, so the same kind of text is the
-     same size everywhere. Size / line-height, all even numbers. The values
-     step down at 1199px and 767px (see the media queries at the bottom). */
+     same size everywhere. Size / line-height, the client's values on even numbers.
+     The values step down at 1199px and 767px (see the media queries at the bottom). */
   --fs-h1: 64px;   --lh-h1: 72px;    /* home hero headline            */
   --fs-h2: 56px;   --lh-h2: 66px;    /* page hero title               */
   --fs-h3: 48px;   --lh-h3: 56px;    /* section title                 */
   --fs-h4: 36px;   --lh-h4: 44px;    /* sub-section title, big quote  */
-  --fs-h5: 24px;   --lh-h5: 32px;    /* card title, lead statement    */
+  --fs-h5: 24px;   --lh-h5: 32px;      /* card title, lead statement    */
   --fs-h6: 20px;   --lh-h6: 28px;    /* small card title              */
   --fs-p:  18px;   --lh-p:  28px;    /* body copy                     */
   --fs-sm: 16px;   --lh-sm: 24px;    /* small copy                    */
@@ -230,9 +231,11 @@ label { display: inline; }
 
 /* ---------- breakpoints ----------
    Only Bootstrap's own: 1399 / 1199 / 991 / 767 / 575. */
+@media (max-width: 1399px) {
+  :root { --side: 32px; }
+}
 @media (max-width: 1199px) {
   :root {
-    --side: 40px;
     --fs-h1: 56px; --lh-h1: 64px;
     --fs-h2: 48px; --lh-h2: 56px;
     --fs-h3: 36px; --lh-h3: 44px;
@@ -245,7 +248,7 @@ label { display: inline; }
 }
 @media (max-width: 767px) {
   :root {
-    --side: 20px;
+    --side: 16px;
     --fs-h1: 40px; --lh-h1: 48px;
     --fs-h2: 36px; --lh-h2: 44px;
     --fs-h3: 28px; --lh-h3: 36px;
@@ -254,7 +257,7 @@ label { display: inline; }
     --fs-h6: 16px; --lh-h6: 24px;
     --fs-p:  16px; --lh-p:  24px;
     --fs-num-xl: 72px; --lh-num-xl: 72px;
-    --fs-num: 40px;    --lh-num: 48px;
+    --fs-num: 48px;    --lh-num: 48px;
   }
 
   /* .p-btn spaces its icon tile and its label apart, which is right while the
@@ -268,4 +271,5 @@ label { display: inline; }
      auto-width button there is no free space to distribute, so this changes
      nothing there and only reaches the stretched ones. */
   .p-btn { justify-content: flex-start; }
+  .heading_text_2 { letter-spacing: -1px; }
 }
